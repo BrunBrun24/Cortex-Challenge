@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="fr-FR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Pyodide Example</title>
+    <!-- Charger Pyodide -->
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.17.0/full/pyodide.js"></script>
+    <!-- Charger CodeMirror -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.2/codemirror.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.2/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.2/mode/python/python.min.js"></script>
+</head>
+
+<body>
+    <h1>CORTEX CHALLENGE</h1>
+    <!--Couleur-->
+    <textarea id="code" cols="80" rows="10" style="display:none">
+    </textarea>
+    <div id="editor"></div>
+    <button onclick="runCode()">Exécuter le code</button>
+    <pre id="output"></pre>
+
+    <script>
+        const editor = CodeMirror(document.getElementById('editor'), {
+            value: document.getElementById('code').value,
+            mode: 'python',
+            lineNumbers: true
+        });
+
+        async function runCode() {
+            // Charger Pyodide
+            await loadPyodide({ indexURL: "https://cdn.jsdelivr.net/pyodide/v0.17.0/full/" });
+
+            // Obtenir le code Python de l'éditeur
+            const code = editor.getValue();
+
+            // Exécuter le code Python
+            pyodide.runPython(code);
+
+            // Afficher la sortie dans la balise <pre> prévue à cet effet
+            const output = pyodide.runPython('output');
+            
+            document.getElementById("output").textContent = output;
+        }
+
+        // Charger le code Python depuis le fichier "couleur.py"
+        fetch('couleur.py')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('code').textContent = data;
+                editor.setValue(data);
+            });
+            
+    </script>
+
+</body>
+</html>
