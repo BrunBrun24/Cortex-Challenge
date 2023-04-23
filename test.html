@@ -18,25 +18,19 @@
     <textarea id="code1" cols="80" rows="10" style="display:none">
     </textarea>
     <div id="editor1"></div>
-    <button onclick="runCode1()">Exécuter le code Couleur</button>
+    <button onclick="runCode1()">Exécuter le code</button>
     <pre id="output1"></pre>
 
     <!-- Réflexion -->
     <textarea id="code2" cols="80" rows="10" style="display:none">
     </textarea>
     <div id="editor2"></div>
-    <button onclick="runCode2()">Exécuter le code Réflexion</button>
+    <button onclick="runCode2()">Exécuter le code</button>
     <pre id="output2"></pre>
 
     <script>
         const editor1 = CodeMirror(document.getElementById('editor1'), {
             value: document.getElementById('code1').value,
-            mode: 'python',
-            lineNumbers: true
-        });
-
-        const editor2 = CodeMirror(document.getElementById('editor2'), {
-            value: document.getElementById('code2').value,
             mode: 'python',
             lineNumbers: true
         });
@@ -63,6 +57,14 @@
             .then(data => {
                 document.getElementById('code').textContent = data;
                 editor1.setValue(data);
+            });
+
+    </script>
+    <script>
+    const editor2 = CodeMirror(document.getElementById('editor2'), {
+                value: document.getElementById('code2').value,
+                mode: 'python',
+                lineNumbers: true
             });
 
         async function runCode2() {

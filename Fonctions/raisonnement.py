@@ -1,41 +1,41 @@
 def raisonnement(donnee):
-    """
-    Applique un raisonnement sur le dessin en utilisant différentes méthodes pour vérifier s'il y a une solution possible.
-    :return: Le nom de la solution trouvée, sinon (str) "Aucune de ces solutions n'est la bonne".
-    """
-    drawing = donnee["drawing"]
-    # On regarde si il y a possibilité d'enlever des colonnes à droite du dessin
-    decalage = donnee.decalage_raisonnement(drawing)
+        """
+        Applique un raisonnement sur le dessin en utilisant différentes méthodes pour vérifier s'il y a une solution possible.
+        :return: Le nom de la solution trouvée, sinon (str) "Aucune de ces solutions n'est la bonne".
+        """
+        drawing = donnee["drawing"]
+        # On regarde si il y a possibilité d'enlever des colonnes à droite du dessin
+        decalage = decalage_raisonnement(drawing)
 
-    # On décale chaque ligne du dessin par "decalage"
-    new_drawing = []
-    for ligne in drawing:
-        if "" in ligne:
-            new_drawing.append(ligne[decalage:])
+        # On décale chaque ligne du dessin par "decalage"
+        new_drawing = []
+        for ligne in drawing:
+            if "" in ligne:
+                new_drawing.append(ligne[decalage:])
 
-    # On regarde si il y a possibilité d'enlever des colonnes à gauche du dessin mais pour cela on va inverser chaque ligne du dessin
-    new_drawing = donnee.retourne_raisonnement(donnee, new_drawing)
-    # On regarde si il y a possibilité d'enlever des colonnes à droite du dessin
-    decalage_new_drawing = donnee.decalage_raisonnement(donnee, new_drawing)
+        # On regarde si il y a possibilité d'enlever des colonnes à gauche du dessin mais pour cela on va inverser chaque ligne du dessin
+        new_drawing = retourne_raisonnement(new_drawing)
+        # On regarde si il y a possibilité d'enlever des colonnes à droite du dessin
+        decalage_new_drawing = decalage_raisonnement(new_drawing)
 
-    # On décale chaque ligne du dessin par "decalage_new_drawing"
-    finish_drawing = []
-    for ligne in new_drawing:
-        if "" in ligne:
-            finish_drawing.append(ligne[decalage_new_drawing:])
+        # On décale chaque ligne du dessin par "decalage_new_drawing"
+        finish_drawing = []
+        for ligne in new_drawing:
+            if "" in ligne:
+                finish_drawing.append(ligne[decalage_new_drawing:])
 
-    # On remet le dessin à l'endroit
-    finish_drawing = donnee.retourne_raisonnement(finish_drawing)
-    # On inverse le vide ("") avec les murs ("X")
-    finish_drawing = donnee.inversion_raisonnement(finish_drawing)
-    # On regarde si une solution est possible
-    for nom, map in donnee["pieces"].items():
-        if finish_drawing == map:
-            return nom
+        # On remet le dessin à l'endroit
+        finish_drawing = retourne_raisonnement(finish_drawing)
+        # On inverse le vide ("") avec les murs ("X")
+        finish_drawing = inversion_raisonnement(finish_drawing)
+        # On regarde si une solution est possible
+        for nom, map in donnee["pieces"].items():
+            if finish_drawing == map:
+                return nom
 
-    return "Aucune de ces solutions n'est la bonne"
+        return "Aucune de ces solutions n'est la bonne"
 
-def decalage_raisonnement(donnee, drawing):
+def decalage_raisonnement(drawing):
     """
     Recherche le décalage possible le plus à gauche du dessin en vérifiant chaque ligne.
     :param drawing: (list) Le dessin représenté sous forme de liste de listes.
@@ -65,9 +65,9 @@ def decalage_raisonnement(donnee, drawing):
         if arrete_for:
             break
 
-    return min(donnee, possibilite_decalage)
+    return min(possibilite_decalage)
 
-def retourne_raisonnement(donnee, drawing):
+def retourne_raisonnement(drawing):
     """
     Retourne horizontalement chaque ligne du dessin.
     :param drawing: (list) Le dessin représenté sous forme de liste de listes.
@@ -79,7 +79,7 @@ def retourne_raisonnement(donnee, drawing):
 
     return new_drawing
 
-def inversion_raisonnement(donnee, drawing):
+def inversion_raisonnement(drawing):
     """
     Inverse les cases vides ("") avec les cases pleines ("X") dans le dessin.
     :param drawing: (list) Le dessin représenté sous forme de liste de listes.
@@ -95,5 +95,6 @@ def inversion_raisonnement(donnee, drawing):
 
 
 donnees = {"code": "RA-001","type": "raisonnement","drawing" : [["X","X","X","","","X","X","X"],["X","X","X","","","X","X","X"],["X","X","X","X","X","X","X","X"]],"pieces" : {"A" : [["X", "X"],["X", "X"]],"B" : [["", "X", ""],["X", "X", "X"]],"C" : [["X", "X", ""],["", "X", "X"]]}}
+
 output = raisonnement(donnees)
 print(output)

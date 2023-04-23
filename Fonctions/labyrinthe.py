@@ -21,7 +21,7 @@ def labyrinthe(donnee):
         else:
             position += 1
 
-    return donnee.parcours_labyrinthe(donnee, ligne_start, colonne_start, derniere_direction = "")
+    return parcours_labyrinthe(donnee, ligne_start, colonne_start, derniere_direction = "")
 
 def parcours_labyrinthe(donnee, ligne, colonne, derniere_direction):
     """
@@ -55,21 +55,22 @@ def parcours_labyrinthe(donnee, ligne, colonne, derniere_direction):
     # Si la ligne se trouve sur la map et que les coordonnées (avec ligne+1) sont dans "arrivees"
     if (ligne < max_ligne-1) and (donnee["map"][ligne+1][colonne] == "" or donnee["map"][ligne+1][colonne] in arrivees) and ((derniere_direction != "bas") or (derniere_direction == "")):
         derniere_direction = "haut"
-        return donnee.parcours_labyrinthe(donnee, (ligne+1), colonne, derniere_direction)
+        return parcours_labyrinthe(donnee, (ligne+1), colonne, derniere_direction)
     # Si la ligne se trouve sur la map et que les coordonnées (avec ligne-1) sont dans "arrivees"
     elif (ligne > 0) and (donnee["map"][ligne-1][colonne] == "" or donnee["map"][ligne-1][colonne] in arrivees)and ((derniere_direction != "haut") or (derniere_direction == "")):
         derniere_direction = "bas"
-        return donnee.parcours_labyrinthe(donnee, (ligne-1), colonne, derniere_direction)
+        return parcours_labyrinthe(donnee, (ligne-1), colonne, derniere_direction)
     # Si la colonne se trouve sur la map et que les coordonnées (avec colonne+1) sont dans "arrivees"
     elif (colonne < max_colonne-1) and (donnee["map"][ligne][colonne+1] == "" or donnee["map"][ligne][colonne+1] in arrivees) and ((derniere_direction != "droite") or (derniere_direction == "")):
         derniere_direction = "gauche"
-        return donnee.parcours_labyrinthe(donnee, ligne, (colonne+1), derniere_direction)
+        return parcours_labyrinthe(donnee, ligne, (colonne+1), derniere_direction)
     # Si la colonne se trouve sur la map et que les coordonnées (avec colonne-1) sont dans "arrivees"
     elif (colonne > 0) and (donnee["map"][ligne][colonne-1] == "" or donnee["map"][ligne][colonne-1] in arrivees) and ((derniere_direction != "gauche") or (derniere_direction == "")):
         derniere_direction = "droite"
-        return donnee.parcours_labyrinthe(donnee, ligne, (colonne-1), derniere_direction)
+        return parcours_labyrinthe(donnee, ligne, (colonne-1), derniere_direction)
     
 
 donnees = {"code": "LA-001", "type": "labyrinthe", "map": [["1", "X", "X", "X", "X", "X", "X", "", "", "2"], ["", "", "", "", "", "", "X", "", "X", ""], ["X", "X", "X", "X", "X", "", "X", "", "X", ""], ["X", "X", "X", "X", "X", "D", "X", "X", "X", ""], ["X", "X", "X", "", "", "X", "X", "", "", ""], ["X", "X", "X", "", "X", "X", "X", "", "X", "X"], ["4", "", "", "", "X", "X", "X", "", "", "3"]]}
+
 output = labyrinthe(donnees)
 print(output)

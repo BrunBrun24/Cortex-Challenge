@@ -35,5 +35,6 @@ def manquant(donnee):
 
 
 donnees = {"code": "MA-001", "type": "manquant", "numbers": ["1R", "4R", "5R", "4B", "7B", "8B", "2R", "3R", "5B"]}
+
 output = manquant(donnees)
 print(output)

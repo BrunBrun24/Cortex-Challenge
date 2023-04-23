@@ -35,7 +35,7 @@ def couleur(donnee):
                 return cle
     return False
 
-donnes = {"code": "CO-001", "type": "couleur", "colors": {"black": "red", "blue": "green", "mauve": "black", "green": "purple", "white": "blue", "orange": "yellow", "pink": "pink", "yellow": "white", "red": "orange"}}
+donnees = {"code": "CO-001", "type": "couleur", "colors": {"black": "red", "blue": "green", "mauve": "black", "green": "purple", "white": "blue", "orange": "yellow", "pink": "pink", "yellow": "white", "red": "orange"}}
 
-output = couleur(donnes)
+output = couleur(donnees)
 print(output)

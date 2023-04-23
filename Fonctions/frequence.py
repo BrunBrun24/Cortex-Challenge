@@ -14,5 +14,6 @@ def frequence(donnee):
 
 
 donnees = {"code": "FR-001", "type": "frequence", "words": [["cow", "dog", "dog", "cat", "chicken", "firefox"], ["dog", "cow", "cat", "chicken", "cat", "cat"], ["chicken", "dog", "cat", "chicken", "firefox", "chicken"], ["cat", "cow", "dog", "cat", "dog", "cow"], ["firefox", "cat", "dog", "cow", "dog", "chicken"], ["cow", "cow", "dog", "chicken", "cat", "dog"]]}
+
 output = frequence(donnees)
 print(output)

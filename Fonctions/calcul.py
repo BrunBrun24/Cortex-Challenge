@@ -48,5 +48,6 @@ def trouver_combinaisons_recursif(donnee, start, target, path, numbers, res):
 
 
 donnees = {"code": "CA-001", "type": "calcul", "result": 14, "numbers": [2, 5, 11, 7, 1, 4]}
+
 output = calcul(donnees)
 print(output)

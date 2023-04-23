@@ -64,5 +64,6 @@ def deplacement_lumiere(donnee, ligne, colonne, direction):
 
 
 donnees = {"code": "RE-001", "type": "reflexion", "map": [[" ", 1, 2, 3, 4, ""], [15, "", "", "", "", 5], [14, "", "/", "", "/", 6], [13, "", "", "", "", 7], [12, "", "", "", "", 8], ["", 11, "L", 10, 9, ""]]}
+
 output = reflection(donnees)
 print(output)
