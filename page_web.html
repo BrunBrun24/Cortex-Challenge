@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Pyodide Example</title>
+    <!--Fichier css-->
+    <link rel="stylesheet" href="style.css">
     <!-- Charger Pyodide -->
     <script src="https://cdn.jsdelivr.net/pyodide/v0.17.0/full/pyodide.js"></script>
     <!-- Charger CodeMirror -->
@@ -45,7 +47,7 @@
         }
 
         // Charger le code Python depuis le fichier "couleur.py"
-        fetch('couleur.py')
+        fetch('fonctions/couleur.py')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('code').textContent = data;
@@ -54,5 +56,6 @@
             
     </script>
 
+    <img src="images/couleur.png" alt="Image couleur">
 </body>
 </html>
