@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Cortex Challenge</title>
+    <!--Fichiers css-->
+    <link rel="stylesheet" type="text/css" href="css.css">
     <!-- Charger Pyodide -->
     <script src="https://cdn.jsdelivr.net/pyodide/v0.17.0/full/pyodide.js"></script>
     <!-- Charger CodeMirror -->
@@ -13,10 +15,11 @@
 </head>
 
 <body>
-    <h1>CORTEX CHALLENGE</h1>
+    <h1>Explications des fonctions utilisée</h1>
+    <br>
+    <p>L'objectif était de chercher en partant de la lampe torche, quel est le numéro que le faisceau lumineux va atteindre en se réfléchissant sur les miroirs blancs.</p>
     <!--Couleur-->
-    <textarea id="code" cols="80" rows="10" style="display:none">
-    </textarea>
+    <textarea id="code" cols="80" rows="10" style="display:none"></textarea>
     <div id="editor"></div>
     <button onclick="runCode()">Exécuter le code</button>
     <pre id="output"></pre>
@@ -45,7 +48,7 @@
         }
 
         // Charger le code Python depuis le fichier "couleur.py"
-        fetch('Fonctions/couleur.py')
+        fetch('Fonctions/reflection.py')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('code').textContent = data;
