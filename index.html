@@ -44,18 +44,25 @@
             // Afficher la sortie dans la balise <pre> prévue à cet effet
             const output = pyodide.runPython('output');
             
-            document.getElementById("reflection-output").textContent = output;
+            document.getElementById("couleur-output").textContent = output;
         }
 
-        // Charger le code Python depuis le fichier "reflection.py"
+        // Charger le code Python depuis le fichier "couleur.py"
         fetch('Fonctions/couleur.py')
             .then(response => response.text())
             .then(data => {
-                document.getElementById('reflection-code').textContent = data;
+                document.getElementById('couleur-code').textContent = data;
                 couleurEditor.setValue(data);
             });
             
     </script>
+
+
+
+
+
+
+
 
 
 
@@ -97,3 +104,246 @@
             });
             
     </script>
+
+
+
+
+
+
+
+
+
+
+    <!--On met en place le code de calcul.py-->
+    <textarea id="calcul-code" cols="80" rows="10" style="display:none"></textarea>
+    <div id="calcul-editor"></div>
+    <button onclick="runCalculCode()">Exécuter le code</button>
+    <pre id="calcul-output"></pre>
+
+    <script>
+        const calculEditor = CodeMirror(document.getElementById('calcul-editor'), {
+            value: document.getElementById('calcul-code').value,
+            mode: 'python',
+            lineNumbers: true
+        });
+
+        async function runCalculCode() {
+            // Charger Pyodide
+            await loadPyodide({ indexURL: "https://cdn.jsdelivr.net/pyodide/v0.17.0/full/" });
+
+            // Obtenir le code Python de l'éditeur
+            const code = calculEditor.getValue();
+
+            // Exécuter le code Python
+            pyodide.runPython(code);
+
+            // Afficher la sortie dans la balise <pre> prévue à cet effet
+            const output = pyodide.runPython('output');
+            
+            document.getElementById("calcul-output").textContent = output;
+        }
+
+        // Charger le code Python depuis le fichier "calcul.py"
+        fetch('Fonctions/calcul.py')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('calcul-code').textContent = data;
+                calculEditor.setValue(data);
+            });
+            
+    </script>
+
+
+
+
+
+
+
+
+
+
+    <!--On met en place le code de manquant.py-->
+    <textarea id="manquant-code" cols="80" rows="10" style="display:none"></textarea>
+    <div id="manquant-editor"></div>
+    <button onclick="runManquantCode()">Exécuter le code</button>
+    <pre id="manquant-output"></pre>
+
+    <script>
+        const manquantEditor = CodeMirror(document.getElementById('manquant-editor'), {
+            value: document.getElementById('manquant-code').value,
+            mode: 'python',
+            lineNumbers: true
+        });
+
+        async function runManquant() {
+            // Charger Pyodide
+            await loadPyodide({ indexURL: "https://cdn.jsdelivr.net/pyodide/v0.17.0/full/" });
+
+            // Obtenir le code Python de l'éditeur
+            const code = manquantEditor.getValue();
+
+            // Exécuter le code Python
+            pyodide.runPython(code);
+
+            // Afficher la sortie dans la balise <pre> prévue à cet effet
+            const output = pyodide.runPython('output');
+            
+            document.getElementById("manquant-output").textContent = output;
+        }
+
+        // Charger le code Python depuis le fichier "manquant.py"
+        fetch('Fonctions/manquant.py')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('manquant-code').textContent = data;
+                manquantEditor.setValue(data);
+            });
+            
+    </script>
+
+
+
+
+
+
+
+
+
+
+    <!--On met en place le code de labyrinthe.py-->
+    <textarea id="labyrinthe-code" cols="80" rows="10" style="display:none"></textarea>
+    <div id="labyrinthe-editor"></div>
+    <button onclick="runLabyrintheCode()">Exécuter le code</button>
+    <pre id="labyrinthe-output"></pre>
+
+    <script>
+        const labyrintheEditor = CodeMirror(document.getElementById('labyrinthe-editor'), {
+            value: document.getElementById('labyrinthe-code').value,
+            mode: 'python',
+            lineNumbers: true
+        });
+
+        async function runLabyrinthe() {
+            // Charger Pyodide
+            await loadPyodide({ indexURL: "https://cdn.jsdelivr.net/pyodide/v0.17.0/full/" });
+
+            // Obtenir le code Python de l'éditeur
+            const code = labyrintheEditor.getValue();
+
+            // Exécuter le code Python
+            pyodide.runPython(code);
+
+            // Afficher la sortie dans la balise <pre> prévue à cet effet
+            const output = pyodide.runPython('output');
+            
+            document.getElementById("labyrinthe-output").textContent = output;
+        }
+
+        // Charger le code Python depuis le fichier "labyrinthe.py"
+        fetch('Fonctions/labyrinthe.py')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('labyrinthe-code').textContent = data;
+                labyrintheEditor.setValue(data);
+            });
+            
+    </script>
+
+
+
+
+
+
+
+
+
+
+    <!--On met en place le code de doublon.py-->
+    <textarea id="doublon-code" cols="80" rows="10" style="display:none"></textarea>
+    <div id="doublon-editor"></div>
+    <button onclick="runDoublonCode()">Exécuter le code</button>
+    <pre id="doublon-output"></pre>
+
+    <script>
+        const doublonEditor = CodeMirror(document.getElementById('doublon-editor'), {
+            value: document.getElementById('doublon-code').value,
+            mode: 'python',
+            lineNumbers: true
+        });
+
+        async function runDoublon() {
+            // Charger Pyodide
+            await loadPyodide({ indexURL: "https://cdn.jsdelivr.net/pyodide/v0.17.0/full/" });
+
+            // Obtenir le code Python de l'éditeur
+            const code = doublonEditor.getValue();
+
+            // Exécuter le code Python
+            pyodide.runPython(code);
+
+            // Afficher la sortie dans la balise <pre> prévue à cet effet
+            const output = pyodide.runPython('output');
+            
+            document.getElementById("doublon-output").textContent = output;
+        }
+
+        // Charger le code Python depuis le fichier "doublon.py"
+        fetch('Fonctions/doublon.py')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('doublon-code').textContent = data;
+                doublonEditor.setValue(data);
+            });
+            
+    </script>
+
+
+
+
+
+
+
+
+
+
+    <!--On met en place le code de raisonnement.py-->
+    <textarea id="raisonnement-code" cols="80" rows="10" style="display:none"></textarea>
+    <div id="raisonnement-editor"></div>
+    <button onclick="runRaisonnementCode()">Exécuter le code</button>
+    <pre id="raisonnement-output"></pre>
+
+    <script>
+        const raisonnementEditor = CodeMirror(document.getElementById('raisonnement-editor'), {
+            value: document.getElementById('raisonnement-code').value,
+            mode: 'python',
+            lineNumbers: true
+        });
+
+        async function runRaisonnement() {
+            // Charger Pyodide
+            await loadPyodide({ indexURL: "https://cdn.jsdelivr.net/pyodide/v0.17.0/full/" });
+
+            // Obtenir le code Python de l'éditeur
+            const code = raisonnementEditor.getValue();
+
+            // Exécuter le code Python
+            pyodide.runPython(code);
+
+            // Afficher la sortie dans la balise <pre> prévue à cet effet
+            const output = pyodide.runPython('output');
+            
+            document.getElementById("raisonnement-output").textContent = output;
+        }
+
+        // Charger le code Python depuis le fichier "raisonnement.py"
+        fetch('Fonctions/raisonnement.py')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('raisonnement-code').textContent = data;
+                raisonnementEditor.setValue(data);
+            });
+            
+    </script>
+
+</body>
+</html>
