@@ -15,28 +15,28 @@
 </head>
 
 <body>
-    <h1>Explications des fonctions utilisée</h1>
+    <h1>Explications des fonctions utilisées</h1>
     <br>
-    <p>L'objectif était de chercher en partant de la lampe torche, quel est le numéro que le faisceau lumineux va atteindre en se réfléchissant sur les miroirs blancs.</p>
-    <!--Couleur-->
-    <textarea id="code" cols="80" rows="10" style="display:none"></textarea>
-    <div id="editor"></div>
-    <button onclick="runCode()">Exécuter le code</button>
-    <pre id="output"></pre>
+
+    <!--On met en place le code de couleur.py-->
+    <textarea id="couleur-code" cols="80" rows="10" style="display:none"></textarea>
+    <div id="couleur-editor"></div>
+    <button onclick="runCouleurCode()">Exécuter le code</button>
+    <pre id="couleur-output"></pre>
 
     <script>
-        const editor = CodeMirror(document.getElementById('editor'), {
-            value: document.getElementById('code').value,
+        const couleurEditor = CodeMirror(document.getElementById('couleur-editor'), {
+            value: document.getElementById('couleur-code').value,
             mode: 'python',
             lineNumbers: true
         });
 
-        async function runCode() {
+        async function runCouleurCode() {
             // Charger Pyodide
             await loadPyodide({ indexURL: "https://cdn.jsdelivr.net/pyodide/v0.17.0/full/" });
 
             // Obtenir le code Python de l'éditeur
-            const code = editor.getValue();
+            const code = couleurEditor.getValue();
 
             // Exécuter le code Python
             pyodide.runPython(code);
@@ -44,18 +44,56 @@
             // Afficher la sortie dans la balise <pre> prévue à cet effet
             const output = pyodide.runPython('output');
             
-            document.getElementById("output").textContent = output;
+            document.getElementById("reflection-output").textContent = output;
         }
 
-        // Charger le code Python depuis le fichier "couleur.py"
-        fetch('Fonctions/reflection.py')
+        // Charger le code Python depuis le fichier "reflection.py"
+        fetch('Fonctions/couleur.py')
             .then(response => response.text())
             .then(data => {
-                document.getElementById('code').textContent = data;
-                editor.setValue(data);
+                document.getElementById('reflection-code').textContent = data;
+                couleurEditor.setValue(data);
             });
             
     </script>
 
-</body>
-</html>
+
+
+    <!--On met en place le code de reflection.py-->
+    <textarea id="reflection-code" cols="80" rows="10" style="display:none"></textarea>
+    <div id="reflection-editor"></div>
+    <button onclick="runReflectionCode()">Exécuter le code</button>
+    <pre id="reflection-output"></pre>
+
+    <script>
+        const reflectionEditor = CodeMirror(document.getElementById('reflection-editor'), {
+            value: document.getElementById('reflection-code').value,
+            mode: 'python',
+            lineNumbers: true
+        });
+
+        async function runReflectionCode() {
+            // Charger Pyodide
+            await loadPyodide({ indexURL: "https://cdn.jsdelivr.net/pyodide/v0.17.0/full/" });
+
+            // Obtenir le code Python de l'éditeur
+            const code = reflectionEditor.getValue();
+
+            // Exécuter le code Python
+            pyodide.runPython(code);
+
+            // Afficher la sortie dans la balise <pre> prévue à cet effet
+            const output = pyodide.runPython('output');
+            
+            document.getElementById("reflection-output").textContent = output;
+        }
+
+        // Charger le code Python depuis le fichier "reflection.py"
+        fetch('Fonctions/reflection.py')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('reflection-code').textContent = data;
+                reflectionEditor.setValue(data);
+            });
+            
+    </script>
