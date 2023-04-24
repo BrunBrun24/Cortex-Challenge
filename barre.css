@@ -1,0 +1,56 @@
+/*first bar et Fonctions*/
+#firstbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    color: white;
+    padding: 10px;
+}
+
+#logo img {
+    max-width: 50%;
+    height: auto;
+    text-align: center; /* centre l'image horizontalement */
+}
+
+#name1 p, #name2 p {
+    padding: 10px 10px;
+    font-size: 150%;
+    text-align: center; /* centre l'image horizontalement */
+    margin: 0;
+}
+/*END -> first bar et Fonctions*/
+
+/*Menu de la bar pour Accueil et Fonctions*/
+#menubar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: royalblue;
+    color: white;
+    padding: 10px;
+}
+
+#menubar a {
+    color: white;
+    text-decoration: red;
+    font-size: 20px;
+    padding: 5px 400px;
+}
+
+#menubar a:hover {
+    background-color: blue;
+    color: red;
+}
+
+
+#menubar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: royalblue;
+    color: white;
+    padding: 10px;
+}
+/*END -> Menu de la bar pour Accueil et Fonctions*/
