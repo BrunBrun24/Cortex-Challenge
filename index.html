@@ -17,6 +17,8 @@
 <body>
     <h1>Explications des fonctions utilisées</h1>
     <br>
+    <br>
+    <br>
 
     <!--Importation de la consigne "couleur" (image)-->
     <img src="Consignes/couleur.png" alt="consigne couleur">
@@ -60,7 +62,12 @@
             
     </script>
 
+    <p>Cette fonction est intéressante d'un point de vue complexité car elle utilise une double boucle for pour comparer chaque couleur dans la liste avec les couleurs dans le dictionnaire de référence.
+        La complexité de cette fonction est donc de O(n*m), où n est la longueur de la liste de couleurs dans donnee et m est la taille du dictionnaire de référence.</br></br>
 
+        Cependant, la complexité réelle de la fonction dépendra de la taille du dictionnaire dict.
+        Si la taille de ce dictionnaire est petite, la complexité de la fonction sera également petite.
+        Si la taille du dictionnaire dict augmente, la complexité de la fonction augmentera également.</p>
 
 
     <br>
@@ -115,7 +122,26 @@
             
     </script>
 
+    <p>La fonction reflection prend en entrée un dictionnaire donnee représentant une map de jeu et renvoie la valeur de la case atteinte par la lumière provenant de la lampe "L", en suivant les règles du jeu.</br>
 
+        La fonction commence par chercher la position de la lampe "L" dans la map en parcourant chaque ligne et colonne de la map jusqu'à trouver la lampe.
+        Si la lampe est trouvée, la fonction appelle la fonction deplacement_lumiere en passant les coordonnées de la lampe et la direction dans laquelle elle pointe.</br></br>
+        
+        La fonction deplacement_lumiere utilise une boucle while pour déplacer la lumière dans la direction donnée, en vérifiant si la case actuelle est un entier.
+        Si la case est un entier, la fonction renvoie la valeur de cette case.
+        Sinon, la fonction appelle la fonction verifier_obstacle pour obtenir la direction à suivre en fonction de la direction actuelle et de l'obstacle présent dans la case.
+        Ensuite, les coordonnées de la lumière sont mises à jour en fonction de la direction obtenue.</br></br>
+        
+        La fonction verifier_obstacle prend en entrée la position actuelle de la lumière et sa direction, vérifie si la case contient un obstacle "/" ou "", et renvoie 
+        la nouvelle direction en fonction de l'obstacle.
+        Elle utilise un dictionnaire de correspondance pour déterminer la nouvelle direction.</br></br>
+        
+        Du point de vue de la complexité, la fonction reflection parcourt chaque ligne et colonne de la map, ce qui prend un temps proportionnel au nombre total de cases dans la map.
+        La fonction deplacement_lumiere déplace la lumière dans la direction donnée jusqu'à ce qu'elle atteigne une case entière, donc son temps d'exécution dépend du nombre de cases 
+        traversées par la lumière avant d'atteindre une case entière.
+        Dans le pire des cas, si la lumière suit un chemin en boucle infinie, la fonction peut ne jamais terminer.
+        La fonction verifier_obstacle utilise un dictionnaire de correspondance pour déterminer la nouvelle direction, ce qui a une complexité constante.
+        Dans l'ensemble, la complexité de ces fonctions dépendent de la taille de la map et du chemin emprunté par la lumière, ce qui peut varier considérablement d'une instance du jeu à l'autre.</p>
 
 
     <br>
@@ -170,7 +196,20 @@
             
     </script>
 
+    <p>Cette fonction permet de trouver tous les ensembles de nombres dans la liste 'numbers' qui s'additionnent pour obtenir le résultat 'result'.</br></br>
 
+        Elle utilise une approche récursive avec retour en arrière pour parcourir toutes les combinaisons possibles de nombres.
+        La liste de nombres est triée dans l'ordre croissant pour obtenir les combinaisons dans l'ordre croissant également.
+        Les doublons sont ignorés pour éviter de répéter les nombres dans la combinaison. Les nombres qui sont déjà dans la combinaison sont également ignorés.</br></br>
+        
+        La fonction auxiliaire 'trouver_combinaisons_recursif' est appelée initialement avec un total cible de 'result' et parcourt la liste de nombres à partir de l'indice 'start'.
+        Si la somme cible est atteinte, la liste de nombres est ajoutée aux résultats. Si la somme cible est dépassée, la fonction retourne.
+        Sinon, elle continue à parcourir la liste de nombres et à appeler récursivement la fonction avec le nouveau total cible.</br></br>
+        
+        Le résultat est ensuite trié et formaté en chaînes de caractères contenant les nombres séparés par des signes plus (+).</br></br>
+        
+        Du point de vue de la complexité, cette fonction a une complexité exponentielle O(2^n) dans le pire des cas, car elle parcourt toutes les combinaisons possibles de nombres dans la liste.
+        Cependant, elle utilise des techniques d'optimisation telles que le tri et l'ignorance des doublons pour améliorer les performances.</p>
 
 
 
@@ -226,7 +265,14 @@
     </script>
 
 
+    <p>Cette fonction permet de trouver le premier nombre manquant dans une liste de nombres qui sont codés sous forme de chaînes de caractères.</br></br>
 
+        Elle commence par séparer les nombres en fonction de leur couleur (identifiée par la dernière lettre de la chaîne), en les ajoutant à deux ensembles distincts.
+        Ensuite, elle trie ces ensembles dans l'ordre croissant.
+        Enfin, elle parcourt chaque ensemble pour trouver le premier nombre manquant, c'est-à-dire le premier nombre qui n'a pas un nombre suivant immédiat dans l'ensemble.</br></br>
+        
+        La complexité de cette fonction est de l'ordre O(nlogn) pour trier les ensembles de nombres, plus deux boucles for qui parcourent les ensembles, chacune ayant une complexité de l'ordre de O(n).
+        Par conséquent, la complexité totale de la fonction est de l'ordre de O(nlogn).</p>
 
 
     <br>
@@ -281,7 +327,20 @@
     </script>
 
 
+    <p>La fonction parcours_labyrinthe permet de parcourir un labyrinthe à partir de la position de départ et de renvoyer le numéro de la case atteinte, selon les règles suivantes :
+        
+        <li>Si la case est marquée comme "1", renvoyer 1</li>
+        <li>Si la case est marquée comme "2", renvoyer 2</li>
+        <li>Si la case est marquée comme "3", renvoyer 3</li>
+        <li>Si la case est marquée comme "4", renvoyer 4</li>
+        <li>Sinon, chercher la case suivante en suivant la direction qui n'a pas été prise lors du dernier déplacement et qui mène à une case non visitée ou à une case marquée comme une arrivée, 
+            en donnant la priorité à la direction "haut" puis "bas" puis "gauche" puis "droite".</li></br></br>
 
+        La fonction labyrinthe utilise cette fonction pour chercher les coordonnées de la case de départ, puis renvoie la fonction parcours_labyrinthe avec ces coordonnées.</br></br>
+
+        Cette fonction est intéressante d'un point de vue complexité car elle utilise une approche récursive pour parcourir le labyrinthe, ce qui peut être efficace en termes de mémoire 
+        mais peut être coûteux en termes de temps si le labyrinthe est très grand ou très complexe.
+        En effet, la fonction peut appeler elle-même jusqu'à ce que toutes les cases soient visitées, ce qui peut prendre beaucoup de temps pour un labyrinthe très grand ou très complexe.</p>
 
     <br>
     <br>
@@ -335,7 +394,18 @@
             
     </script>
 
+    <p>La fonction doublon prend en entrée un dictionnaire contenant une clé "words" qui est une liste de listes de mots et cherche un mot en double dans cette liste.</br></br>
 
+        Pour ce faire, elle utilise un dictionnaire word_count qui va compter le nombre d'occurrences de chaque mot dans la liste words.
+        Si un mot est déjà présent dans le dictionnaire, on incrémente son compteur, sinon on l'ajoute avec un compteur initialisé à 1.</br></br>
+        
+        Ensuite, la fonction parcourt le dictionnaire word_count et retourne le premier mot qui a été compté exactement deux fois, car cela signifie qu'il est présent en double dans la liste words.</br></br>
+        
+        Si aucun mot n'a été trouvé en double, la fonction retourne un message indiquant qu'il n'y a pas de mot en double.</br></br>
+        
+        D'un point de vue de la complexité, cette fonction est intéressante car elle utilise un dictionnaire pour compter le nombre d'occurrences de chaque mot.
+        La recherche et l'insertion dans un dictionnaire ont une complexité en moyenne O(1), ce qui signifie que la complexité totale de cette fonction est de O(n), où n est le nombre total de mots dans la liste words.
+        Cette complexité est optimale pour cette tâche, car il est nécessaire de parcourir tous les mots au moins une fois pour déterminer s'il y en a un en double.</p>
 
 
     <br>
@@ -389,6 +459,22 @@
             });
             
     </script>
+
+    <p>Cette fonction, nommée raisonnement, prend en entrée une donnée représentant un dessin avec des murs (X) et des espaces vides ("") ainsi qu'une liste de différentes pièces de puzzle.
+        Elle applique un raisonnement sur le dessin en utilisant différentes méthodes pour vérifier s'il y a une solution possible en cherchant quelle pièce de puzzle correspond au dessin.</br></br>
+
+        Pour ce faire, la fonction commence par chercher s'il y a possibilité d'enlever des colonnes à droite du dessin et en enlevant celles-ci si c'est le cas.
+        Ensuite, elle cherche s'il y a possibilité d'enlever des colonnes à gauche du dessin en inversant chaque ligne du dessin, en cherchant à nouveau si des colonnes peuvent être enlevées, 
+        puis en retournant à nouveau chaque ligne pour revenir au dessin initial.
+        Ensuite, elle inverse les cases vides ("") avec les cases pleines ("X") dans le dessin pour permettre une comparaison plus facile avec les différentes pièces de puzzle.
+        Finalement, elle compare le dessin modifié avec chaque pièce de puzzle pour voir s'il y a une correspondance.</br></br>
+        
+        Cette fonction est intéressante d'un point de vue complexité car elle utilise des techniques efficaces pour réduire la taille du dessin initial en enlevant des colonnes vides et en le 
+        retournant horizontalement pour enlever des colonnes supplémentaires.
+        Elle utilise également une technique d'inversion pour faciliter la comparaison entre le dessin modifié et les différentes pièces de puzzle.
+        Ces techniques permettent de réduire la taille du dessin initial et donc de diminuer la complexité de la comparaison avec chaque pièce de puzzle, rendant l'algorithme plus efficace.
+        Cependant, la complexité de cette fonction dépendra de la taille du dessin initial et du nombre de pièces de puzzle à comparer, ce qui peut rendre l'algorithme coûteux en temps et en 
+        espace pour de grands dessins ou un grand nombre de pièces.</p>
 
 </body>
 </html>
