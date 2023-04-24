@@ -1,24 +1,24 @@
 /*first bar et Fonctions*/
 #firstbar {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: center; /* centre les éléments horizontalement */
+    align-items: center; /* centre les éléments verticalement */
     background-color: black;
     color: white;
-    padding: 10px;
+    padding: 10px; /* marge intérieure de 10 pixels */
 }
 
 #logo img {
-    max-width: 50%;
-    height: auto;
+    max-width: 50%; /* largeur maximale de l'image de 50% */
+    height: auto; /* hauteur automatique pour conserver les proportions */
     text-align: center; /* centre l'image horizontalement */
 }
 
 #name1 p, #name2 p {
-    padding: 10px 10px;
+    padding: 10px 10px; /* marge intérieure de 10 pixels en haut et en bas, 10 pixels à gauche et à droite */
     font-size: 150%;
     text-align: center; /* centre l'image horizontalement */
-    margin: 0;
+    margin: 0; /* supprime les marges par défaut */
 }
 /*END -> first bar et Fonctions*/
 
