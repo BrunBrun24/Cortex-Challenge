@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="fr-FR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cortex Challenge</title>
+    <!--Fichiers css-->
+    <link rel="stylesheet" type="text/css" href="css.css">
+    <link rel="stylesheet" type="text/css" href="barre.css">
+    <!-- Charger Pyodide -->
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.17.0/full/pyodide.js"></script>
+    <!-- Charger CodeMirror -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.2/codemirror.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.2/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.2/mode/python/python.min.js"></script>
+</head>
+
+<body>
+    <div id="menubar">
+        <a href="https://brunbrun24.github.io/Cortex-Challenge/">Accueil</a>
+        <a href="https://brunbrun24.github.io/Cortex-Challenge/">Fonctions</a>
+    </div>
+    <h1>Explications des fonctions utilisées</h1>
+    <br>
+    <br>
+    <br>
+
+    <!--Importation de la consigne "couleur" (image)-->
+    <img src="Consignes/couleur.png" alt="consigne couleur">
+
+    <!--On met en place le code de couleur.py-->
+    <textarea id="couleur-code" cols="80" rows="10" style="display:none"></textarea>
+    <div id="couleur-editor"></div>
+    <button onclick="runCouleurCode()">Exécuter le code</button>
+    <pre id="couleur-output"></pre>
+
+    <script>
+        const couleurEditor = CodeMirror(document.getElementById('couleur-editor'), {
+            value: document.getElementById('couleur-code').value,
+            mode: 'python',
+            lineNumbers: true
+        });
+
+        async function runCouleurCode() {
+            // Charger Pyodide
+            await loadPyodide({ indexURL: "https://cdn.jsdelivr.net/pyodide/v0.17.0/full/" });
+
+            // Obtenir le code Python de l'éditeur
+            const code = couleurEditor.getValue();
+
+            // Exécuter le code Python
+            pyodide.runPython(code);
+
+            // Afficher la sortie dans la balise <pre> prévue à cet effet
+            const output = pyodide.runPython('output');
+            
+            document.getElementById("couleur-output").textContent = output;
+        }
+
+        // Charger le code Python depuis le fichier "couleur.py"
+        fetch('Fonctions/couleur.py')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('couleur-code').textContent = data;
+                couleurEditor.setValue(data);
+            });
+            
+    </script>
+
+    <p>Cette fonction est intéressante d'un point de vue complexité car elle utilise une double boucle for pour comparer chaque couleur dans la liste avec les couleurs dans le dictionnaire de référence.
+        La complexité de cette fonction est donc de O(n*m), où n est la longueur de la liste de couleurs dans donnee et m est la taille du dictionnaire de référence.</br></br>
+
+        Cependant, la complexité réelle de la fonction dépendra de la taille du dictionnaire dict.
+        Si la taille de ce dictionnaire est petite, la complexité de la fonction sera également petite.
+        Si la taille du dictionnaire dict augmente, la complexité de la fonction augmentera également.</p>
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+    <!--Importation de la consigne "reflection" (image)-->
+    <img src="Consignes/reflection.png" alt="consigne reflection">
+
+
+    <!--On met en place le code de reflection.py-->
+    <textarea id="reflection-code" cols="80" rows="10" style="display:none"></textarea>
+    <div id="reflection-editor"></div>
+    <button onclick="runReflectionCode()">Exécuter le code</button>
+    <pre id="reflection-output"></pre>
+
+    <script>
+        const reflectionEditor = CodeMirror(document.getElementById('reflection-editor'), {
+            value: document.getElementById('reflection-code').value,
+            mode: 'python',
+            lineNumbers: true
+        });
+
+        async function runReflectionCode() {
+            // Charger Pyodide
+            await loadPyodide({ indexURL: "https://cdn.jsdelivr.net/pyodide/v0.17.0/full/" });
+
+            // Obtenir le code Python de l'éditeur
+            const code = reflectionEditor.getValue();
+
+            // Exécuter le code Python
+            pyodide.runPython(code);
+
+            // Afficher la sortie dans la balise <pre> prévue à cet effet
+            const output = pyodide.runPython('output');
+            
+            document.getElementById("reflection-output").textContent = output;
+        }
+
+        // Charger le code Python depuis le fichier "reflection.py"
+        fetch('Fonctions/reflection.py')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('reflection-code').textContent = data;
+                reflectionEditor.setValue(data);
+            });
+            
+    </script>
+
+    <p>La fonction reflection prend en entrée un dictionnaire donnee représentant une map de jeu et renvoie la valeur de la case atteinte par la lumière provenant de la lampe "L", en suivant les règles du jeu.</br>
+
+        La fonction commence par chercher la position de la lampe "L" dans la map en parcourant chaque ligne et colonne de la map jusqu'à trouver la lampe.
+        Si la lampe est trouvée, la fonction appelle la fonction deplacement_lumiere en passant les coordonnées de la lampe et la direction dans laquelle elle pointe.</br></br>
+        
+        La fonction deplacement_lumiere utilise une boucle while pour déplacer la lumière dans la direction donnée, en vérifiant si la case actuelle est un entier.
+        Si la case est un entier, la fonction renvoie la valeur de cette case.
+        Sinon, la fonction appelle la fonction verifier_obstacle pour obtenir la direction à suivre en fonction de la direction actuelle et de l'obstacle présent dans la case.
+        Ensuite, les coordonnées de la lumière sont mises à jour en fonction de la direction obtenue.</br></br>
+        
+        La fonction verifier_obstacle prend en entrée la position actuelle de la lumière et sa direction, vérifie si la case contient un obstacle "/" ou "", et renvoie 
+        la nouvelle direction en fonction de l'obstacle.
+        Elle utilise un dictionnaire de correspondance pour déterminer la nouvelle direction.</br></br>
+        
+        Du point de vue de la complexité, la fonction reflection parcourt chaque ligne et colonne de la map, ce qui prend un temps proportionnel au nombre total de cases dans la map.
+        La fonction deplacement_lumiere déplace la lumière dans la direction donnée jusqu'à ce qu'elle atteigne une case entière, donc son temps d'exécution dépend du nombre de cases 
+        traversées par la lumière avant d'atteindre une case entière.
+        Dans le pire des cas, si la lumière suit un chemin en boucle infinie, la fonction peut ne jamais terminer.
+        La fonction verifier_obstacle utilise un dictionnaire de correspondance pour déterminer la nouvelle direction, ce qui a une complexité constante.
+        Dans l'ensemble, la complexité de ces fonctions dépendent de la taille de la map et du chemin emprunté par la lumière, ce qui peut varier considérablement d'une instance du jeu à l'autre.</p>
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+    <!--Importation de la consigne "calcul" (image)-->
+    <img src="Consignes/calcul.png" alt="consigne calcul">
+
+
+    <!--On met en place le code de calcul.py-->
+    <textarea id="calcul-code" cols="80" rows="10" style="display:none"></textarea>
+    <div id="calcul-editor"></div>
+    <button onclick="runCalculCode()">Exécuter le code</button>
+    <pre id="calcul-output"></pre>
+
+    <script>
+        const calculEditor = CodeMirror(document.getElementById('calcul-editor'), {
+            value: document.getElementById('calcul-code').value,
+            mode: 'python',
+            lineNumbers: true
+        });
+
+        async function runCalculCode() {
+            // Charger Pyodide
+            await loadPyodide({ indexURL: "https://cdn.jsdelivr.net/pyodide/v0.17.0/full/" });
+
+            // Obtenir le code Python de l'éditeur
+            const code = calculEditor.getValue();
+
+            // Exécuter le code Python
+            pyodide.runPython(code);
+
+            // Afficher la sortie dans la balise <pre> prévue à cet effet
+            const output = pyodide.runPython('output');
+            
+            document.getElementById("calcul-output").textContent = output;
+        }
+
+        // Charger le code Python depuis le fichier "calcul.py"
+        fetch('Fonctions/calcul.py')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('calcul-code').textContent = data;
+                calculEditor.setValue(data);
+            });
+            
+    </script>
+
+    <p>Cette fonction permet de trouver tous les ensembles de nombres dans la liste 'numbers' qui s'additionnent pour obtenir le résultat 'result'.</br></br>
+
+        Elle utilise une approche récursive avec retour en arrière pour parcourir toutes les combinaisons possibles de nombres.
+        La liste de nombres est triée dans l'ordre croissant pour obtenir les combinaisons dans l'ordre croissant également.
+        Les doublons sont ignorés pour éviter de répéter les nombres dans la combinaison. Les nombres qui sont déjà dans la combinaison sont également ignorés.</br></br>
+        
+        La fonction auxiliaire 'trouver_combinaisons_recursif' est appelée initialement avec un total cible de 'result' et parcourt la liste de nombres à partir de l'indice 'start'.
+        Si la somme cible est atteinte, la liste de nombres est ajoutée aux résultats. Si la somme cible est dépassée, la fonction retourne.
+        Sinon, elle continue à parcourir la liste de nombres et à appeler récursivement la fonction avec le nouveau total cible.</br></br>
+        
+        Le résultat est ensuite trié et formaté en chaînes de caractères contenant les nombres séparés par des signes plus (+).</br></br>
+        
+        Du point de vue de la complexité, cette fonction a une complexité exponentielle O(2^n) dans le pire des cas, car elle parcourt toutes les combinaisons possibles de nombres dans la liste.
+        Cependant, elle utilise des techniques d'optimisation telles que le tri et l'ignorance des doublons pour améliorer les performances.</p>
+
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <!--Importation de la consigne "manquant" (image)-->
+    <img src="Consignes/manquant.png" alt="consigne manquant">
+
+
+    <!--On met en place le code de manquant.py-->
+    <textarea id="manquant-code" cols="80" rows="10" style="display:none"></textarea>
+    <div id="manquant-editor"></div>
+    <button onclick="runManquantCode()">Exécuter le code</button>
+    <pre id="manquant-output"></pre>
+
+    <script>
+        const manquantEditor = CodeMirror(document.getElementById('manquant-editor'), {
+            value: document.getElementById('manquant-code').value,
+            mode: 'python',
+            lineNumbers: true
+        });
+
+        async function runManquant() {
+            // Charger Pyodide
+            await loadPyodide({ indexURL: "https://cdn.jsdelivr.net/pyodide/v0.17.0/full/" });
+
+            // Obtenir le code Python de l'éditeur
+            const code = manquantEditor.getValue();
+
+            // Exécuter le code Python
+            pyodide.runPython(code);
+
+            // Afficher la sortie dans la balise <pre> prévue à cet effet
+            const output = pyodide.runPython('output');
+            
+            document.getElementById("manquant-output").textContent = output;
+        }
+
+        // Charger le code Python depuis le fichier "manquant.py"
+        fetch('Fonctions/manquant.py')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('manquant-code').textContent = data;
+                manquantEditor.setValue(data);
+            });
+            
+    </script>
+
+
+    <p>Cette fonction permet de trouver le premier nombre manquant dans une liste de nombres qui sont codés sous forme de chaînes de caractères.</br></br>
+
+        Elle commence par séparer les nombres en fonction de leur couleur (identifiée par la dernière lettre de la chaîne), en les ajoutant à deux ensembles distincts.
+        Ensuite, elle trie ces ensembles dans l'ordre croissant.
+        Enfin, elle parcourt chaque ensemble pour trouver le premier nombre manquant, c'est-à-dire le premier nombre qui n'a pas un nombre suivant immédiat dans l'ensemble.</br></br>
+        
+        La complexité de cette fonction est de l'ordre O(nlogn) pour trier les ensembles de nombres, plus deux boucles for qui parcourent les ensembles, chacune ayant une complexité de l'ordre de O(n).
+        Par conséquent, la complexité totale de la fonction est de l'ordre de O(nlogn).</p>
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <!--Importation de la consigne "labyrinthe" (image)-->
+    <img src="Consignes/labyrinthe.png" alt="consigne labyrinthe">
+
+
+    <!--On met en place le code de labyrinthe.py-->
+    <textarea id="labyrinthe-code" cols="80" rows="10" style="display:none"></textarea>
+    <div id="labyrinthe-editor"></div>
+    <button onclick="runLabyrintheCode()">Exécuter le code</button>
+    <pre id="labyrinthe-output"></pre>
+
+    <script>
+        const labyrintheEditor = CodeMirror(document.getElementById('labyrinthe-editor'), {
+            value: document.getElementById('labyrinthe-code').value,
+            mode: 'python',
+            lineNumbers: true
+        });
+
+        async function runLabyrinthe() {
+            // Charger Pyodide
+            await loadPyodide({ indexURL: "https://cdn.jsdelivr.net/pyodide/v0.17.0/full/" });
+
+            // Obtenir le code Python de l'éditeur
+            const code = labyrintheEditor.getValue();
+
+            // Exécuter le code Python
+            pyodide.runPython(code);
+
+            // Afficher la sortie dans la balise <pre> prévue à cet effet
+            const output = pyodide.runPython('output');
+            
+            document.getElementById("labyrinthe-output").textContent = output;
+        }
+
+        // Charger le code Python depuis le fichier "labyrinthe.py"
+        fetch('Fonctions/labyrinthe.py')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('labyrinthe-code').textContent = data;
+                labyrintheEditor.setValue(data);
+            });
+            
+    </script>
+
+
+    <p>La fonction parcours_labyrinthe permet de parcourir un labyrinthe à partir de la position de départ et de renvoyer le numéro de la case atteinte, selon les règles suivantes :
+        
+        <li>Si la case est marquée comme "1", renvoyer 1</li>
+        <li>Si la case est marquée comme "2", renvoyer 2</li>
+        <li>Si la case est marquée comme "3", renvoyer 3</li>
+        <li>Si la case est marquée comme "4", renvoyer 4</li>
+        <li>Sinon, chercher la case suivante en suivant la direction qui n'a pas été prise lors du dernier déplacement et qui mène à une case non visitée ou à une case marquée comme une arrivée, 
+            en donnant la priorité à la direction "haut" puis "bas" puis "gauche" puis "droite".</li></br></br>
+
+        La fonction labyrinthe utilise cette fonction pour chercher les coordonnées de la case de départ, puis renvoie la fonction parcours_labyrinthe avec ces coordonnées.</br></br>
+
+        Cette fonction est intéressante d'un point de vue complexité car elle utilise une approche récursive pour parcourir le labyrinthe, ce qui peut être efficace en termes de mémoire 
+        mais peut être coûteux en termes de temps si le labyrinthe est très grand ou très complexe.
+        En effet, la fonction peut appeler elle-même jusqu'à ce que toutes les cases soient visitées, ce qui peut prendre beaucoup de temps pour un labyrinthe très grand ou très complexe.</p>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+    <!--Importation de la consigne "doublon" (image)-->
+    <img src="Consignes/doublon.png" alt="consigne doublon">
+
+
+    <!--On met en place le code de doublon.py-->
+    <textarea id="doublon-code" cols="80" rows="10" style="display:none"></textarea>
+    <div id="doublon-editor"></div>
+    <button onclick="runDoublonCode()">Exécuter le code</button>
+    <pre id="doublon-output"></pre>
+
+    <script>
+        const doublonEditor = CodeMirror(document.getElementById('doublon-editor'), {
+            value: document.getElementById('doublon-code').value,
+            mode: 'python',
+            lineNumbers: true
+        });
+
+        async function runDoublon() {
+            // Charger Pyodide
+            await loadPyodide({ indexURL: "https://cdn.jsdelivr.net/pyodide/v0.17.0/full/" });
+
+            // Obtenir le code Python de l'éditeur
+            const code = doublonEditor.getValue();
+
+            // Exécuter le code Python
+            pyodide.runPython(code);
+
+            // Afficher la sortie dans la balise <pre> prévue à cet effet
+            const output = pyodide.runPython('output');
+            
+            document.getElementById("doublon-output").textContent = output;
+        }
+
+        // Charger le code Python depuis le fichier "doublon.py"
+        fetch('Fonctions/doublon.py')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('doublon-code').textContent = data;
+                doublonEditor.setValue(data);
+            });
+            
+    </script>
+
+    <p>La fonction doublon prend en entrée un dictionnaire contenant une clé "words" qui est une liste de listes de mots et cherche un mot en double dans cette liste.</br></br>
+
+        Pour ce faire, elle utilise un dictionnaire word_count qui va compter le nombre d'occurrences de chaque mot dans la liste words.
+        Si un mot est déjà présent dans le dictionnaire, on incrémente son compteur, sinon on l'ajoute avec un compteur initialisé à 1.</br></br>
+        
+        Ensuite, la fonction parcourt le dictionnaire word_count et retourne le premier mot qui a été compté exactement deux fois, car cela signifie qu'il est présent en double dans la liste words.</br></br>
+        
+        Si aucun mot n'a été trouvé en double, la fonction retourne un message indiquant qu'il n'y a pas de mot en double.</br></br>
+        
+        D'un point de vue de la complexité, cette fonction est intéressante car elle utilise un dictionnaire pour compter le nombre d'occurrences de chaque mot.
+        La recherche et l'insertion dans un dictionnaire ont une complexité en moyenne O(1), ce qui signifie que la complexité totale de cette fonction est de O(n), où n est le nombre total de mots dans la liste words.
+        Cette complexité est optimale pour cette tâche, car il est nécessaire de parcourir tous les mots au moins une fois pour déterminer s'il y en a un en double.</p>
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+    <!--Importation de la consigne "raisonnement" (image)-->
+    <img src="Consignes/raisonnement.png" alt="consigne raisonnement">
+
+
+    <!--On met en place le code de raisonnement.py-->
+    <textarea id="raisonnement-code" cols="80" rows="10" style="display:none"></textarea>
+    <div id="raisonnement-editor"></div>
+    <button onclick="runRaisonnementCode()">Exécuter le code</button>
+    <pre id="raisonnement-output"></pre>
+
+    <script>
+        const raisonnementEditor = CodeMirror(document.getElementById('raisonnement-editor'), {
+            value: document.getElementById('raisonnement-code').value,
+            mode: 'python',
+            lineNumbers: true
+        });
+
+        async function runRaisonnement() {
+            // Charger Pyodide
+            await loadPyodide({ indexURL: "https://cdn.jsdelivr.net/pyodide/v0.17.0/full/" });
+
+            // Obtenir le code Python de l'éditeur
+            const code = raisonnementEditor.getValue();
+
+            // Exécuter le code Python
+            pyodide.runPython(code);
+
+            // Afficher la sortie dans la balise <pre> prévue à cet effet
+            const output = pyodide.runPython('output');
+            
+            document.getElementById("raisonnement-output").textContent = output;
+        }
+
+        // Charger le code Python depuis le fichier "raisonnement.py"
+        fetch('Fonctions/raisonnement.py')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('raisonnement-code').textContent = data;
+                raisonnementEditor.setValue(data);
+            });
+            
+    </script>
+
+    <p>Cette fonction, nommée raisonnement, prend en entrée une donnée représentant un dessin avec des murs (X) et des espaces vides ("") ainsi qu'une liste de différentes pièces de puzzle.
+        Elle applique un raisonnement sur le dessin en utilisant différentes méthodes pour vérifier s'il y a une solution possible en cherchant quelle pièce de puzzle correspond au dessin.</br></br>
+
+        Pour ce faire, la fonction commence par chercher s'il y a possibilité d'enlever des colonnes à droite du dessin et en enlevant celles-ci si c'est le cas.
+        Ensuite, elle cherche s'il y a possibilité d'enlever des colonnes à gauche du dessin en inversant chaque ligne du dessin, en cherchant à nouveau si des colonnes peuvent être enlevées, 
+        puis en retournant à nouveau chaque ligne pour revenir au dessin initial.
+        Ensuite, elle inverse les cases vides ("") avec les cases pleines ("X") dans le dessin pour permettre une comparaison plus facile avec les différentes pièces de puzzle.
+        Finalement, elle compare le dessin modifié avec chaque pièce de puzzle pour voir s'il y a une correspondance.</br></br>
+        
+        Cette fonction est intéressante d'un point de vue complexité car elle utilise des techniques efficaces pour réduire la taille du dessin initial en enlevant des colonnes vides et en le 
+        retournant horizontalement pour enlever des colonnes supplémentaires.
+        Elle utilise également une technique d'inversion pour faciliter la comparaison entre le dessin modifié et les différentes pièces de puzzle.
+        Ces techniques permettent de réduire la taille du dessin initial et donc de diminuer la complexité de la comparaison avec chaque pièce de puzzle, rendant l'algorithme plus efficace.
+        Cependant, la complexité de cette fonction dépendra de la taille du dessin initial et du nombre de pièces de puzzle à comparer, ce qui peut rendre l'algorithme coûteux en temps et en 
+        espace pour de grands dessins ou un grand nombre de pièces.</p>
+
+</body>
+</html>
