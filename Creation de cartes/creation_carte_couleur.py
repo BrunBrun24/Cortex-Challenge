@@ -47,5 +47,3 @@ def create_map(size):
                         ligne[i] = "L"
 
     return map_list
-
-print(create_color_dict(100))
