@@ -1,5 +1,6 @@
 import random
 from random import randint
+from random import shuffle
 
 
 # Créer un dictionnaire de couleurs aléatoires
@@ -13,6 +14,7 @@ def create_color_dict():
         color = random.choice(colors)
         color_dict[color] = random.choice(colors)
     return color_dict
+
 
 # Créer une map pour le jeu réflection
 def map_reflection():
@@ -50,6 +52,7 @@ def map_reflection():
                         ligne[i] = "L"
 
     return map_list
+
 
 # Créer une list de nombre (taille = 6)
 def list_number():
@@ -149,7 +152,47 @@ def map_labyrinthe():
     return map
 
 
+# Créer une list de nombre avec pour chaque nombre une couleur soit B soit R
+def list_numbers_colors():
+    taille = random.randint(6, 10)
+    couleurs = ['R', 'B']  # Rouge et Bleu
+    liste = []
+    nb_couleurs = 0
 
-l = map_labyrinthe()
-for ligne in l:
-    print(ligne)
+    for i in range(taille):
+        # choisir une couleur aléatoire
+        couleur = random.choice(couleurs)
+
+        # choisir le prochain nombre de cette couleur
+        numero = nb_couleurs + 1
+
+        # ajouter le nombre à la liste
+        liste.append(f"{numero}{couleur}")
+
+        # mettre à jour le nombre de nombres de cette couleur
+        nb_couleurs += 1
+
+    # choisir une couleur aléatoire
+    couleur = random.choice(couleurs)
+    list_numbers_color = []  # Utilisation d'un ensemble pour stocker les nombres de couleur 
+
+    # Permet de récupérer les nombres et de les mettre dans leur ensemble respectif
+    for color in liste:
+        if color[-1] == couleur:  # Comparer la dernière lettre de la couleur avec la première lettre de list_color (converti en liste)
+            list_numbers_color.append(int(color[:-1]))  # Ajouter le nombre à l'ensemble list_numbers_color (en convertissant la chaîne de caractères en entier)
+
+    list_numbers_color.sort
+    nombre_change = random.choice(list_numbers_color)
+    add_sou = -1
+    if nombre_change == list_numbers_color[0]:
+        add_sou = 1
+
+    for i, nombre in enumerate(liste):
+        if nombre == f"{nombre_change}{couleur}":
+            liste[i] = f"{nombre_change + add_sou}{couleur}"
+
+    random.shuffle(liste)  # mélanger la liste modifie la liste originale
+
+    return liste
+
+
