@@ -7,7 +7,7 @@
 
 
 
-## Ce qu'il faut faire sur le code PYTHON
+## Ce qu'il faut faire sur PYTHON
 
 - Créer les fonctions pour créer de nouvelles cartes avec comme paramètre la taille de la map
 - Comparer les deux codes (dans le fichier class defis) pour savoir le qu’elle est le plus optimisée, en faisant tester plusieurs fois la fonction en question avec plusieurs créations de map de différentes tailles
