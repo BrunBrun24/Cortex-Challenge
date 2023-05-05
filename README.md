@@ -11,3 +11,10 @@
 
 - Créer les fonctions pour créer de nouvelles cartes avec comme paramètre la taille de la map
 - Comparer les deux codes (dans le fichier class defis) pour savoir le qu’elle est le plus optimisée, en faisant tester plusieurs fois la fonction en question avec plusieurs créations de map de différentes tailles
+
+
+
+## Ce qu'il faut rajouter
+
+- Un dossier contenant à l'intérieur deux fichiers PYTHON qui reprennent le code des deux différentes class_defis mais qui enlève la class
+- Un dossier contenant à l'intérieur les fonctions que l'on va utiliser
