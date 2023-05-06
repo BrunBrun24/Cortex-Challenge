@@ -196,3 +196,25 @@ def list_numbers_colors():
     return liste
 
 
+# Créer une matrice contenant à l'interieur plusieurs list de mots avec un mot qui apparaît en double
+def list_doublon():
+    size_matrice = randint(1,10)
+    size_list = randint(1,10)
+    words = ["cow", "dog", "cat", "chicken", "firefox", "rabbit"]
+    doublon = random.choice(words)
+    words.remove(doublon)
+    m = []
+    for i in range(size_matrice):
+        l = []
+        for word in range(size_list):
+            l.append(random.choice(words))
+        m.append(l)
+
+    # On place le doublon
+    for i in range(2):
+        ligne = randint(0,size_matrice-1); colonne = randint(0, size_list-1)
+        m[ligne][colonne] = doublon
+
+    return m
+
+
