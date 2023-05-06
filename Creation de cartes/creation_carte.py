@@ -14,6 +14,7 @@ def create_color_dict():
         color_dict[color] = random.choice(colors)
     return color_dict
 
+
 # Créer une map pour le jeu réflection
 def map_reflection():
     size = randint(1,250)
@@ -50,6 +51,7 @@ def map_reflection():
                         ligne[i] = "L"
 
     return map_list
+
 
 # Créer une list de nombre (taille = 6)
 def list_number():
@@ -149,7 +151,135 @@ def map_labyrinthe():
     return map
 
 
+# Créer une list de nombre avec pour chaque nombre une couleur soit B soit R
+def list_numbers_colors():
+    taille = random.randint(6, 10)
+    couleurs = ['R', 'B']  # Rouge et Bleu
+    liste = []
+    nb_couleurs = 0
 
-l = map_labyrinthe()
-for ligne in l:
-    print(ligne)
+    for i in range(taille):
+        # choisir une couleur aléatoire
+        couleur = random.choice(couleurs)
+
+        # choisir le prochain nombre de cette couleur
+        numero = nb_couleurs + 1
+
+        # ajouter le nombre à la liste
+        liste.append(f"{numero}{couleur}")
+
+        # mettre à jour le nombre de nombres de cette couleur
+        nb_couleurs += 1
+
+    # choisir une couleur aléatoire
+    couleur = random.choice(couleurs)
+    list_numbers_color = []  # Utilisation d'un ensemble pour stocker les nombres de couleur 
+
+    # Permet de récupérer les nombres et de les mettre dans leur ensemble respectif
+    for color in liste:
+        if color[-1] == couleur:  # Comparer la dernière lettre de la couleur avec la première lettre de list_color (converti en liste)
+            list_numbers_color.append(int(color[:-1]))  # Ajouter le nombre à l'ensemble list_numbers_color (en convertissant la chaîne de caractères en entier)
+
+    list_numbers_color.sort
+    nombre_change = random.choice(list_numbers_color)
+    add_sou = -1
+    if nombre_change == list_numbers_color[0]:
+        add_sou = 1
+
+    for i, nombre in enumerate(liste):
+        if nombre == f"{nombre_change}{couleur}":
+            liste[i] = f"{nombre_change + add_sou}{couleur}"
+
+    random.shuffle(liste)  # mélanger la liste modifie la liste originale
+
+    return liste
+
+
+# Créer une matrice contenant à l'interieur plusieurs list de mots avec un mot qui apparaît en double
+def list_doublon():
+    size_matrice = randint(1,10)
+    size_list = randint(1,10)
+    words = ["cow", "dog", "cat", "chicken", "firefox", "rabbit"]
+    doublon = random.choice(words)
+    words.remove(doublon)
+    m = []
+    for i in range(size_matrice):
+        l = []
+        for word in range(size_list):
+            l.append(random.choice(words))
+        m.append(l)
+
+    # On place le doublon
+    for i in range(2):
+        ligne = randint(0,size_matrice-1); colonne = randint(0, size_list-1)
+        m[ligne][colonne] = doublon
+
+    return m
+
+
+# Créer les 3 pièces
+def pieces(size_drawing, size_list):
+    all_pieces = {}
+    name_pieces = ['A', 'B', 'C']
+    verification = []
+    for name in name_pieces:
+        p = []
+        ligne = randint(2, size_drawing//2); colonne = randint(2, size_list//2)
+        for _ in range(ligne):
+            a = []
+            for _ in range(colonne):
+                a.append('X')
+            p.append(a)
+            
+        all_pieces[name] = p
+        verification.append(p)
+    
+    # Si l'une des pièces est égale à une autre
+    while (verification[0] == verification[1]) or (verification[0] == verification[2]) or (verification[1] == verification[2]):
+        all_pieces = pieces(size_drawing, size_list)
+
+    return all_pieces
+
+
+# Mets la pièce choisie dans la map
+def placer_piece(map, piece):
+    map_rows = len(map)
+    map_cols = len(map[0])
+    piece_rows = len(piece)
+    piece_cols = len(piece[0])
+
+    # Générer des coordonnées aléatoires pour l'emplacement de la pièce
+    max_row = map_rows - piece_rows
+    max_col = map_cols - piece_cols
+    row = random.randint(0, max_row)
+    col = random.randint(0, max_col)
+
+    # Placer la pièce dans la map en remplaçant les "X" par des espaces vides
+    for r in range(piece_rows):
+        for c in range(piece_cols):
+            if piece[r][c] == "X":
+                map[row + r][col + c] = ""
+
+    return map
+
+
+# Créer le dessin pour "raisonnement"
+def dessins():
+    size_drawing = randint(7, 50)
+    size_list = randint(7, 50)
+    drawing = [[] for _ in range(size_drawing)]
+    for d in range(size_drawing):
+        for _ in range(size_list):
+            drawing[d].append('X')
+
+    diff_pieces = pieces(size_drawing, size_list)
+
+    name_pieces = ['A', 'B', 'C']
+    piece_choice = random.choice(name_pieces)
+    
+    for name, map in diff_pieces.items():
+        if name == piece_choice:
+            placer_piece(drawing, map)
+            break
+
+    return drawing
