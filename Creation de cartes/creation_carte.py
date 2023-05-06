@@ -1,6 +1,5 @@
 import random
 from random import randint
-from random import shuffle
 
 
 # Créer un dictionnaire de couleurs aléatoires
@@ -218,3 +217,69 @@ def list_doublon():
     return m
 
 
+# Créer les 3 pièces
+def pieces(size_drawing, size_list):
+    all_pieces = {}
+    name_pieces = ['A', 'B', 'C']
+    verification = []
+    for name in name_pieces:
+        p = []
+        ligne = randint(2, size_drawing//2); colonne = randint(2, size_list//2)
+        for _ in range(ligne):
+            a = []
+            for _ in range(colonne):
+                a.append('X')
+            p.append(a)
+            
+        all_pieces[name] = p
+        verification.append(p)
+    
+    # Si l'une des pièces est égale à une autre
+    while (verification[0] == verification[1]) or (verification[0] == verification[2]) or (verification[1] == verification[2]):
+        all_pieces = pieces(size_drawing, size_list)
+
+    return all_pieces
+
+
+# Mets la pièce choisie dans la map
+def placer_piece(map, piece):
+    map_rows = len(map)
+    map_cols = len(map[0])
+    piece_rows = len(piece)
+    piece_cols = len(piece[0])
+
+    # Générer des coordonnées aléatoires pour l'emplacement de la pièce
+    max_row = map_rows - piece_rows
+    max_col = map_cols - piece_cols
+    row = random.randint(0, max_row)
+    col = random.randint(0, max_col)
+
+    # Placer la pièce dans la map en remplaçant les "X" par des espaces vides
+    for r in range(piece_rows):
+        for c in range(piece_cols):
+            if piece[r][c] == "X":
+                map[row + r][col + c] = ""
+
+    return map
+
+
+# Créer le dessin pour "raisonnement"
+def dessins():
+    size_drawing = randint(7, 50)
+    size_list = randint(7, 50)
+    drawing = [[] for _ in range(size_drawing)]
+    for d in range(size_drawing):
+        for _ in range(size_list):
+            drawing[d].append('X')
+
+    diff_pieces = pieces(size_drawing, size_list)
+
+    name_pieces = ['A', 'B', 'C']
+    piece_choice = random.choice(name_pieces)
+    
+    for name, map in diff_pieces.items():
+        if name == piece_choice:
+            placer_piece(drawing, map)
+            break
+
+    return drawing
