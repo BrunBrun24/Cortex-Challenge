@@ -31,7 +31,7 @@ class Defis_1:
         
         return False
 
-    def reflection(self):
+    def reflexion(self):
         """
         Cherche où se trouve la lampe dans la map
         :return: la fonction "parcours_lampe_torche"
@@ -411,7 +411,6 @@ class Defis_1:
         return new_drawing
 
     def inversion_raisonnement(self, drawing):
-
         """
         Inverse les cases vides ("") avec les cases pleines ("X") dans le dessin.
         :param drawing: (list) Le dessin représenté sous forme de liste de listes.
