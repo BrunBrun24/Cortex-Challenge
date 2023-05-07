@@ -1,7 +1,6 @@
+from Creation_cartes.creation_cartes import *
 from fonctions1 import *
-from Creation_cartes import *
 import timeit
-
 
 
 def mesure_temps_execution(fonction, *args, **kwargs):
