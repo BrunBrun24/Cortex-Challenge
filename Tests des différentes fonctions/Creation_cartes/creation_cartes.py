@@ -4,7 +4,8 @@ from random import randint
 
 # Créer un dictionnaire de couleurs aléatoires
 def create_color_dict():
-    size = randint(1,250)
+    size = randint(1,1000)
+    dict = {}
     # Liste des couleurs disponibles
     colors = ["argent", "beige", "blanc", "bleu", "corail", "indigo", "jaune", "lavande", "magenta", "marron", "mauve", "noir", "olive", "or", "orange", "orchidée", "rose", "rouge", "saumon", "vert",
           "silver", "beige", "white", "blue", "coral", "indigo", "yellow", "lavender", "magenta", "brown", "mauve", "black", "olive", "gold", "orange", "orchid", "pink", "red", "salmon", "green"]
@@ -12,12 +13,14 @@ def create_color_dict():
     for i in range(size):
         color = random.choice(colors)
         color_dict[color] = random.choice(colors)
-    return color_dict
+    dict["colors"] = color_dict
+    return dict
 
 
 # Créer une map pour le jeu réflection
-def map_reflection():
-    size = randint(1,250)
+def map_reflexion():
+    size = randint(1,150)
+    dict = {}
     map_list = []
     # Première ligne
     first_row = [" "] + list(range(1, size+1)) + [""]
@@ -50,7 +53,8 @@ def map_reflection():
                     if numero == numero_a_change:
                         ligne[i] = "L"
 
-    return map_list
+    dict["map"] = map_list
+    return dict
 
 
 # Créer une list de nombre (taille = 6)
@@ -69,8 +73,9 @@ def list_number():
 
 # Créer une matrice contenant à l'interieur plusieurs list de words
 def list_words():
-    size_matrice = randint(1,1000)
-    size_list = randint(1,1000)
+    dict = {}
+    size_matrice = randint(1,100)
+    size_list = randint(1,100)
     words = ["cow", "dog", "cat", "chicken", "firefox", "rabbit"]
     m = []
     for i in range(size_matrice):
@@ -78,15 +83,16 @@ def list_words():
         for word in range(size_list):
             l.append(random.choice(words))
         m.append(l)
-
-    return m
+    dict["words"] = m
+    return dict
 
 
 # Créer une matrice contenant à l'interieur un labyrinthe avec 4 sorties
 def map_labyrinthe():
+    dict = {}
     # On définie la taille de la map
-    size_matrice = randint(4,100)
-    size_list = randint(4,100)
+    size_matrice = randint(4,50)
+    size_list = randint(4,50)
 
     # On créer la map
     map = []
@@ -148,12 +154,14 @@ def map_labyrinthe():
     # Placement des sorties
     map[0][0] = 1; map[0][size_list-1] = 2; map[size_matrice-1][size_list-1] = 3 ; map[size_matrice-1][0] = 4
 
-    return map
+    dict["map"] = map
+    return dict
 
 
 # Créer une list de nombre avec pour chaque nombre une couleur soit B soit R
 def list_numbers_colors():
-    taille = random.randint(6, 10)
+    dict = {}
+    taille = random.randint(6, 1000)
     couleurs = ['R', 'B']  # Rouge et Bleu
     liste = []
     nb_couleurs = 0
@@ -192,13 +200,15 @@ def list_numbers_colors():
 
     random.shuffle(liste)  # mélanger la liste modifie la liste originale
 
-    return liste
+    dict["numbers"] = liste
+    return dict
 
 
 # Créer une matrice contenant à l'interieur plusieurs list de mots avec un mot qui apparaît en double
 def list_doublon():
-    size_matrice = randint(1,10)
-    size_list = randint(1,10)
+    dict = {}
+    size_matrice = randint(1,100)
+    size_list = randint(1,100)
     words = ["cow", "dog", "cat", "chicken", "firefox", "rabbit"]
     doublon = random.choice(words)
     words.remove(doublon)
@@ -214,7 +224,8 @@ def list_doublon():
         ligne = randint(0,size_matrice-1); colonne = randint(0, size_list-1)
         m[ligne][colonne] = doublon
 
-    return m
+    dict["words"] = m
+    return dict
 
 
 # Créer les 3 pièces
@@ -235,8 +246,8 @@ def pieces(size_drawing, size_list):
         verification.append(p)
     
     # Si l'une des pièces est égale à une autre
-    while (verification[0] == verification[1]) or (verification[0] == verification[2]) or (verification[1] == verification[2]):
-        all_pieces = pieces(size_drawing, size_list)
+    """while (verification[0] == verification[1]) or (verification[0] == verification[2]) or (verification[1] == verification[2]):
+        all_pieces = pieces(size_drawing, size_list)"""
 
     return all_pieces
 
@@ -265,8 +276,9 @@ def placer_piece(map, piece):
 
 # Créer le dessin pour "raisonnement"
 def dessins():
-    size_drawing = randint(7, 50)
-    size_list = randint(7, 50)
+    dict = {}
+    size_drawing = randint(7, 100)
+    size_list = randint(7, 100)
     drawing = [[] for _ in range(size_drawing)]
     for d in range(size_drawing):
         for _ in range(size_list):
@@ -282,4 +294,8 @@ def dessins():
             placer_piece(drawing, map)
             break
 
-    return drawing
+    dict["drawing"] = drawing
+    dict["pieces"] = diff_pieces
+    return dict
+
+
