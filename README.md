@@ -1,5 +1,9 @@
 # Cortex-Challenge
 
+# ⚠️⚠️⚠️
+## Il faut absolument reprendre les fonctions labyrinthe car ils ne marchent pas quand on les teste sur nos propres créations du labyrinthe ❗
+# ⚠️⚠️⚠️
+
 ## Ce qu'il faut faire sur HTML
 
 - Ajouter sur la page d'acceuil, comment on sait organisé (on travail chez nous / on utilise github / ...)
