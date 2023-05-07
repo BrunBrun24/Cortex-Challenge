@@ -52,5 +52,4 @@ mesure_temps_execution(frequence)
 mesure_temps_execution(manquant)
 mesure_temps_execution(raisonnement)
 mesure_temps_execution(reflexion)
-
-#mesure_temps_execution(labyrinthe)
+mesure_temps_execution(labyrinthe)
