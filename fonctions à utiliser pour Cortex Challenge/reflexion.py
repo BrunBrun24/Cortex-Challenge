@@ -1,4 +1,4 @@
-def reflection(donnee):
+def reflexion(donnee):
     """
     Recherche la position de la lampe "L" dans la map.
     :param map: Liste de listes représentant la map.
@@ -65,5 +65,5 @@ def deplacement_lumiere(donnee, ligne, colonne, direction):
 
 donnees = {"code": "RE-001", "type": "reflexion", "map": [[" ", 1, 2, 3, 4, ""], [15, "", "", "", "", 5], [14, "", "/", "", "/", 6], [13, "", "", "", "", 7], [12, "", "", "", "", 8], ["", 11, "L", 10, 9, ""]]}
 
-output = reflection(donnees)
-print(output)
+print(reflexion(donnees))
+# Moyenne des temps d'exécution : 5.10e-06 secondes
