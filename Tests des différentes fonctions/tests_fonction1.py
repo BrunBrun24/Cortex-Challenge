@@ -45,12 +45,12 @@ def mesure_temps_execution(fonction, *args, **kwargs):
 
 
 
-mesure_temps_execution(couleur)
+"""mesure_temps_execution(couleur)
 mesure_temps_execution(calcul)
 mesure_temps_execution(doublon)
 mesure_temps_execution(frequence)
 mesure_temps_execution(manquant)
 mesure_temps_execution(raisonnement)
-mesure_temps_execution(reflexion)
+mesure_temps_execution(reflexion)"""
 
-#mesure_temps_execution(labyrinthe)
+mesure_temps_execution(labyrinthe)

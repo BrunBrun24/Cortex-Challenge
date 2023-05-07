@@ -1,3 +1,6 @@
+import heapq
+import math
+
 def couleur(donnees):
     """
     Vérifie si les couleurs dans les défis sont valides en comparant avec des listes de couleurs en français et en anglais.
@@ -221,75 +224,53 @@ def manquant(donnees):
     return False
 
 def labyrinthe(donnees):
-    """
-    Cherche les coordonnées de la case départ
-    :return: la fonction "parcours_labyrinthe"
-    """
-    ligne_start = None
-    colonne_start = None
-    position = 0
-    # On récupère la ligne de la position de départ 
-    for ligne in donnees["map"]:
-        if "D" in ligne:
-            ligne_start = position
-            position = 0
-            # On récupère la colonne de la position de départ 
-            for colonne in ligne:
-                if colonne == "D":
-                    colonne_start = position
-                else:
-                    position += 1
-            break
-        else:
-            position += 1
+    labyrinth = donnees["map"]
+    directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]  # Haut, Bas, Gauche, Droite
+    start_pos = None
+    goal_pos = [("1", (0, 0)), ("2", (0, len(labyrinth[0])-1)), ("3", (len(labyrinth)-1, len(labyrinth[0])-1)), ("4", (len(labyrinth)-1, 0))]  # Positions des sorties
+    for i in range(len(labyrinth)):
+        for j in range(len(labyrinth[i])):
+            if labyrinth[i][j] == "D":
+                start_pos = (i, j)
 
-    return parcours_labyrinthe(donnees, ligne_start, colonne_start, derniere_direction = "")
+    queue = [(0, start_pos, [])]  # File d'attente avec la priorité basée sur la distance
+    visited = set()  # Positions déjà visitées
 
-def parcours_labyrinthe(donnees, ligne, colonne, derniere_direction):
-    """
-    Fonction permettant de parcourir un labyrinthe.
+    while queue:
+        _, current_pos, path = heapq.heappop(queue)
+        if current_pos in [pos for _, pos in goal_pos]:
+            goal = [key for key, value in goal_pos if value == current_pos][0]
+            return goal
 
-    Args:
-        ligne (int): Numéro de la ligne actuelle.
-        colonne (int): Numéro de la colonne actuelle.
-        derniere_direction (str): Dernière direction prise ("haut", "bas", "gauche", "droite").
+        visited.add(current_pos)
 
-    Returns:
-        int: 1 si la case est marquée comme "1"
-        int: 2 si la case est marquée comme "2"
-        int: 3 si la case est marquée comme "3"
-        int: 4 si la case est marquée comme "4"
-    """
-    case = donnees["map"][ligne][colonne]
+        for direction in directions:
+            new_pos = (current_pos[0] + direction[0], current_pos[1] + direction[1])
+            if is_valid_position(new_pos, labyrinth) and new_pos not in visited:
+                new_path = path + [current_pos]
+                g_score = len(new_path)
+                h_score = heuristic(new_pos, goal_pos)
+                f_score = g_score + h_score
+                heapq.heappush(queue, (f_score, new_pos, new_path))
+                visited.add(new_pos)
 
-    if case == "1":
-        return 1
-    elif case == "2":
-        return 2
-    elif case == "3":
-        return 3
-    elif case == "4":
-        return 4
+    raise ValueError("Aucun chemin trouvé jusqu'à la sortie.")
 
-    max_ligne = len(donnees["map"])  # Nombre de lignes
-    max_colonne = len(donnees["map"][0])  # Nombre de colonnes (en supposant que toutes les lignes ont la même longueur)
-    arrivees = ["1", "2", "3", "4"]
-    # Si la ligne se trouve sur la map et que les coordonnées (avec ligne+1) sont dans "arrivees"
-    if (ligne < max_ligne-1) and (donnees["map"][ligne+1][colonne] == "" or donnees["map"][ligne+1][colonne] in arrivees) and ((derniere_direction != "bas") or (derniere_direction == "")):
-        derniere_direction = "haut"
-        return parcours_labyrinthe(donnees, (ligne+1), colonne, derniere_direction)
-    # Si la ligne se trouve sur la map et que les coordonnées (avec ligne-1) sont dans "arrivees"
-    elif (ligne > 0) and (donnees["map"][ligne-1][colonne] == "" or donnees["map"][ligne-1][colonne] in arrivees) and ((derniere_direction != "haut") or (derniere_direction == "")):
-        derniere_direction = "bas"
-        return parcours_labyrinthe(donnees, (ligne-1), colonne, derniere_direction)
-    # Si la colonne se trouve sur la map et que les coordonnées (avec colonne+1) sont dans "arrivees"
-    elif (colonne < max_colonne-1) and (donnees["map"][ligne][colonne+1] == "" or donnees["map"][ligne][colonne+1] in arrivees) and ((derniere_direction != "droite") or (derniere_direction == "")):
-        derniere_direction = "gauche"
-        return parcours_labyrinthe(donnees, ligne, (colonne+1), derniere_direction)
-    # Si la colonne se trouve sur la map et que les coordonnées (avec colonne-1) sont dans "arrivees"
-    elif (colonne > 0) and (donnees["map"][ligne][colonne-1] == "" or donnees["map"][ligne][colonne-1] in arrivees) and ((derniere_direction != "gauche") or (derniere_direction == "")):
-        derniere_direction = "droite"
-        return parcours_labyrinthe(donnees, ligne, (colonne-1), derniere_direction)
+def is_valid_position(position, labyrinth):
+    x, y = position
+    if 0 <= x < len(labyrinth) and 0 <= y < len(labyrinth[0]) and labyrinth[x][y] != "X":
+        return True
+    return False
+
+def heuristic(position, goal_pos):
+    x1, y1 = position
+    min_distance = math.inf
+
+    for _, (x2, y2) in goal_pos:
+        distance = abs(x1 - x2) + abs(y1 - y2)
+        min_distance = min(min_distance, distance)
+
+    return min_distance
 
 def doublon(donnees):
     """

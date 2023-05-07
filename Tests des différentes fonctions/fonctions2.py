@@ -1,4 +1,6 @@
 from collections import deque
+import math
+import heapq
 
 def couleur(defis):
     """
@@ -198,72 +200,58 @@ def manquant(defis):
 
     return False  # Retourner False si tous les nombres sont présents
 
-def labyrinthe(defis):
-    """
-    Cherche les coordonnées de la case départ
-    :return: la fonction "parcours_labyrinthe"
-    """
-    ligne_start = None
-    colonne_start = None
+def labyrinthe(donnees):
+    labyrinth = donnees["map"]
+    directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]  # Haut, Bas, Gauche, Droite
+    start_pos = None
+    goal_pos = [("1", (0, 0)), ("2", (0, len(labyrinth[0])-1)), ("3", (len(labyrinth)-1, len(labyrinth[0])-1)), ("4", (len(labyrinth)-1, 0))]  # Positions des sorties
 
-    # Recherche de la position de départ en utilisant des indices
-    for i in range(len(defis["map"])):
-        if "D" in defis["map"][i]:
-            ligne_start = i
-            colonne_start = defis["map"][i].index("D")
-            break  # Sortir de la boucle dès que la position de départ est trouvée
+    for i in range(len(labyrinth)):
+        for j in range(len(labyrinth[i])):
+            if labyrinth[i][j] == "D":
+                start_pos = (i, j)
 
-    return parcours_labyrinthe(defis, ligne_start, colonne_start, derniere_direction="")
-
-def parcours_labyrinthe(defis, ligne, colonne, derniere_direction):
-    """
-    Fonction permettant de parcourir un labyrinthe en utilisant une approche BFS.
-
-    Args:
-        ligne (int): Numéro de la ligne actuelle.
-        colonne (int): Numéro de la colonne actuelle.
-        derniere_direction (str): Dernière direction prise ("haut", "bas", "gauche", "droite").
-
-    Returns:
-        int: 1 si la case est marquée comme "1"
-        int: 2 si la case est marquée comme "2"
-        int: 3 si la case est marquée comme "3"
-        int: 4 si la case est marquée comme "4"
-    """
-    queue = deque([(ligne, colonne, derniere_direction)])
-    arrivees = ["1", "2", "3", "4"]
+    queue = []
+    visited = set()
+    heapq.heappush(queue, (0, start_pos, []))  # File d'attente avec la priorité basée sur la distance
 
     while queue:
-        ligne, colonne, derniere_direction = queue.popleft()
-        case = defis["map"][ligne][colonne]
+        _, current_pos, path = heapq.heappop(queue)
 
-        if case == "1":
-            return 1
-        elif case == "2":
-            return 2
-        elif case == "3":
-            return 3
-        elif case == "4":
-            return 4
+        if current_pos in [pos for _, pos in goal_pos]:
+            goal = [key for key, value in goal_pos if value == current_pos][0]
+            return goal
 
-        max_ligne = len(defis["map"])
-        max_colonne = len(defis["map"][0])
+        visited.add(current_pos)
 
-        # Mouvement vers le haut
-        if (ligne > 0) and (defis["map"][ligne-1][colonne] == "" or defis["map"][ligne-1][colonne] in arrivees) and ((derniere_direction != "haut") or (derniere_direction == "")):
-            queue.append((ligne-1, colonne, "bas"))
+        for direction in directions:
+            new_pos = (current_pos[0] + direction[0], current_pos[1] + direction[1])
 
-        # Mouvement vers le bas
-        if (ligne < max_ligne-1) and (defis["map"][ligne+1][colonne] == "" or defis["map"][ligne+1][colonne] in arrivees) and ((derniere_direction != "bas") or (derniere_direction == "")):
-            queue.append((ligne+1, colonne, "haut"))
+            if is_valid_position(new_pos, labyrinth) and new_pos not in visited:
+                new_path = path + [current_pos]
+                g_score = len(new_path)
+                h_score = heuristic(new_pos, goal_pos)
+                f_score = g_score + h_score
+                heapq.heappush(queue, (f_score, new_pos, new_path))
+                visited.add(new_pos)
 
-        # Mouvement vers la gauche
-        if (colonne > 0) and (defis["map"][ligne][colonne-1] == "" or defis["map"][ligne][colonne-1] in arrivees) and ((derniere_direction != "gauche") or (derniere_direction == "")):
-            queue.append((ligne, colonne-1, "droite"))
+    raise ValueError("Aucun chemin trouvé jusqu'à la sortie.")
 
-        # Mouvement vers la droite
-        if (colonne < max_colonne-1) and (defis["map"][ligne][colonne+1] == "" or defis["map"][ligne][colonne+1] in arrivees) and ((derniere_direction != "droite") or (derniere_direction == "")):
-            queue.append((ligne, colonne+1, "gauche"))
+def is_valid_position(position, labyrinth):
+    x, y = position
+    if 0 <= x < len(labyrinth) and 0 <= y < len(labyrinth[0]) and labyrinth[x][y] != "X":
+        return True
+    return False
+
+def heuristic(position, goal_pos):
+    x1, y1 = position
+    min_distance = math.inf
+
+    for _, (x2, y2) in goal_pos:
+        distance = abs(x1 - x2) + abs(y1 - y2)
+        min_distance = min(min_distance, distance)
+
+    return min_distance
 
 def doublon(defis):
     """
