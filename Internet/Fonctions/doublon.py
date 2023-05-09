@@ -1,10 +1,10 @@
-def doublon(donnee):
+def doublon(defis):
     """
     Recherche un mot en double dans la liste de mots fournie.
     :return: (str) Le mot en double s'il existe, sinon un message indiquant qu'il n'y a pas de mot en double.
     """
     word_count = {}
-    for ligne in donnee["words"]:
+    for ligne in defis["words"]:
         for word in ligne:
             if word in word_count:
                 word_count[word] += 1
