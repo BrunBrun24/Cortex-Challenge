@@ -1,39 +1,35 @@
-def raisonnement(donnee):
-        """
-        Applique un raisonnement sur le dessin en utilisant différentes méthodes pour vérifier s'il y a une solution possible.
-        :return: Le nom de la solution trouvée, sinon (str) "Aucune de ces solutions n'est la bonne".
-        """
-        drawing = donnee["drawing"]
-        # On regarde si il y a possibilité d'enlever des colonnes à droite du dessin
-        decalage = decalage_raisonnement(drawing)
+def raisonnement(defis):
+    """
+    Applique un raisonnement sur le dessin en utilisant différentes méthodes pour vérifier s'il y a une solution possible.
+    :return: Le nom de la solution trouvée, sinon (str) "Aucune de ces solutions n'est la bonne".
+    """
+    drawing = defis["drawing"]
+    pieces = defis["pieces"]
 
-        # On décale chaque ligne du dessin par "decalage"
-        new_drawing = []
-        for ligne in drawing:
-            if "" in ligne:
-                new_drawing.append(ligne[decalage:])
+    # On regarde si il y a possibilité d'enlever des colonnes à droite du dessin
+    decalage = decalage_raisonnement(drawing)
 
-        # On regarde si il y a possibilité d'enlever des colonnes à gauche du dessin mais pour cela on va inverser chaque ligne du dessin
-        new_drawing = retourne_raisonnement(new_drawing)
-        # On regarde si il y a possibilité d'enlever des colonnes à droite du dessin
-        decalage_new_drawing = decalage_raisonnement(new_drawing)
+    # On décale chaque ligne du dessin par "decalage"
+    new_drawing = [ligne[decalage:] for ligne in drawing if "" in ligne]
 
-        # On décale chaque ligne du dessin par "decalage_new_drawing"
-        finish_drawing = []
-        for ligne in new_drawing:
-            if "" in ligne:
-                finish_drawing.append(ligne[decalage_new_drawing:])
+    # On regarde si il y a possibilité d'enlever des colonnes à gauche du dessin mais pour cela on va inverser chaque ligne du dessin
+    new_drawing = retourne_raisonnement(new_drawing)
+    # On regarde si il y a possibilité d'enlever des colonnes à droite du dessin
+    decalage_new_drawing = decalage_raisonnement(new_drawing)
 
-        # On remet le dessin à l'endroit
-        finish_drawing = retourne_raisonnement(finish_drawing)
-        # On inverse le vide ("") avec les murs ("X")
-        finish_drawing = inversion_raisonnement(finish_drawing)
-        # On regarde si une solution est possible
-        for nom, map in donnee["pieces"].items():
-            if finish_drawing == map:
-                return nom
+    # On décale chaque ligne du dessin par "decalage_new_drawing"
+    finish_drawing = [ligne[decalage_new_drawing:] for ligne in new_drawing if "" in ligne]
 
-        return "Aucune de ces solutions n'est la bonne"
+    # On remet le dessin à l'endroit
+    finish_drawing = retourne_raisonnement(finish_drawing)
+    # On inverse le vide ("") avec les murs ("X")
+    finish_drawing = inversion_raisonnement(finish_drawing)
+    # On regarde si une solution est possible
+    for nom, map in pieces.items():
+        if finish_drawing == map:
+            return nom
+
+    return "Aucune de ces solutions n'est la bonne"
 
 def decalage_raisonnement(drawing):
     """

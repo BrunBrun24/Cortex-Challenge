@@ -1,14 +1,14 @@
-def calcul(donnee):
+def calcul(defis):
     """
     Trouve les ensembles de nombres dans la liste 'numbers' qui s'additionnent pour obtenir le résultat 'result'.
     Returns:
         list: Une liste de listes contenant les ensembles de nombres qui s'additionnent pour obtenir le résultat cible.
     """
-    result = donnee["result"]
-    numbers = donnee["numbers"]
+    result = defis["result"]
+    numbers = defis["numbers"]
     res = []
     numbers.sort()  # Trie les nombres pour obtenir les combinaisons dans l'ordre croissant
-    trouver_combinaisons_recursif(donnee, 0, result, [], numbers, res)  # Appel initial de la fonction auxiliaire avec un total cible de 'result'
+    trouver_combinaisons_recursif(0, result, [], numbers, res)  # Appel initial de la fonction auxiliaire avec un total cible de 'result'
     
     output = []
     for solution in res:
@@ -17,7 +17,7 @@ def calcul(donnee):
     
     return output
 
-def trouver_combinaisons_recursif(donnee, start, target, path, numbers, res):
+def trouver_combinaisons_recursif(start, target, path, numbers, res):
     """
     Fonction auxiliaire pour effectuer un parcours récursif avec retour en arrière.
     
@@ -43,7 +43,7 @@ def trouver_combinaisons_recursif(donnee, start, target, path, numbers, res):
             if numbers[i] not in path:
                 # Ignorer les nombres qui sont déjà dans la combinaison
                 path.append(numbers[i])
-                trouver_combinaisons_recursif(donnee, i + 1, target - numbers[i], path, numbers, res)  # Appel récursif avec le nouveau total cible
+                trouver_combinaisons_recursif(i + 1, target - numbers[i], path, numbers, res)  # Appel récursif avec le nouveau total cible
                 path.pop()  # Retour en arrière (trouver_combinaisons_recursif)
 
 

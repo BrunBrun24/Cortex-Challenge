@@ -1,4 +1,4 @@
-def reflexion(donnee):
+def reflexion(defis):
     """
     Recherche la position de la lampe "L" dans la map.
     :param map: Liste de listes représentant la map.
@@ -6,23 +6,23 @@ def reflexion(donnee):
     """
     ligne_lampe = None
     colonne_lampe = None
-    for i, ligne in enumerate(donnee["map"]):
+    for i, ligne in enumerate(defis["map"]):
         if "L" in ligne:
             ligne_lampe = i
             colonne_lampe = ligne.index("L")
             if i == 0:
                 direction_lampe = "bas"
-            elif i == len(donnee["map"])-1:
+            elif i == len(defis["map"])-1:
                 direction_lampe = "haut"
             elif colonne_lampe == 0:
                 direction_lampe = "droite"
             elif colonne_lampe == len(ligne)-1:
                 direction_lampe = "gauche"
             
-            return deplacement_lumiere(donnee, ligne_lampe, colonne_lampe, direction_lampe)
+            return deplacement_lumiere(defis, ligne_lampe, colonne_lampe, direction_lampe)
     return False
         
-def verifier_obstacle(donnee, ligne, colonne, direction):
+def verifier_obstacle(defis, ligne, colonne, direction):
     """
     Vérifie si la case à la position (ligne, colonne) de la map contient un obstacle "/" ou "\\" et
     renvoie la nouvelle direction en fonction de l'obstacle.
@@ -31,12 +31,12 @@ def verifier_obstacle(donnee, ligne, colonne, direction):
     :param direction: String représentant la direction ("haut", "bas", "gauche", "droite").
     :return: String représentant la nouvelle direction.
     """
-    obstacle = donnee["map"][ligne][colonne]
+    obstacle = defis["map"][ligne][colonne]
     correspondances = {("/","haut"): "droite", ("/","bas"): "gauche", ("/","droite"): "haut", ("/","gauche"): "bas",
                     ("\\","haut"): "gauche", ("\\","bas"): "droite", ("\\","droite"): "bas", ("\\","gauche"): "haut"}
     return correspondances.get((obstacle, direction), direction)
 
-def deplacement_lumiere(donnee, ligne, colonne, direction):
+def deplacement_lumiere(defis, ligne, colonne, direction):
     """
     Recherche la position de la lampe "L" dans la map et déplace la lumière en suivant les règles du jeu.
     :param ligne: Entier représentant la ligne de départ de la lumière.
@@ -46,11 +46,11 @@ def deplacement_lumiere(donnee, ligne, colonne, direction):
     """
     while True:
         # Vérifier si la case actuelle est un entier
-        if isinstance(donnee["map"][ligne][colonne], int):
-            return donnee["map"][ligne][colonne]
+        if isinstance(defis["map"][ligne][colonne], int):
+            return defis["map"][ligne][colonne]
         else:
             # Appeler la fonction vérifier_obstacle pour obtenir la direction à suivre
-            direction = verifier_obstacle(donnee,ligne, colonne, direction)
+            direction = verifier_obstacle(defis, ligne, colonne, direction)
 
             # Mettre à jour les coordonnées en fonction de la direction
             if direction == "bas":
@@ -65,5 +65,5 @@ def deplacement_lumiere(donnee, ligne, colonne, direction):
 
 donnees = {"code": "RE-001", "type": "reflexion", "map": [[" ", 1, 2, 3, 4, ""], [15, "", "", "", "", 5], [14, "", "/", "", "/", 6], [13, "", "", "", "", 7], [12, "", "", "", "", 8], ["", 11, "L", 10, 9, ""]]}
 
-print(reflexion(donnees))
-# Moyenne des temps d'exécution : 5.10e-06 secondes
+output = reflexion(donnees)
+print(output)

@@ -1,4 +1,4 @@
-def couleur(donnee):
+def couleur(defis):
     """
     Vérifie si les couleurs dans les défis sont valides en comparant avec des listes de couleurs en français et en anglais.
     :return: la clef du dictionnaire colors correspondant à la même couleur que sa clef, sinon False
@@ -25,7 +25,7 @@ def couleur(donnee):
             "salmon": "saumon",
             "green": "vert"}
 
-    for cle, valeur in donnee["colors"].items():
+    for cle, valeur in defis["colors"].items():
         for c, v in dict.items():
             if cle == valeur:
                 return cle
