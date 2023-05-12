@@ -63,15 +63,11 @@ img {
     color: white;
     text-decoration: red;
     font-size: 20px;
-    padding: 5px 400px;
-    font-weight: 5px;
+    padding: 5px 280px;
 }
 
 #menubar a:hover {
     background-color: blue;
     color: red;
 }
-
-
-
 /*END -> Menu de la bar pour Accueil et Fonctions*/
