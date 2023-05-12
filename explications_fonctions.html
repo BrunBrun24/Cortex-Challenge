@@ -18,6 +18,7 @@
 <body>
     <div id="menubar">
         <a href="index.html">Accueil</a>
+        <a href="explications_fonctions.html">Sujet</a>
         <a href="explications_fonctions.html">Fonctions</a>
     </div>
     <h1>Explications des fonctions utilisées</h1>
@@ -84,29 +85,29 @@
     <br>
 
 
-    <!--Importation de la consigne "reflection" (image)-->
-    <img src="Consignes/reflection.png" alt="consigne reflection">
+    <!--Importation de la consigne "reflexion" (image)-->
+    <img src="Consignes/reflexion.png" alt="consigne reflexion">
 
 
-    <!--On met en place le code de reflection.py-->
-    <textarea id="reflection-code" cols="80" rows="10" style="display:none"></textarea>
-    <div id="reflection-editor"></div>
-    <button onclick="runReflectionCode()">Exécuter le code</button>
-    <pre id="reflection-output"></pre>
+    <!--On met en place le code de reflexion.py-->
+    <textarea id="reflexion-code" cols="80" rows="10" style="display:none"></textarea>
+    <div id="reflexion-editor"></div>
+    <button onclick="runReflexionCode()">Exécuter le code</button>
+    <pre id="reflexion-output"></pre>
 
     <script>
-        const reflectionEditor = CodeMirror(document.getElementById('reflection-editor'), {
-            value: document.getElementById('reflection-code').value,
+        const reflexionEditor = CodeMirror(document.getElementById('reflexion-editor'), {
+            value: document.getElementById('reflexion-code').value,
             mode: 'python',
             lineNumbers: true
         });
 
-        async function runReflectionCode() {
+        async function runReflexionCode() {
             // Charger Pyodide
             await loadPyodide({ indexURL: "https://cdn.jsdelivr.net/pyodide/v0.17.0/full/" });
 
             // Obtenir le code Python de l'éditeur
-            const code = reflectionEditor.getValue();
+            const code = reflexionEditor.getValue();
 
             // Exécuter le code Python
             pyodide.runPython(code);
@@ -114,20 +115,20 @@
             // Afficher la sortie dans la balise <pre> prévue à cet effet
             const output = pyodide.runPython('output');
             
-            document.getElementById("reflection-output").textContent = output;
+            document.getElementById("reflexion-output").textContent = output;
         }
 
-        // Charger le code Python depuis le fichier "reflection.py"
-        fetch('Fonctions/reflection.py')
+        // Charger le code Python depuis le fichier "reflexion.py"
+        fetch('Fonctions/reflexion.py')
             .then(response => response.text())
             .then(data => {
-                document.getElementById('reflection-code').textContent = data;
-                reflectionEditor.setValue(data);
+                document.getElementById('reflexion-code').textContent = data;
+                reflexionEditor.setValue(data);
             });
             
     </script>
 
-    <p>La fonction reflection prend en entrée un dictionnaire donnee représentant une map de jeu et renvoie la valeur de la case atteinte par la lumière provenant de la lampe "L", en suivant les règles du jeu.</br>
+    <p>La fonction reflexion prend en entrée un dictionnaire donnee représentant une map de jeu et renvoie la valeur de la case atteinte par la lumière provenant de la lampe "L", en suivant les règles du jeu.</br>
 
         La fonction commence par chercher la position de la lampe "L" dans la map en parcourant chaque ligne et colonne de la map jusqu'à trouver la lampe.
         Si la lampe est trouvée, la fonction appelle la fonction deplacement_lumiere en passant les coordonnées de la lampe et la direction dans laquelle elle pointe.</br></br>
@@ -141,7 +142,7 @@
         la nouvelle direction en fonction de l'obstacle.
         Elle utilise un dictionnaire de correspondance pour déterminer la nouvelle direction.</br></br>
         
-        Du point de vue de la complexité, la fonction reflection parcourt chaque ligne et colonne de la map, ce qui prend un temps proportionnel au nombre total de cases dans la map.
+        Du point de vue de la complexité, la fonction reflexion parcourt chaque ligne et colonne de la map, ce qui prend un temps proportionnel au nombre total de cases dans la map.
         La fonction deplacement_lumiere déplace la lumière dans la direction donnée jusqu'à ce qu'elle atteigne une case entière, donc son temps d'exécution dépend du nombre de cases 
         traversées par la lumière avant d'atteindre une case entière.
         Dans le pire des cas, si la lumière suit un chemin en boucle infinie, la fonction peut ne jamais terminer.
@@ -332,20 +333,25 @@
     </script>
 
 
-    <p>La fonction parcours_labyrinthe permet de parcourir un labyrinthe à partir de la position de départ et de renvoyer le numéro de la case atteinte, selon les règles suivantes :
+    <p>La fonction labyrinthe permet de parcourir un labyrinthe à partir de la position de départ et de renvoyer le numéro de la case atteinte selon les règles spécifiées.
+        Elle utilise une fonction auxiliaire appelée parcours_labyrinthe pour effectuer le parcours récursif du labyrinthe.</br></br>
+
+        La fonction labyrinthe recherche d'abord les coordonnées de la case de départ dans le labyrinthe.
+        Ensuite, elle initialise une file d'attente avec une priorité basée sur la distance.
+        Elle explore les cases adjacentes dans les directions haut, bas, gauche et droite, en évitant les cases marquées comme obstacles ou déjà visitées.
+        L'algorithme utilise une heuristique pour estimer la distance entre la position actuelle et les cases d'arrivée possibles.
+        Il continue d'explorer les cases jusqu'à ce qu'il atteigne l'une des cases d'arrivée, auquel cas il renvoie le numéro de cette case.
+        Si aucun chemin jusqu'à la sortie n'est trouvé, une erreur est levée.</br></br>
         
-        <li>Si la case est marquée comme "1", renvoyer 1</li>
-        <li>Si la case est marquée comme "2", renvoyer 2</li>
-        <li>Si la case est marquée comme "3", renvoyer 3</li>
-        <li>Si la case est marquée comme "4", renvoyer 4</li>
-        <li>Sinon, chercher la case suivante en suivant la direction qui n'a pas été prise lors du dernier déplacement et qui mène à une case non visitée ou à une case marquée comme une arrivée, 
-            en donnant la priorité à la direction "haut" puis "bas" puis "gauche" puis "droite".</li></br></br>
-
-        La fonction labyrinthe utilise cette fonction pour chercher les coordonnées de la case de départ, puis renvoie la fonction parcours_labyrinthe avec ces coordonnées.</br></br>
-
-        Cette fonction est intéressante d'un point de vue complexité car elle utilise une approche récursive pour parcourir le labyrinthe, ce qui peut être efficace en termes de mémoire 
-        mais peut être coûteux en termes de temps si le labyrinthe est très grand ou très complexe.
-        En effet, la fonction peut appeler elle-même jusqu'à ce que toutes les cases soient visitées, ce qui peut prendre beaucoup de temps pour un labyrinthe très grand ou très complexe.</p>
+        La fonction is_valid_position vérifie si une position donnée est valide dans le labyrinthe, en tenant compte des limites du labyrinthe et des cases marquées comme obstacles.</br></br>
+        
+        La fonction heuristic calcule une heuristique basée sur la distance de Manhattan entre une position donnée et les cases d'arrivée possibles.
+        Elle renvoie la plus petite distance parmi toutes les cases d'arrivée.</br></br>
+        
+        En utilisant les données fournies, la fonction labyrinthe est appelée avec les informations du labyrinthe.
+        Le numéro de la case atteinte est ensuite affiché.</br></br>
+        
+        La fonction utilise une approche récursive pour parcourir le labyrinthe, ce qui peut être efficace en termes de mémoire mais peut prendre du temps pour des labyrinthes très grands ou complexes.</br></br></p>
 
     <br>
     <br>
