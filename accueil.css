@@ -24,7 +24,7 @@ img {
 
 
 
-  /*first bar et Fonctions*/
+/*first bar et Fonctions*/
 #firstbar {
     display: flex;
     justify-content: center; /* centre les éléments horizontalement */
@@ -32,12 +32,6 @@ img {
     background-color: black;
     color: white;
     padding: 10px; /* marge intérieure de 10 pixels */
-}
-
-#logo img {
-    max-width: 50%; /* largeur maximale de l'image de 50% */
-    height: auto; /* hauteur automatique pour conserver les proportions */
-    text-align: center; /* centre l'image horizontalement */
 }
 
 #name1 p, #name2 p {
@@ -56,7 +50,6 @@ img {
     background-color: royalblue;
     color: white;
     padding: 10px;
-    font-weight: 5px;
 }
 
 #menubar a {
@@ -69,5 +62,15 @@ img {
 #menubar a:hover {
     background-color: blue;
     color: red;
+}
+
+
+#menubar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: royalblue;
+    color: white;
+    padding: 10px;
 }
 /*END -> Menu de la bar pour Accueil et Fonctions*/
