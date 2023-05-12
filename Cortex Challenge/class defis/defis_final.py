@@ -61,7 +61,7 @@ class Defis:
                     return cle
         return False
 
-    def reflection(self):
+    def reflexion(self):
         """
         Recherche la position de la lampe "L" dans la map.
         :param map: Liste de listes représentant la map.

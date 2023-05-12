@@ -88,9 +88,3 @@ def inversion_raisonnement(drawing):
             else:
                 drawing[ligne][colonne] = ""
     return drawing
-
-
-donnees = {"code": "RA-001","type": "raisonnement","drawing" : [["X","X","X","","","X","X","X"],["X","X","X","","","X","X","X"],["X","X","X","X","X","X","X","X"]],"pieces" : {"A" : [["X", "X"],["X", "X"]],"B" : [["", "X", ""],["X", "X", "X"]],"C" : [["X", "X", ""],["", "X", "X"]]}}
-
-output = raisonnement(donnees)
-print(output)

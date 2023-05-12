@@ -17,9 +17,3 @@ def doublon(defis):
             return cle
         
     return "Il n'y a pas de mot en double"
-
-
-donnees = {"code": "DO-001", "type": "doublon", "words": [["cow", "dog", "dog", "cat", "chicken", "firefox"], ["dog", "cow", "cat", "chicken", "cat", "cat"], ["chicken", "dog", "rabbit", "chicken", "firefox", "chicken"], ["cat", "cow", "dog", "cat", "dog", "cow"], ["firefox", "cat", "dog", "cow", "dog", "chicken"], ["cow", "cow", "dog", "rabbit", "cat", "dog"]]}
-
-output = doublon(donnees)
-print(output)

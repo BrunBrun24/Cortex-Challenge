@@ -49,9 +49,3 @@ def heuristic(position, goal_pos):
         min_distance = min(min_distance, distance)
 
     return min_distance
-    
-
-donnees = {"code": "LA-001", "type": "labyrinthe", "map": [["1", "X", "X", "X", "X", "X", "X", "", "", "2"], ["", "", "", "", "", "", "X", "", "X", ""], ["X", "X", "X", "X", "X", "", "X", "", "X", ""], ["X", "X", "X", "X", "X", "D", "X", "X", "X", ""], ["X", "X", "X", "", "", "X", "X", "", "", ""], ["X", "X", "X", "", "X", "X", "X", "", "X", "X"], ["4", "", "", "", "X", "X", "X", "", "", "3"]]}
-
-output = labyrinthe(donnees)
-print(output)
