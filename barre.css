@@ -8,12 +8,6 @@
     padding: 10px; /* marge intérieure de 10 pixels */
 }
 
-#logo img {
-    max-width: 50%; /* largeur maximale de l'image de 50% */
-    height: auto; /* hauteur automatique pour conserver les proportions */
-    text-align: center; /* centre l'image horizontalement */
-}
-
 #name1 p, #name2 p {
     padding: 10px 10px; /* marge intérieure de 10 pixels en haut et en bas, 10 pixels à gauche et à droite */
     font-size: 150%;
@@ -36,7 +30,7 @@
     color: white;
     text-decoration: red;
     font-size: 20px;
-    padding: 5px 400px;
+    padding: 5px 280px;
 }
 
 #menubar a:hover {
