@@ -1,0 +1,45 @@
+.CodeMirror {
+    background-color: rgba(255, 255, 255, 0.274) !important;
+  }
+
+
+/* Styles CSS de CodeMirror */
+/* Couleur des propriétés */
+.CodeMirror .cm-property {
+  color: rgb(255, 255, 255) !important;
+}
+
+/* Couleur des commentaires */
+.CodeMirror .cm-comment {
+  color: orange !important;
+}
+
+/* Couleur des mots clés */
+.CodeMirror .cm-keyword {
+  color: rgb(234, 0, 255) !important;
+}
+
+/* Couleur des définitions */
+.CodeMirror .cm-def {
+  color: blue !important;
+}
+
+/* Couleur des chaînes de caractères */
+.CodeMirror .cm-string {
+  color: red !important;
+}
+
+/* Couleur des nombres */
+.CodeMirror .cm-number {
+  color: cyan !important;
+}
+
+/* Couleur des opérateurs */
+.CodeMirror .cm-operator {
+  color: white !important;
+}
+
+/* Couleur des variables */
+.CodeMirror .cm-variable {
+  color: white !important;
+}
