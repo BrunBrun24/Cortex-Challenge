@@ -1,0 +1,14 @@
+footer {
+    display: flex;
+    position: absolute;
+    top: 1900px;
+    left: 1700px;
+}
+
+footer p {
+    margin: 0;
+}
+
+footer p:not(:last-child) {
+    margin-right: 10px;
+}

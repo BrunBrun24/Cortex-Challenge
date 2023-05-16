@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: consolas;
+    color: white;
+}
+
+body {
+    background: black;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+h1 {
+    position: absolute; /* ou position: fixed; */
+    font-size: 3em; /* Ajustez la valeur en fonction de la taille souhaitée */
+    text-transform: uppercase;
+    top: 100px; /* ajustez la valeur en fonction de votre besoin */
+    left: 50%; /* ajustez la valeur en fonction de votre besoin */
+    transform: translateX(-50%); /* pour centrer horizontalement */
+}
+
+.text {
+    margin: 250px;
+    margin-top: -4px;
+}

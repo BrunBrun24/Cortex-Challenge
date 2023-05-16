@@ -1,0 +1,316 @@
+.cube1 {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    top: 350px; /* Modifier la valeur pour ajuster la position verticale */
+    left: 45%; /* Modifier la valeur pour ajuster la position horizontale */
+    transform-style: preserve-3d;
+    transform: rotateX(-30deg);
+    animation: animate 10s linear infinite;
+}
+
+@keyframes animate {
+    0% {
+        transform: rotateX(-30deg) rotateY(0deg);
+    }
+    100% {
+        transform: rotateX(-30deg) rotateY(360deg);
+    }
+}
+
+.cube1 div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+}
+
+.cube1 div span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(#151515, #08ec00);
+    transform: rotateY(calc(90deg * var(--i))) translateZ(150px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+}
+
+.cube1 div span a {
+    position: absolute;
+    font-size: 4.5em; /* Taille du texte */
+    color: white;
+    text-decoration: none; /* Supprimer le soulignement */
+    transform: translateZ(20px); /* Pour que le texte soit de + en + éloigné du cube */
+}
+
+.cube1 div span a:nth-child(1) {
+    transform: translateZ(0) translateY(20px);
+    color: rgba(0,0,0,0.1);
+    filter: blur(2px);
+}
+
+.top1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 360px;
+    height: 360px;
+    background: #222;
+    transform: rotateX(90deg) translateZ(150px);
+}
+
+.top1::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 300px;
+    background: #0f0;
+    transform: translateZ(-400px);
+    filter: blur(20px);
+    box-shadow: 0 0 120px rgba(0,255,0,0.2),
+    0 0 200px rgba(0,255,0,0.2),
+    0 0 300px rgba(0,255,0,0.4),
+    0 0 400px rgba(0,255,0,0.6),
+    0 0 500px rgba(0,255,0,1);
+}
+
+/*------------------------------------------------------------------------*/
+
+.cube2 {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    top: 325px; /* Modifier la valeur pour ajuster la position verticale */
+    left: 10%; /* Modifier la valeur pour ajuster la position horizontale */
+    transform-style: preserve-3d;
+    transform: rotateX(-30deg);
+    animation: animate 10s linear infinite;
+}
+
+.cube2 div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+}
+
+.cube2 div span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(#151515, #ec0000);
+    transform: rotateY(calc(90deg * var(--i))) translateZ(75px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+}
+
+.cube2 div span a {
+    position: absolute;
+    font-size: 2.4em; /* Taille du texte */
+    color: white;
+    text-decoration: none; /* Supprimer le soulignement */
+    transform: translateZ(10px); /* Pour que le texte soit de + en + éloigné du cube */
+}
+
+.cube2 div span a:nth-child(1) {
+    transform: translateZ(0) translateY(20px);
+    color: rgba(0,0,0,0.1);
+    filter: blur(2px);
+}
+
+.top2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 180px;
+    height: 180px;
+    background: #222;
+    transform: rotateX(90deg) translateZ(75px);
+}
+
+.top2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150px;
+    height: 150px;
+    background: rgb(255, 0, 0);
+    transform: translateZ(-200px);
+    filter: blur(20px);
+    box-shadow: 0 0 120px rgba(255, 0, 0, 0.2),
+    0 0 200px rgba(255, 0, 0, 0.2),
+    0 0 300px rgba(255, 0, 0, 0.4),
+    0 0 400px rgba(255, 0, 0, 0.6),
+    0 0 500px rgb(255, 0, 0);
+}
+
+/*------------------------------------------------------------------------*/
+
+.cube3 {
+    position: relative;
+    width: 210px;
+    height: 210px;
+    top: -250px; /* Modifier la valeur pour ajuster la position verticale */
+    left: 75%; /* Modifier la valeur pour ajuster la position horizontale */
+    transform-style: preserve-3d;
+    transform: rotateX(-30deg);
+    animation: animate 10s linear infinite;
+}
+
+.cube3 div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+}
+
+.cube3 div span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(#151515, #d000ec);
+    transform: rotateY(calc(90deg * var(--i))) translateZ(105px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+}
+
+.cube3 div span a {
+    position: absolute;
+    font-size: 2.5em; /* Taille du texte */
+    color: white;
+    text-decoration: none; /* Supprimer le soulignement */
+    transform: translateZ(15px); /* Pour que le texte soit de + en + éloigné du cube */
+}
+
+.cube3 div span a:nth-child(1) {
+    transform: translateZ(0) translateY(20px);
+    color: rgba(0,0,0,0.1);
+    filter: blur(2px);
+}
+
+.top3 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 252px;
+    height: 252px;
+    background: #222;
+    transform: rotateX(90deg) translateZ(105px);
+}
+
+.top3::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 210px;
+    height: 210px;
+    background: #d000ec;
+    transform: translateZ(-280px);
+    filter: blur(20px);
+    box-shadow: 0 0 120px rgba(0,255,0,0.2),
+    0 0 200px rgba(208, 0, 236, 0.2),
+    0 0 300px rgba(208,0,236,0.4),
+    0 0 400px rgba(208,0,236,0.6),
+    0 0 500px rgba(208,0,236,1);
+}
+
+/*------------------------------------------------------------------------*/
+
+.cube4 {
+    position: relative;
+    width: 105px;
+    height: 105px;
+    top: -400px; /* Modifier la valeur pour ajuster la position verticale */
+    left: 22%; /* Modifier la valeur pour ajuster la position horizontale */
+    transform-style: preserve-3d;
+    transform: rotateX(-30deg);
+    animation: animate 10s linear infinite;
+}
+
+.cube4 div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+}
+
+.cube4 div span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(#151515, #00a1ec);
+    transform: rotateY(calc(90deg * var(--i))) translateZ(52.5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+}
+
+.cube4 div span a {
+    position: absolute;
+    font-size: 1.7em; /* Taille du texte */
+    color: white;
+    text-decoration: none; /* Supprimer le soulignement */
+    transform: translateZ(5px); /* Pour que le texte soit de + en + éloigné du cube */
+}
+
+.cube4 div span a:nth-child(1) {
+    transform: translateZ(0) translateY(20px);
+    color: rgba(0,0,0,0.1);
+    filter: blur(2px);
+}
+
+.top4 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 126px;
+    height: 126px;
+    background: #222;
+    transform: rotateX(90deg) translateZ(52.5px);
+}
+
+.top4::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 105px;
+    height: 105px;
+    background: #00a1ec;
+    transform: translateZ(-140px);
+    filter: blur(20px);
+    box-shadow: 0 0 120px rgba(0,255,0,0.2),
+    0 0 200px rgba(0,161,236,0.2),
+    0 0 300px rgba(0,161,236,0.4),
+    0 0 400px rgba(0,161,236,0.6),
+    0 0 500px rgba(0,161,236,1);
+}
+
+/*------------------------------------------------------------------------*/
