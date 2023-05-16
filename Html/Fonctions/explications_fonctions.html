@@ -66,6 +66,7 @@
     </div>
 
     <!--Explication des fonctions-->
+    <h3>Couleur</h3>
     <!--Explication de Couleur-->
     <div class="container_explications_fonctions">
         <div class="box">
@@ -123,8 +124,11 @@ def couleur(defis):
                 </pre>
             </div>
         </div>
+    </div>
 
-        <!--Explication de reflexion-->
+    <h3>Reflexion</h3>
+    <!--Explication de reflexion-->
+    <div class="container_explications_fonctions">
         <div class="box">
             <span></span>
             <div class="content_explications_fonctions">
@@ -208,8 +212,11 @@ def deplacement_lumiere(defis, ligne, colonne, direction):
                 </pre>
             </div>
         </div>
+    </div>
 
-        <!--Explication de calcul-->
+    <h3>Calcul</h3>
+    <!--Explication de calcul-->
+    <div class="container_explications_fonctions">
         <div class="box">
             <span></span>
             <div class="content_explications_fonctions">
@@ -276,8 +283,61 @@ def trouver_combinaisons_recursif(start, target, path, numbers, res):
                 </pre>
             </div>
         </div>
+    </div>
 
-        <!--Explication de manquant-->
+    <h3>Frequence</h3>
+    <!--Explication de frequence-->
+    <div class="container_explications_fonctions">
+        <div class="box">
+            <span></span>
+            <div class="content_explications_fonctions">
+                <h2>Explication de la fonction</h2>
+                <p>
+                    La fonction "frequence" prend en entrée un dictionnaire "defis" contenant une liste de mots et retourne le mot le moins représenté dans cette liste.
+                    <br><br>
+                    Elle initialise un dictionnaire vide appelé "word_count" pour stocker le nombre d'occurrences de chaque mot. Ensuite, elle parcourt chaque ligne dans
+                    la liste de mots du dictionnaire "defis" et pour chaque mot dans chaque ligne, elle met à jour le compte du mot dans le dictionnaire "word_count".
+                    Si le mot existe déjà dans le dictionnaire, son compteur est augmenté de 1. Sinon, le mot est ajouté au dictionnaire avec un compteur initialisé à 1.
+                    <br><br>
+                    Enfin, la fonction utilise la méthode "min" avec la clé "word_count.get" pour trouver le mot ayant la valeur minimale dans le dictionnaire "word_count".
+                    Ce mot est renvoyé en tant que résultat.
+                    <br><br>
+                    La complexité de cette fonction dépend du nombre total de mots dans la liste "defis['words']".
+                    Supposons que cette liste contienne "n" mots au total. Dans le pire des cas, chaque mot sera unique, ce qui signifie que le dictionnaire "word_count"
+                    aura "n" clés différentes. La mise à jour du dictionnaire nécessite une recherche de clé qui a une complexité moyenne de O(1) en utilisant une table
+                    de hachage. Par conséquent, la boucle principale de la fonction a une complexité de O(n). Ensuite, la recherche du mot ayant la valeur minimale dans le
+                    dictionnaire se fait en parcourant toutes les clés, ce qui a une complexité de O(n). En conclusion, la complexité totale de la fonction est de O(n), où
+                    "n" est le nombre total de mots dans la liste "defis['words']".
+                </p>
+            </div>
+        </div>
+
+        <div class="box">
+            <span></span>
+            <div class="content_explications_fonctions">
+                <h2>Code PYTHON</h2>
+                    <pre>
+def frequence(defis):
+"""
+:return: Le mot le moins représenté (str)
+"""
+word_count = {}
+for ligne in defis["words"]:
+    for word in ligne:
+        if word in word_count:
+            word_count[word] += 1
+        else:
+            word_count[word] = 1
+    
+return min(word_count, key=word_count.get)
+                </pre>
+            </div>
+        </div>
+    </div>
+
+    <h3>Manquant</h3>
+    <!--Explication de manquant-->
+    <div class="container_explications_fonctions">
         <div class="box">
             <span></span>
             <div class="content_explications_fonctions">
@@ -334,8 +394,11 @@ def manquant(donnees):
                 </pre>
             </div>
         </div>
+    </div>
 
-        <!--Explication de labyrinthe-->
+    <h3>Labyrinthe</h3>
+    <!--Explication de labyrinthe-->
+    <div class="container_explications_fonctions">
         <div class="box">
             <span></span>
             <div class="content_explications_fonctions">
@@ -428,8 +491,11 @@ def heuristic(position, goal_pos):
                 </pre>
             </div>
         </div>
+    </div>
 
-        <!--Explication de doublon-->
+    <h3>Doublon</h3>
+    <!--Explication de doublon-->
+    <div class="container_explications_fonctions">
         <div class="box">
             <span></span>
             <div class="content_explications_fonctions">
@@ -477,8 +543,11 @@ def doublon(defis):
                 </pre>
             </div>
         </div>
+    </div>
 
-        <!--Explication de raisonnement-->
+    <h3>Raisonnement</h3>
+    <!--Explication de raisonnement-->
+    <div class="container_explications_fonctions">
         <div class="box">
             <span></span>
             <div class="content_explications_fonctions">
