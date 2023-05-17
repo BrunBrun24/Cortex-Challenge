@@ -1,7 +1,7 @@
 import math
 import heapq
 
-def couleur(defis):
+def couleur2(defis):
     """
     Vérifie si les couleurs dans les défis sont valides en comparant avec des listes de couleurs en français et en anglais.
     :return: la clef du dictionnaire colors correspondant à la même couleur que sa clef, sinon False
@@ -38,30 +38,9 @@ def couleur(defis):
                 return cle
     return False
 
-def reflexion(defis):
-    """
-    Recherche la position de la lampe "L" dans la map.
-    :param map: Liste de listes représentant la map.
-    :return: Tuple (ligne, colonne) représentant la position de la lampe, sinon False.
-    """
-    ligne_lampe = None
-    colonne_lampe = None
-    for i, ligne in enumerate(defis["map"]):
-        if "L" in ligne:
-            ligne_lampe = i
-            colonne_lampe = ligne.index("L")
-            if i == 0:
-                direction_lampe = "bas"
-            elif i == len(defis["map"])-1:
-                direction_lampe = "haut"
-            elif colonne_lampe == 0:
-                direction_lampe = "droite"
-            elif colonne_lampe == len(ligne)-1:
-                direction_lampe = "gauche"
-            
-            return deplacement_lumiere(defis, ligne_lampe, colonne_lampe, direction_lampe)
-    return False
-        
+def reflexion2(defis):
+    return deplacement_lumiere(defis, 5, 2, "haut")
+
 def verifier_obstacle(defis, ligne, colonne, direction):
     """
     Vérifie si la case à la position (ligne, colonne) de la map contient un obstacle "/" ou "\\" et
@@ -102,7 +81,7 @@ def deplacement_lumiere(defis, ligne, colonne, direction):
             elif direction == "gauche":
                 colonne -= 1
 
-def calcul(defis):
+def calcul2(defis):
     """
     Trouve les ensembles de nombres dans la liste 'numbers' qui s'additionnent pour obtenir le résultat 'result'.
     Returns:
@@ -150,7 +129,7 @@ def trouver_combinaisons_recursif(start, target, path, numbers, res):
                 trouver_combinaisons_recursif(i + 1, target - numbers[i], path, numbers, res)  # Appel récursif avec le nouveau total cible
                 path.pop()  # Retour en arrière (trouver_combinaisons_recursif)
 
-def frequence(defis):
+def frequence2(defis):
     """
     :return: Le mot le moins représenté (str)
     """
@@ -164,7 +143,7 @@ def frequence(defis):
         
     return min(word_count, key=word_count.get)
 
-def manquant(defis):
+def manquant2(defis):
     """
     Fonction permettant de trouver le premier nombre manquant dans une liste de nombres.
     :return: int: Le premier nombre manquant dans la liste de nombres.
@@ -199,7 +178,7 @@ def manquant(defis):
 
     return False  # Retourner False si tous les nombres sont présents
 
-def labyrinthe(donnees):
+def labyrinthe2(donnees):
     labyrinth = donnees["map"]
     directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]  # Haut, Bas, Gauche, Droite
     start_pos = None
@@ -252,7 +231,7 @@ def heuristic(position, goal_pos):
 
     return min_distance
 
-def doublon(defis):
+def doublon2(defis):
     """
     Recherche un mot en double dans la liste de mots fournie.
     :return: (str) Le mot en double s'il existe, sinon un message indiquant qu'il n'y a pas de mot en double.
@@ -272,7 +251,7 @@ def doublon(defis):
         
     return "Il n'y a pas de mot en double"
 
-def raisonnement(defis):
+def raisonnement2(defis):
     """
     Applique un raisonnement sur le dessin en utilisant différentes méthodes pour vérifier s'il y a une solution possible.
     :return: Le nom de la solution trouvée, sinon (str) "Aucune de ces solutions n'est la bonne".

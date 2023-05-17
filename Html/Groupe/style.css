@@ -28,19 +28,19 @@ footer p:not(:last-child) {
         width: 50%;
     }
 }
-@media all and (width = 425px) {
+@media all and (width <= 425px) {
     footer {
         top: 2315px;
         left: 162px;
     }
 }
-@media all and (width = 375px) {
+@media all and (width <= 375px) {
     footer {
         top: 2400px;
         left: 138px;
     }
 }
-@media all and (width = 320px) {
+@media all and (width <= 320px) {
     footer {
         top: 2600px;
         left: 110px;

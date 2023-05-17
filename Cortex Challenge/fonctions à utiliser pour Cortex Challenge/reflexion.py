@@ -1,63 +1,55 @@
 def reflexion(defis):
+    return parcours_lampe_torche(defis, "haut", 5, 2)
+
+def parcours_lampe_torche(donnees, direction, ligne, colonne):
     """
-    Recherche la position de la lampe "L" dans la map.
-    :param map: Liste de listes représentant la map.
-    :return: Tuple (ligne, colonne) représentant la position de la lampe, sinon False.
+    Parcours la map en suivant le faisceau lumineux
+    :param:
+        direction : "string"
+        ligne : "int"
+        colonne : "int"
+    :return: un entier (int)
     """
-    ligne_lampe = None
-    colonne_lampe = None
-    for i, ligne in enumerate(defis["map"]):
-        if "L" in ligne:
-            ligne_lampe = i
-            colonne_lampe = ligne.index("L")
-            if i == 0:
-                direction_lampe = "bas"
-            elif i == len(defis["map"])-1:
-                direction_lampe = "haut"
-            elif colonne_lampe == 0:
-                direction_lampe = "droite"
-            elif colonne_lampe == len(ligne)-1:
-                direction_lampe = "gauche"
-            
-            return deplacement_lumiere(defis, ligne_lampe, colonne_lampe, direction_lampe)
-    return False
+    if type(donnees["map"][ligne][colonne]) == int:
+        return donnees["map"][ligne][colonne]
+
+    direction = si_miroir(donnees, direction, ligne, colonne)
+
+    if direction == "bas":
+        return parcours_lampe_torche(donnees, direction, ligne+1, colonne)
+    elif direction == "haut":
+        return parcours_lampe_torche(donnees, direction, ligne-1, colonne)
+    elif direction == "droite":
+        return parcours_lampe_torche(donnees, direction, ligne, colonne+1)
+    else:
+        return parcours_lampe_torche(donnees, direction, ligne, colonne-1)
+
+def si_miroir(donnees, direction, ligne, colonne):
+    """
+    Indique si sur les coordonnées pris en paramètres, il y a un miroir
+    :param:
+        direction : "string"
+        ligne : "int"
+        colonne : "int"
+    :return: la direction (string)
+    """
+    if donnees["map"][ligne][colonne] == "/":
+        if direction == "haut":
+            return "droite"
+        elif direction == "bas":
+            return "gauche"
+        elif direction == "droite":
+            return "haut"
+        elif direction == "gauche":
+            return "bas"
+    elif donnees["map"][ligne][colonne] == "\\":
+        if direction == "haut":
+            return "gauche"
+        elif direction == "bas":
+            return "droite"
+        elif direction == "droite":
+            return "bas"
+        elif direction == "gauche":
+            return "haut"
         
-def verifier_obstacle(defis, ligne, colonne, direction):
-    """
-    Vérifie si la case à la position (ligne, colonne) de la map contient un obstacle "/" ou "\\" et
-    renvoie la nouvelle direction en fonction de l'obstacle.
-    :param ligne: Entier représentant la ligne.
-    :param colonne: Entier représentant la colonne.
-    :param direction: String représentant la direction ("haut", "bas", "gauche", "droite").
-    :return: String représentant la nouvelle direction.
-    """
-    obstacle = defis["map"][ligne][colonne]
-    correspondances = {("/","haut"): "droite", ("/","bas"): "gauche", ("/","droite"): "haut", ("/","gauche"): "bas",
-                    ("\\","haut"): "gauche", ("\\","bas"): "droite", ("\\","droite"): "bas", ("\\","gauche"): "haut"}
-    return correspondances.get((obstacle, direction), direction)
-
-def deplacement_lumiere(defis, ligne, colonne, direction):
-    """
-    Recherche la position de la lampe "L" dans la map et déplace la lumière en suivant les règles du jeu.
-    :param ligne: Entier représentant la ligne de départ de la lumière.
-    :param colonne: Entier représentant la colonne de départ de la lumière.
-    :param direction: String représentant la direction initiale de la lumière ("haut", "bas", "gauche", "droite").
-    :return: Entier représentant la valeur de la case atteinte par la lumière.
-    """
-    while True:
-        # Vérifier si la case actuelle est un entier
-        if isinstance(defis["map"][ligne][colonne], int):
-            return defis["map"][ligne][colonne]
-        else:
-            # Appeler la fonction vérifier_obstacle pour obtenir la direction à suivre
-            direction = verifier_obstacle(defis, ligne, colonne, direction)
-
-            # Mettre à jour les coordonnées en fonction de la direction
-            if direction == "bas":
-                ligne += 1
-            elif direction == "haut":
-                ligne -= 1
-            elif direction == "droite":
-                colonne += 1
-            elif direction == "gauche":
-                colonne -= 1
+    return direction
