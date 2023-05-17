@@ -2,8 +2,8 @@
     position: relative;
     width: 105px;
     height: 105px;
-    top: -200px; /* Modifier la valeur pour ajuster la position verticale */
-    left: 350px; /* Modifier la valeur pour ajuster la position horizontale */
+    top: -300px; /* Modifier la valeur pour ajuster la position verticale */
+    left: 450px; /* Modifier la valeur pour ajuster la position horizontale */
     transform-style: preserve-3d;
     transform: rotateX(-30deg);
     animation: animate 10s linear infinite;
@@ -89,8 +89,8 @@
     position: relative;
     width: 105px;
     height: 105px;
-    top: -300px; /* Modifier la valeur pour ajuster la position verticale */
-    left: 720px; /* Modifier la valeur pour ajuster la position horizontale */
+    top: -400px; /* Modifier la valeur pour ajuster la position verticale */
+    left: 820px; /* Modifier la valeur pour ajuster la position horizontale */
     transform-style: preserve-3d;
     transform: rotateX(-30deg);
     animation: animate 10s linear infinite;
@@ -167,8 +167,8 @@
     position: relative;
     width: 105px;
     height: 105px;
-    top: -400px; /* Modifier la valeur pour ajuster la position verticale */
-    left: 1100px; /* Modifier la valeur pour ajuster la position horizontale */
+    top: -500px; /* Modifier la valeur pour ajuster la position verticale */
+    left: 1200px; /* Modifier la valeur pour ajuster la position horizontale */
     transform-style: preserve-3d;
     transform: rotateX(-30deg);
     animation: animate 10s linear infinite;
@@ -245,8 +245,8 @@
     position: relative;
     width: 105px;
     height: 105px;
-    top: -500px; /* Modifier la valeur pour ajuster la position verticale */
-    left: 1480px; /* Modifier la valeur pour ajuster la position horizontale */
+    top: -600px; /* Modifier la valeur pour ajuster la position verticale */
+    left: 1580px; /* Modifier la valeur pour ajuster la position horizontale */
     transform-style: preserve-3d;
     transform: rotateX(-30deg);
     animation: animate 10s linear infinite;
@@ -315,4 +315,15 @@
     0 0 300px rgba(238, 255, 3,0.4),
     0 0 400px rgba(238, 255, 3,0.6),
     0 0 500px rgba(238, 255, 3,1);
+}
+
+
+/* Styles pour les écrans de taille (smartphones Android)*/
+@media all and (max-width: 425px) {
+    .cube1,
+    .cube2,
+    .cube3,
+    .cube4 {
+        display: none;
+    }
 }

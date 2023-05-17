@@ -46,5 +46,23 @@ h1 {
 
 .text {
     margin: 250px;
-    margin-top: -4px;
+    margin-top: -400px;
+    margin-bottom: 200px;
+}
+
+
+
+/* Styles pour les écrans de taille (smartphones Android)*/
+@media all and (max-width: 425px) {
+    h1 {
+        font-size: 1.5em; /* Ajustez la valeur en fonction de la taille souhaitée */
+        text-align: center;
+        display: flex;
+        top: 70px;
+    }
+    .text {
+        margin: 60px;
+        margin-top: 200px;
+        font-size: 0.6em;
+    }
 }
