@@ -1,7 +1,7 @@
 footer {
     display: flex;
     position: absolute;
-    top: 1900px;
+    top: 1750px;
     left: 1700px;
 }
 
@@ -11,4 +11,38 @@ footer p {
 
 footer p:not(:last-child) {
     margin-right: 10px;
+}
+
+
+
+/* Styles pour les écrans de taille (smartphones Android)*/
+@media all and (max-width: 425px) {
+    footer {
+        top: 2600px;
+        left: 110px;
+    }
+    footer p:not(:last-child) {
+        margin-right: -30px;
+    }
+    footer p a img {
+        width: 50%;
+    }
+}
+@media all and (width = 425px) {
+    footer {
+        top: 2315px;
+        left: 162px;
+    }
+}
+@media all and (width = 375px) {
+    footer {
+        top: 2400px;
+        left: 138px;
+    }
+}
+@media all and (width = 320px) {
+    footer {
+        top: 2600px;
+        left: 110px;
+    }
 }
