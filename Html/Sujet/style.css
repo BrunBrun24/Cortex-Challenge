@@ -1,0 +1,20 @@
+h3 {
+    font-size: 3em; /* Ajustez la valeur en fonction de la taille souhaitée */
+    text-align: center;
+    margin: 50px;
+}
+
+footer {
+    display: flex;
+    position: absolute;
+    top: 50px;
+    left: 0px;
+}
+
+footer p {
+    margin: 0;
+}
+
+footer p:not(:last-child) {
+    margin-right: 10px;
+}

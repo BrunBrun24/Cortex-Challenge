@@ -112,44 +112,36 @@
             <div class="content_explications_fonctions">
                 <h2>Code PYTHON</h2>
                 <pre>
-def couleur(defis):
-    # Création d'un dictionnaire inversé pour les couleurs en français
-    dict = {"silver": "argent",
-            "beige": "beige",
-            "white": "blanc",
-            "blue": "bleu",
-            "coral": "corail",
-            "indigo": "indigo",
-            "yellow": "jaune",
-            "lavender": "lavande",
-            "magenta": "magenta",
-            "brown": "marron",
-            "mauve": "mauve",
-            "black": "noir",
-            "olive": "olive",
-            "gold": "or",
-            "orange": "orange",
-            "orchid": "orchidée",
-            "pink": "rose",
-            "red": "rouge",
-            "salmon": "saumon",
-            "green": "vert"}
+def couleur(donnees):
+    """
+    Vérifie si les couleurs dans les défis sont valides en comparant avec des listes de couleurs en français et en anglais.
+    :return: la clef du dictionnaire colors correspondant à la même couleur que sa clef, sinon False
+    """
+    couleur_fr = ("argent", "beige", "blanc", "bleu", "corail", "indigo", "jaune", "lavande", "magenta", "marron", "mauve", "noir", "olive", "or", "orange", "orchidée", "rose", "rouge", "saumon", "vert")
+    couleur_en = ("silver", "beige", "white", "blue", "coral", "indigo", "yellow", "lavender", "magenta", "brown", "mauve", "black", "olive", "gold", "orange", "orchid", "pink", "red", "salmon", "green")
 
-    for cle, valeur in defis["colors"].items():
-        for c, v in dict.items():
-            if cle == valeur:
+    # On parcourt la liste des couleurs
+    for cle,valeur in donnees["colors"].items():
+        if cle == valeur:
+            return cle
+        elif cle in couleur_fr:
+            # On sauvegarde la position de "cle" ce trouvant dans "couleur_fr"
+            position_couleur = couleur_fr.index(cle)
+            # On regarde si la valeur ce trouve à la même position que la "cle" dans "couleur_en"
+            if (valeur in couleur_en) and (valeur == couleur_en[position_couleur]):
                 return cle
-            elif (cle == c) and (valeur == v):
+        else:
+            position_couleur = couleur_en.index(cle)
+            if (valeur in couleur_fr) and (valeur == couleur_fr[position_couleur]):
                 return cle
-            elif (cle == v) and (valeur == c):
-                return cle
+
     return False
                 </pre>
             </div>
         </div>
     </div>
 
-    <h3>Reflexion</h3>
+    <h3>Réflexion</h3>
     <!--Explication de reflexion-->
     <div class="container_explications_fonctions">
         <div class="box">
@@ -186,53 +178,63 @@ def couleur(defis):
                 <h2>Code PYTHON</h2>
                     <pre>
 def reflexion(defis):
-    ligne_lampe = None
-    colonne_lampe = None
-    for i, ligne in enumerate(defis["map"]):
-        if "L" in ligne:
-            ligne_lampe = i
-            colonne_lampe = ligne.index("L")
-            if i == 0:
-                direction_lampe = "bas"
-            elif i == len(defis["map"])-1:
-                direction_lampe = "haut"
-            elif colonne_lampe == 0:
-                direction_lampe = "droite"
-            elif colonne_lampe == len(ligne)-1:
-                direction_lampe = "gauche"
-            
-            return deplacement_lumiere(defis, ligne_lampe, colonne_lampe, direction_lampe)
-    return False
-      
-    
-
-def verifier_obstacle(defis, ligne, colonne, direction):
-    obstacle = defis["map"][ligne][colonne]
-    correspondances = {("/","haut"): "droite", ("/","bas"): "gauche", ("/","droite"): "haut", ("/","gauche"): "bas",
-                    ("\\","haut"): "gauche", ("\\","bas"): "droite", ("\\","droite"): "bas", ("\\","gauche"): "haut"}
-    return correspondances.get((obstacle, direction), direction)
+    return parcours_lampe_torche(defis, "haut", 5, 2)
 
 
+def parcours_lampe_torche(donnees, direction, ligne, colonne):
+    """
+    Parcours la map en suivant le faisceau lumineux
+    :param:
+        direction : "string"
+        ligne : "int"
+        colonne : "int"
+    :return: un entier (int)
+    """
+    if type(donnees["map"][ligne][colonne]) == int:
+        return donnees["map"][ligne][colonne]
 
-def deplacement_lumiere(defis, ligne, colonne, direction):
-    while True:
-        # Vérifier si la case actuelle est un entier
-        if isinstance(defis["map"][ligne][colonne], int):
-            return defis["map"][ligne][colonne]
-        else:
-            # Appeler la fonction vérifier_obstacle pour obtenir la direction à suivre
-            direction = verifier_obstacle(defis, ligne, colonne, direction)
+    direction = si_miroir(donnees, direction, ligne, colonne)
 
-            # Mettre à jour les coordonnées en fonction de la direction
-            if direction == "bas":
-                ligne += 1
-            elif direction == "haut":
-                ligne -= 1
-            elif direction == "droite":
-                colonne += 1
-            elif direction == "gauche":
-                colonne -= 1
-                </pre>
+    if direction == "bas":
+        return parcours_lampe_torche(donnees, direction, ligne+1, colonne)
+    elif direction == "haut":
+        return parcours_lampe_torche(donnees, direction, ligne-1, colonne)
+    elif direction == "droite":
+        return parcours_lampe_torche(donnees, direction, ligne, colonne+1)
+    else:
+        return parcours_lampe_torche(donnees, direction, ligne, colonne-1)
+
+
+def si_miroir(donnees, direction, ligne, colonne):
+    """
+    Indique si sur les coordonnées pris en paramètres, il y a un miroir
+    :param:
+        direction : "string"
+        ligne : "int"
+        colonne : "int"
+    :return: la direction (string)
+    """
+    if donnees["map"][ligne][colonne] == "/":
+        if direction == "haut":
+            return "droite"
+        elif direction == "bas":
+            return "gauche"
+        elif direction == "droite":
+            return "haut"
+        elif direction == "gauche":
+            return "bas"
+    elif donnees["map"][ligne][colonne] == "\\":
+        if direction == "haut":
+            return "gauche"
+        elif direction == "bas":
+            return "droite"
+        elif direction == "droite":
+            return "bas"
+        elif direction == "gauche":
+            return "haut"
+        
+    return direction
+</pre>
             </div>
         </div>
     </div>
@@ -284,7 +286,6 @@ def calcul(defis):
     return output
 
 
-
 def trouver_combinaisons_recursif(start, target, path, numbers, res):
     if target == 0:
         # Si la somme cible est atteinte, ajouter la liste de nombres dans les résultats
@@ -308,7 +309,7 @@ def trouver_combinaisons_recursif(start, target, path, numbers, res):
         </div>
     </div>
 
-    <h3>Frequence</h3>
+    <h3>Fréquence</h3>
     <!--Explication de frequence-->
     <div class="container_explications_fonctions">
         <div class="box">
@@ -341,18 +342,18 @@ def trouver_combinaisons_recursif(start, target, path, numbers, res):
                 <h2>Code PYTHON</h2>
                     <pre>
 def frequence(defis):
-"""
-:return: Le mot le moins représenté (str)
-"""
-word_count = {}
-for ligne in defis["words"]:
-    for word in ligne:
-        if word in word_count:
-            word_count[word] += 1
-        else:
-            word_count[word] = 1
-    
-return min(word_count, key=word_count.get)
+    """
+    :return: Le mot le moins représenté (str)
+    """
+    word_count = {}
+    for ligne in defis["words"]:
+        for word in ligne:
+            if word in word_count:
+                word_count[word] += 1
+            else:
+                word_count[word] = 1
+        
+    return min(word_count, key=word_count.get)
                 </pre>
             </div>
         </div>
@@ -456,24 +457,27 @@ def manquant(donnees):
             <div class="content_explications_fonctions">
                 <h2>Code PYTHON</h2>
                     <pre>
-import heapq
 import math
+import heapq
 
-def labyrinthe(donnees):
+def labyrinthe2(donnees):
     labyrinth = donnees["map"]
     directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]  # Haut, Bas, Gauche, Droite
     start_pos = None
     goal_pos = [("1", (0, 0)), ("2", (0, len(labyrinth[0])-1)), ("3", (len(labyrinth)-1, len(labyrinth[0])-1)), ("4", (len(labyrinth)-1, 0))]  # Positions des sorties
+
     for i in range(len(labyrinth)):
         for j in range(len(labyrinth[i])):
             if labyrinth[i][j] == "D":
                 start_pos = (i, j)
 
-    queue = [(0, start_pos, [])]  # File d'attente avec la priorité basée sur la distance
-    visited = set()  # Positions déjà visitées
+    queue = []
+    visited = set()
+    heapq.heappush(queue, (0, start_pos, []))  # File d'attente avec la priorité basée sur la distance
 
     while queue:
         _, current_pos, path = heapq.heappop(queue)
+
         if current_pos in [pos for _, pos in goal_pos]:
             goal = [key for key, value in goal_pos if value == current_pos][0]
             return goal
@@ -482,6 +486,7 @@ def labyrinthe(donnees):
 
         for direction in directions:
             new_pos = (current_pos[0] + direction[0], current_pos[1] + direction[1])
+
             if is_valid_position(new_pos, labyrinth) and new_pos not in visited:
                 new_path = path + [current_pos]
                 g_score = len(new_path)
@@ -493,13 +498,11 @@ def labyrinthe(donnees):
     raise ValueError("Aucun chemin trouvé jusqu'à la sortie.")
 
 
-
 def is_valid_position(position, labyrinth):
     x, y = position
     if 0 <= x < len(labyrinth) and 0 <= y < len(labyrinth[0]) and labyrinth[x][y] != "X":
         return True
     return False
-
 
 
 def heuristic(position, goal_pos):
@@ -633,7 +636,6 @@ def raisonnement(defis):
     return "Aucune de ces solutions n'est la bonne"
 
 
-
 def decalage_raisonnement(drawing):
     possibilite_decalage = []
     arrete_for = False
@@ -662,14 +664,12 @@ def decalage_raisonnement(drawing):
     return min(possibilite_decalage)
 
 
-
 def retourne_raisonnement(drawing):
     new_drawing = []
     for ligne in drawing:
         new_drawing.append(ligne[::-1])
 
     return new_drawing
-
 
 
 def inversion_raisonnement(drawing):
@@ -687,12 +687,12 @@ def inversion_raisonnement(drawing):
 
     <footer>
         <p>
-            <a href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fbrunbrun24.github.io%2FCortex-Challenge%2Fsujet.html" target="_blank">
+            <a href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fbrunbrun24.github.io%2FCortex-Challenge%2FHtml%2FFonctions%2Fexplications_fonctions.html" target="_blank">
                 <img src="https://raw.githubusercontent.com/bradleytaunt/html5-valid-badge/68b012b5c19b26f75d9bee2409420c916b2d451a/html5-validator-badge.svg" alt="HTML5 Valide !">
             </a>
         </p>
         <p>
-            <a href="https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fbrunbrun24.github.io%2FCortex-Challenge%2Fsujet.html&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=fr" target="_blank">
+            <a href="https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fbrunbrun24.github.io%2FCortex-Challenge%2FHtml%2FFonctions%2Fexplications_fonctions.html&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=fr" target="_blank">
                 <img src="https://jigsaw.w3.org/css-validator/images/vcss" alt="CSS Valide !">
             </a>
         </p>

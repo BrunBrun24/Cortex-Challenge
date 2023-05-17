@@ -1,7 +1,7 @@
 import heapq
 import math
 
-def couleur(donnees):
+def couleur1(donnees):
     """
     Vérifie si les couleurs dans les défis sont valides en comparant avec des listes de couleurs en français et en anglais.
     :return: la clef du dictionnaire colors correspondant à la même couleur que sa clef, sinon False
@@ -26,39 +26,8 @@ def couleur(donnees):
     
     return False
 
-def reflexion(donnees):
-    """
-    Cherche où se trouve la lampe dans la map
-    :return: la fonction "parcours_lampe_torche"
-    """
-    direction_lampe_torche = None
-    ligne_lampe = None
-    colonne_lampe = None
-
-    # On récupère la direction de la lampe torche et ses coordonnées
-    for i, ligne in enumerate(donnees["map"]):
-        # Si la lampe se trouve sur la première ligne
-        if "L" in ligne and i == 0:
-            direction_lampe_torche = "bas"
-            ligne_lampe = i
-            colonne_lampe = ligne.index("L")
-        # Si la lampe se trouve sur la dernière ligne
-        elif "L" in ligne and i == len(donnees["map"])-1:
-            direction_lampe_torche = "haut"
-            ligne_lampe = i
-            colonne_lampe = ligne.index("L")
-        # Si la lampe se trouve sur la gauche
-        elif ligne[0] == "L":
-            direction_lampe_torche = "droite"
-            ligne_lampe = i
-            colonne_lampe = 0
-        # Si la lampe se trouve sur la droite
-        elif ligne[-1] == "L":
-            direction_lampe_torche = "gauche"
-            ligne_lampe = i
-            colonne_lampe = len(ligne)-1
-
-    return parcours_lampe_torche(donnees, direction_lampe_torche, ligne_lampe, colonne_lampe)
+def reflexion1(defis):
+    return parcours_lampe_torche(defis, "haut", 5, 2)
 
 def parcours_lampe_torche(donnees, direction, ligne, colonne):
     """
@@ -113,7 +82,7 @@ def si_miroir(donnees, direction, ligne, colonne):
         
     return direction
 
-def calcul(donnees):
+def calcul1(donnees):
     """
     Fonction qui trouve toutes les combinaisons de nombres dans la liste qui, additionnées ensemble, donnent le nombre cible.
 
@@ -167,7 +136,7 @@ def trouver_combinaisons_recursif(donnees, nombre_cible, nombres, index, combina
         # Retirer le nombre actuel de la combinaison pour explorer d'autres possibilités
         combinaison_actuelle.pop()
 
-def frequence(donnees):
+def frequence1(donnees):
     """
     :return: Le mot le moins représenté (str)
     """
@@ -187,7 +156,7 @@ def frequence(donnees):
 
     return word  # Retourner le mot le moins représenté
 
-def manquant(donnees):
+def manquant1(donnees):
     """
     Fonction permettant de trouver le premier nombre manquant dans une liste de nombres.
     :return: int: Le premier nombre manquant dans la liste de nombres.
@@ -223,7 +192,7 @@ def manquant(donnees):
 
     return False
 
-def labyrinthe(donnees):
+def labyrinthe1(donnees):
     labyrinth = donnees["map"]
     directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]  # Haut, Bas, Gauche, Droite
     start_pos = None
@@ -272,7 +241,7 @@ def heuristic(position, goal_pos):
 
     return min_distance
 
-def doublon(donnees):
+def doublon1(donnees):
     """
     Recherche un mot en double dans la liste de mots fournie.
     :return: (str) Le mot en double s'il existe, sinon un message indiquant qu'il n'y a pas de mot en double.
@@ -302,7 +271,7 @@ def doublon(donnees):
         
     return "Il n'y a pas de mot en double"
 
-def raisonnement(donnees):
+def raisonnement1(donnees):
     """
     Applique un raisonnement sur le dessin en utilisant différentes méthodes pour vérifier s'il y a une solution possible.
     :return: Le nom de la solution trouvée, sinon (str) "Aucune de ces solutions n'est la bonne".

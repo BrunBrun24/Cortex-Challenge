@@ -62,7 +62,7 @@
     left: 0;
     width: 126px;
     height: 126px;
-    background: #222;
+    background: linear-gradient(45deg,#ffbc00,#ff0058);
     transform: rotateX(90deg) translateZ(52.5px);
 }
 
@@ -140,7 +140,7 @@
     left: 0;
     width: 126px;
     height: 126px;
-    background: #222;
+    background: linear-gradient(315deg,#03a9f4,#ff0058);
     transform: rotateX(90deg) translateZ(52.5px);
 }
 
@@ -218,7 +218,7 @@
     left: 0;
     width: 126px;
     height: 126px;
-    background: #222;
+    background: linear-gradient(315deg,#4dff03,#00d0ff);
     transform: rotateX(90deg) translateZ(52.5px);
 }
 
@@ -296,7 +296,7 @@
     left: 0;
     width: 126px;
     height: 126px;
-    background: #222;
+    background: linear-gradient(315deg,#eeff03,#2600ff);
     transform: rotateX(90deg) translateZ(52.5px);
 }
 
