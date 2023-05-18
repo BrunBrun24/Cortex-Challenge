@@ -18,3 +18,11 @@ footer p {
 footer p:not(:last-child) {
     margin-right: 10px;
 }
+
+
+/* Styles pour les écrans de taille (smartphones Android)*/
+@media all and (max-width: 425px) {
+    footer {
+        display: none;
+    }
+}

@@ -14,35 +14,17 @@ footer p:not(:last-child) {
 }
 
 
+/* Ordinateur portable L - 1440px*/
+@media all and (max-width: 1440px) {
+    footer {
+        top: 1500px;
+        left: 1220px;
+    }
+}
 
 /* Styles pour les écrans de taille (smartphones Android)*/
-@media all and (max-width: 425px) {
+@media all and (max-width: 768px) {
     footer {
-        top: 2600px;
-        left: 110px;
-    }
-    footer p:not(:last-child) {
-        margin-right: -30px;
-    }
-    footer p a img {
-        width: 50%;
-    }
-}
-@media all and (width <= 425px) {
-    footer {
-        top: 2315px;
-        left: 162px;
-    }
-}
-@media all and (width <= 375px) {
-    footer {
-        top: 2400px;
-        left: 138px;
-    }
-}
-@media all and (width <= 320px) {
-    footer {
-        top: 2600px;
-        left: 110px;
+        display: none;
     }
 }

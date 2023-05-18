@@ -314,3 +314,121 @@
 }
 
 /*------------------------------------------------------------------------*/
+
+/* Ordinateur portable L - 1440px*/
+@media all and (max-width: 1440px) {
+    .cube1 {
+        width: 200px;
+        height: 200px;
+        top: 325px; /* Modifier la valeur pour ajuster la position verticale */
+        left: 45%; /* Modifier la valeur pour ajuster la position horizontale */
+    }
+    .cube1 div span {
+        transform: rotateY(calc(90deg * var(--i))) translateZ(100px);
+    }
+    .cube1 div span a {
+        font-size: 3.4em; /* Taille du texte */
+        transform: translateZ(20px); /* Pour que le texte soit de + en + éloigné du cube */
+    }
+    .top1 {
+        width: 240px;
+        height: 240px;
+        transform: rotateX(90deg) translateZ(100px);
+    }
+    .top1::before {
+        width: 200px;
+        height: 200px;
+        transform: translateZ(-266px);
+    }
+
+    .cube2 {
+        width: 105px;
+        height: 105px;
+        top: 250px; /* Modifier la valeur pour ajuster la position verticale */
+        left: 10%; /* Modifier la valeur pour ajuster la position horizontale */
+    }
+    .cube2 div {
+        width: 100%;
+        height: 100%;
+    }
+    .cube2 div span {
+        width: 100%;
+        height: 100%;
+        transform: rotateY(calc(90deg * var(--i))) translateZ(52.5px);
+    }
+    .cube2 div span a {
+        font-size: 1.7em; /* Taille du texte */
+        transform: translateZ(5px); /* Pour que le texte soit de + en + éloigné du cube */
+    }
+    .cube2 div span a:nth-child(1) {
+        transform: translateZ(0) translateY(20px);
+    }
+    .top2 {
+        width: 126px;
+        height: 126px;
+        transform: rotateX(90deg) translateZ(52.5px);
+    }
+    .top2::before {
+        width: 105px;
+        height: 105px;
+        transform: translateZ(-140px);
+    }
+
+    .cube3 {
+        width: 140px;
+        height: 140px;
+        top: -175px; /* Modifier la valeur pour ajuster la position verticale */
+        left: 75%; /* Modifier la valeur pour ajuster la position horizontale */
+    }
+    .cube3 div span {
+        transform: rotateY(calc(90deg * var(--i))) translateZ(70px);
+    }
+    .cube3 div span a {
+        font-size: 1.7em; /* Taille du texte */
+        transform: translateZ(10px); /* Pour que le texte soit de + en + éloigné du cube */
+    }
+    .top3 {
+        width: 168px;
+        height: 168px;
+        transform: rotateX(90deg) translateZ(70px);
+    }
+    .top3::before {
+        width: 140px;
+        height: 140px;
+        transform: translateZ(-186px);
+    }
+
+    .cube4 {
+        width: 70px;
+        height: 70px;
+        top: -250px; /* Modifier la valeur pour ajuster la position verticale */
+        left: 25%; /* Modifier la valeur pour ajuster la position horizontale */
+    }
+    .cube4 div span {
+        transform: rotateY(calc(90deg * var(--i))) translateZ(35px);
+    }
+    .cube4 div span a {
+        font-size: 1.3em; /* Taille du texte */
+        transform: translateZ(3px); /* Pour que le texte soit de + en + éloigné du cube */
+    }
+    .top4 {
+        width: 240px;
+        height: 240px;
+        transform: rotateX(90deg) translateZ(35px);
+    }
+    .top4::before {
+        width: 70px;
+        height: 70px;
+        transform: translateZ(-93px);
+    }
+}
+
+/* Styles pour les écrans de taille (smartphones Android et tablette)*/
+@media all and (max-width: 768px) {
+    .cube1,
+    .cube2,
+    .cube3,
+    .cube4 {
+        display: none;
+    }
+}

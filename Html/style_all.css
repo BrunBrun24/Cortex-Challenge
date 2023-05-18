@@ -52,6 +52,34 @@ h1 {
 
 
 
+/* Ordinateur portable L - 1440px*/
+@media all and (max-width: 1440px) {
+    /*Taille de toutes les boxs*/
+    h1 {
+        font-size: 2.2em;
+    }
+    .text {
+        margin: 150px;
+        margin-top: -300px;
+        font-size: 0.8em;
+    }
+}
+
+/*tablette 768px*/
+@media all and (max-width: 768px) {
+    h1 {
+        font-size: 2em; /* Ajustez la valeur en fonction de la taille souhaitée */
+        text-align: center;
+        display: flex;
+        top: 70px;
+    }
+    .text {
+        margin: 80px;
+        margin-top: 200px;
+        font-size: 0.8em;
+    }
+}
+
 /* Styles pour les écrans de taille (smartphones Android)*/
 @media all and (max-width: 425px) {
     h1 {
@@ -63,6 +91,6 @@ h1 {
     .text {
         margin: 60px;
         margin-top: 200px;
-        font-size: 0.6em;
+        font-size: 0.7em;
     }
 }

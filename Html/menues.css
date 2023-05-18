@@ -91,7 +91,7 @@
 .container .box .content h2 {
     font-size: 2em;
     color: white;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .container .box .content p {
@@ -119,7 +119,7 @@
     color: white;
     margin-bottom: 10px;
     position: absolute;
-    top: -112px;
+    top: -130px;
     left: -85px;
 }
 
@@ -138,6 +138,81 @@
 
 
 
+/* Ordinateur portable L - 1440px*/
+@media all and (max-width: 1440px) {
+    /*Taille de toutes les boxs*/
+    .container .box {
+        width: 275px;
+        height: 343px;
+        margin: 225px 30px;
+    }
+    .container .box .content h2 {
+        font-size: 1.7em;
+    }
+    .container .box .content p {
+        font-size: 0.96em;
+    }
+    .container .box .content a {
+        font-size: 0.9em;
+        padding: 5px;
+    }
+
+    /*Pour la première box*/
+    .container .box .content1 h2 {
+        font-size: 1.7em;
+        top: -115px;
+        left: -60px;
+    }
+    .container .box .content1 a {
+        font-size: 0.9em;
+        padding: 5px;
+        top: 125px;
+        left: -50px;
+    }
+}
+
+
+
+
+
+/*tablette 768px*/
+@media all and (max-width: 768px) {
+    /*Taille de toutes les boxs*/
+    .container .box {
+        width: 250px;
+        height: 300px;
+        margin: 20px 20px;
+        top: 150px;
+    }
+    .container .box .content h2 {
+        font-size: 1.6em;
+    }
+    .container .box .content p {
+        font-size: 0.8em;
+    }
+    .container .box .content a {
+        font-size: 0.8em;
+        padding: 5px;
+    }
+
+    /*Pour la première box*/
+    .container .box .content1 h2 {
+        font-size: 1.6em;
+        top: -90px;
+        left: -50px;
+    }
+    .container .box .content1 a {
+        font-size: 0.8em;
+        padding: 5px;
+        top: 110px;
+        left: -45px;
+    }
+}
+
+
+
+
+
 
 /* Styles pour les écrans de taille (smartphones Android)*/
 @media all and (max-width: 425px) {
@@ -145,17 +220,14 @@
     .container .box {
         width: 200px;
         height: 275px;
-        top: 150px;
+        margin: 20px;
+        top: 175px;
     }
-
     .container .box .content h2 {
         font-size: 1.3em;
-        margin-bottom: 10px;
     }
     .container .box .content p {
         font-size: 0.7em;
-        margin-bottom: 10px;
-        line-height: 1.4em;
     }
     .container .box .content a {
         font-size: 0.7em;
@@ -165,7 +237,6 @@
     /*Pour la première box*/
     .container .box .content1 h2 {
         font-size: 1.3em;
-        margin-bottom: 10px;
         top: -80px;
         left: -30px;
     }

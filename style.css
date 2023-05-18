@@ -1,3 +1,13 @@
+body {
+    background: black;
+}
+
+h1 {
+    position: absolute;
+    color: white;
+    font-size: 75px;
+}
+
 a {
     margin: 0;
     padding: 0;
@@ -6,8 +16,8 @@ a {
     font-weight: bold;
 }
 
-body {
-    background: black;
+.print {
+    display: none;
 }
 
 footer {
@@ -25,8 +35,41 @@ footer p:not(:last-child) {
     margin-right: 10px;
 }
 
-h1 {
-    position: absolute;
-    color: white;
-    font-size: 75px;
+
+/* Ordinateur portable L - 1440px*/
+@media all and (max-width: 1440px) {
+    h1 {
+        font-size: 4em; /* Ajustez la valeur en fonction de la taille souhaitée */
+    }
+    footer {
+        top: 700px;
+        left: 1230px;
+    }
+}
+
+/* Ordinateur portable - 1024px*/
+@media all and (max-width: 1024px) {
+    h1 {
+        font-size: 3em; /* Ajustez la valeur en fonction de la taille souhaitée */
+    }
+    footer {
+        top: 700px;
+        left: 820px;
+    }
+}
+
+/* Styles pour les écrans de taille (smartphones Android et tablette)*/
+@media all and (max-width: 768px) {
+    h1 {
+        font-size: 2em; /* Ajustez la valeur en fonction de la taille souhaitée */
+        text-align: center;
+        display: flex;
+        top: 70px;
+    }
+    footer {
+        display: none;
+    }
+    .print {
+        display: inline;
+    }
 }
