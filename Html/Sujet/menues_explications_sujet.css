@@ -122,9 +122,6 @@
     height: 100%; /* Utiliser toute la hauteur de la boîte pour le contenu */
     overflow: auto;
     max-height: 100%; /* Définir une hauteur maximale pour le contenu défilable */
-
-     /* Cacher la barre de défilement */
-     scrollbar-color: transparent; /* Couleur de la barre de défilement et de son fond */
 }
 
 .container_explications_fonctions .box:nth-child(1) .content_explications_fonctions::-webkit-scrollbar,
