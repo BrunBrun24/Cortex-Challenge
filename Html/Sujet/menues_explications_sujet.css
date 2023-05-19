@@ -138,11 +138,6 @@
     background: linear-gradient(45deg,rgb(255, 0, 255),rgb(38, 0, 255)); /* Couleur de la barre de défilement */
     border-radius: 15px;
 }
-
-.container_explications_fonctions .box:nth-child(1) .content_explications_fonctions::-webkit-scrollbar-track,
-.container_explications_fonctions .box:nth-child(2) .content_explications_fonctions::-webkit-scrollbar-track {
-    background-color: transparent; /* Couleur de fond de la barre de défilement */
-}
 /*Fin Bar*/
 
 
