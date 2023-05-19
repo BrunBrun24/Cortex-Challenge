@@ -22,8 +22,8 @@ footer p:not(:last-child) {
     }
 }
 
-/* Styles pour les écrans de taille (smartphones Android)*/
-@media all and (max-width: 768px) {
+/* smartphones Android, Tablette et Ordinateur portable - 1024px*/
+@media all and (max-width: 1024px) {
     footer {
         display: none;
     }

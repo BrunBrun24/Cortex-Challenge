@@ -40,6 +40,21 @@ footer p:not(:last-child) {
 
 
 
+/*Ordinateur portable - 1024px*/
+@media all and (max-width: 1024px) {
+    h3 {
+        font-size: 1.6em; /* Ajustez la valeur en fonction de la taille souhaitée */
+        margin: 10px;
+    }
+    #margin {
+        margin-top: 0px;
+        margin-bottom: 10px;
+    }
+    footer {
+        display: none;
+    }
+}
+
 
 
 /*tablette 768px*/

@@ -1,47 +1,53 @@
-def calcul(defis):
+def calcul(donnees):
     """
-    Trouve les ensembles de nombres dans la liste 'numbers' qui s'additionnent pour obtenir le résultat 'result'.
-    Returns:
-        list: Une liste de listes contenant les ensembles de nombres qui s'additionnent pour obtenir le résultat cible.
-    """
-    result = defis["result"]
-    numbers = defis["numbers"]
-    res = []
-    numbers.sort()  # Trie les nombres pour obtenir les combinaisons dans l'ordre croissant
-    trouver_combinaisons_recursif(0, result, [], numbers, res)  # Appel initial de la fonction auxiliaire avec un total cible de 'result'
-    
-    output = []
-    for solution in res:
-        solution.sort()
-        output.append('+'.join([str(x) for x in solution]))
-    
-    return output
+    Fonction qui trouve toutes les combinaisons de nombres dans la liste qui, additionnées ensemble, donnent le nombre cible.
 
-def trouver_combinaisons_recursif(start, target, path, numbers, res):
-    """
-    Fonction auxiliaire pour effectuer un parcours récursif avec retour en arrière.
-    
     Args:
-        start (int): L'indice de départ pour le parcours.
-        target (int): La somme cible à atteindre.
-        path (list): La liste des nombres sélectionnés jusqu'à présent.
-        numbers (list): La liste de nombres.
-        res (list): La liste des résultats.
+        nombre_cible (int): Le nombre cible à atteindre.
+        nombres (list): Une liste de nombres.
+
+    Returns:
+        list: Une liste de toutes les combinaisons trouvées. Si aucune combinaison n'est trouvée, retourne une liste vide.
     """
-    if target == 0:
-        # Si la somme cible est atteinte, ajouter la liste de nombres dans les résultats
-        res.append(path[:])
-    elif target < 0:
-        # Si la somme cible est dépassée, revenir en arrière
+    nombre_cible = donnees["result"]
+    nombres = donnees["numbers"]
+    combinaisons = []
+    trouver_combinaisons_recursif(donnees, nombre_cible, nombres, 0, [], combinaisons)
+
+    # Convertir les listes de nombres en chaînes de caractères avec des "+" comme séparateurs
+    combinaisons = ['+'.join(map(str, combinaison)) for combinaison in combinaisons]
+
+    return combinaisons
+
+def trouver_combinaisons_recursif(donnees, nombre_cible, nombres, index, combinaison_actuelle, combinaisons):
+    """
+    Fonction récursive qui trouve toutes les combinaisons de nombres dans la liste qui, additionnés ensemble, donnent le nombre cible.
+
+    Args:
+        nombre_cible (int): Le nombre cible à atteindre.
+        nombres (list): Une liste de nombres.
+        index (int): L'index actuel pour parcourir la liste de nombres.
+        combinaison_actuelle (list): La combinaison actuelle en cours de construction.
+        combinaisons (list): La liste de toutes les combinaisons trouvées jusqu'à présent.
+
+    Returns:
+        None
+    """
+    # Cas de base : si le nombre cible est atteint, ajouter la combinaison actuelle à la liste de combinaisons
+    if nombre_cible == 0:
+        combinaisons.append(list(combinaison_actuelle))
         return
-    else:
-        for i in range(start, len(numbers)):
-            # Parcourir la liste de nombres à partir de l'indice 'start'
-            if i > start and numbers[i] == numbers[i-1]:
-                # Ignorer les doublons pour éviter de répéter les nombres dans la combinaison
-                continue
-            if numbers[i] not in path:
-                # Ignorer les nombres qui sont déjà dans la combinaison
-                path.append(numbers[i])
-                trouver_combinaisons_recursif(i + 1, target - numbers[i], path, numbers, res)  # Appel récursif avec le nouveau total cible
-                path.pop()  # Retour en arrière (trouver_combinaisons_recursif)
+    # Cas de base : si on a parcouru tous les nombres, retourner
+    elif index == len(nombres):
+        return
+
+    # Ne pas inclure le nombre actuel dans la combinaison
+    trouver_combinaisons_recursif(donnees, nombre_cible, nombres, index + 1, combinaison_actuelle, combinaisons)
+
+    # Inclure le nombre actuel dans la combinaison
+    if nombre_cible >= nombres[index]:
+        # Ajouter le nombre actuel à la combinaison
+        combinaison_actuelle.append(nombres[index])
+        trouver_combinaisons_recursif(donnees, nombre_cible - nombres[index], nombres, index + 1, combinaison_actuelle, combinaisons)
+        # Retirer le nombre actuel de la combinaison pour explorer d'autres possibilités
+        combinaison_actuelle.pop()

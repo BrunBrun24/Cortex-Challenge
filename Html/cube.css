@@ -399,7 +399,88 @@
     }
 }
 
-/* Styles pour les écrans de taille (smartphones Android et tablette)*/
+/*Ordinateur portable - 1024px*/
+@media all and (max-width: 1024px) {
+    /*Taille de toutes les boxs*/
+    .cube1 {
+        width: 90px;
+        height: 90px;
+        top: -450px; /* Modifier la valeur pour ajuster la position verticale */
+        left: 50px; /* Modifier la valeur pour ajuster la position horizontale */
+    }
+    .cube1 div span {
+        transform: rotateY(calc(90deg * var(--i))) translateZ(45px);
+    }
+    .top1 {
+        width: 126px;
+        height: 126px;
+        transform: rotateX(90deg) translateZ(45px);
+    }
+    .top1::before {
+        width: 90px;
+        height: 90px;
+        transform: translateZ(-120px);
+    }
+    .cube2 {
+        width: 90px;
+        height: 90px;
+        top: -550px; /* Modifier la valeur pour ajuster la position verticale */
+        left: 880px; /* Modifier la valeur pour ajuster la position horizontale */
+    }
+    .cube2 div span {
+        transform: rotateY(calc(90deg * var(--i))) translateZ(45px);
+    }
+    .top2 {
+        width: 126px;
+        height: 126px;
+        transform: rotateX(90deg) translateZ(45px);
+    }
+    .top2::before {
+        width: 90px;
+        height: 90px;
+        transform: translateZ(-120px);
+    }
+    .cube3 {
+        width: 90px;
+        height: 90px;
+        top: -225px; /* Modifier la valeur pour ajuster la position verticale */
+        left: 50px; /* Modifier la valeur pour ajuster la position horizontale */
+    }
+    .cube3 div span {
+        transform: rotateY(calc(90deg * var(--i))) translateZ(45px);
+    }
+    .top3 {
+        width: 126px;
+        height: 126px;
+        transform: rotateX(90deg) translateZ(45px);
+    }
+    .top3::before {
+        width: 90px;
+        height: 90px;
+        transform: translateZ(-120px);
+    }
+    .cube4 {
+        width: 90px;
+        height: 90px;
+        top: -325px; /* Modifier la valeur pour ajuster la position verticale */
+        left: 880px; /* Modifier la valeur pour ajuster la position horizontale */
+    }
+    .cube4 div span {
+        transform: rotateY(calc(90deg * var(--i))) translateZ(45px);
+    }
+    .top4 {
+        width: 126px;
+        height: 126px;
+        transform: rotateX(90deg) translateZ(45px);
+    }
+    .top4::before {
+        width: 90px;
+        height: 90px;
+        transform: translateZ(-120px);
+    }
+}
+
+/* smartphones Android, Tablette*/
 @media all and (max-width: 768px) {
     .cube1,
     .cube2,

@@ -1,7 +1,7 @@
 import math
 import heapq
 
-def labyrinthe2(donnees):
+def labyrinthe(donnees):
     labyrinth = donnees["map"]
     directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]  # Haut, Bas, Gauche, Droite
     start_pos = None

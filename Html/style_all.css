@@ -65,8 +65,8 @@ h1 {
     }
 }
 
-/*tablette 768px*/
-@media all and (max-width: 768px) {
+/*tablette 768px et Ordinateur portable - 1024px*/
+@media all and (max-width: 1024px) {
     h1 {
         font-size: 2em; /* Ajustez la valeur en fonction de la taille souhaitée */
         text-align: center;

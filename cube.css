@@ -423,8 +423,8 @@
     }
 }
 
-/* Styles pour les écrans de taille (smartphones Android et tablette)*/
-@media all and (max-width: 768px) {
+/* smartphones Android, Tablette et Ordinateur portable - 1024px*/
+@media all and (max-width: 1024px) {
     .cube1,
     .cube2,
     .cube3,

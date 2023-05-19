@@ -4,7 +4,7 @@
     <title>Fonctions</title>
     <link rel="stylesheet" type="text/css" href="../style_all.css">
     <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet" type="text/css" href="../menues.css">
+    <link rel="stylesheet" type="text/css" href="../menues_all.css">
     <link rel="stylesheet" type="text/css" href="../cube.css">
     <link rel="stylesheet" type="text/css" href="menues_explications_fonctions.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -341,18 +341,16 @@ def trouver_combinaisons_recursif(start, target, path, numbers, res):
             <div class="content_explications_fonctions">
                 <h2>Code PYTHON</h2>
                     <pre>
+from collections import Counter
+
 def frequence(defis):
     """
     :return: Le mot le moins représenté (str)
     """
-    word_count = {}
+    word_count = Counter()
     for ligne in defis["words"]:
-        for word in ligne:
-            if word in word_count:
-                word_count[word] += 1
-            else:
-                word_count[word] = 1
-        
+        word_count.update(ligne)
+    
     return min(word_count, key=word_count.get)
                 </pre>
             </div>
