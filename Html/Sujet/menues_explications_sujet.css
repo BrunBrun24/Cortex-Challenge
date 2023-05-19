@@ -81,7 +81,7 @@
 }
 
 .container_explications_fonctions .box .content_explications_fonctions h2 {
-    font-size: 2em;
+    font-size: 1.5em;
     color: white;
     margin-bottom: 50px;
     text-align: center;
@@ -106,7 +106,7 @@
 /*Changement de la taille des boîtes*/
 .container_explications_fonctions .box:nth-child(1) {
     width: 500px;
-    height: 650px;
+    height: 550px;
 }
 .container_explications_fonctions .box:nth-child(2) {
     width: 410px;
@@ -227,10 +227,13 @@
     }
     /*Changement des taille de la police*/
     .container_explications_fonctions .box .content_explications_fonctions h2 {
-        font-size: 1.3em;
+        font-size: 1em;
+    }
+    .container_explications_fonctions .box .content_explications_fonctions h4 {
+        font-size: 0.85em;
     }
     .container_explications_fonctions .box .content_explications_fonctions pre,
-    .container_explications_fonctions .box .content_explications_fonctions p {
+    .container_explications_fonctions .box .content_explications_fonctions li {
         font-size: 0.7em;
     }
 }

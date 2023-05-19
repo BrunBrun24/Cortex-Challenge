@@ -11,7 +11,7 @@ h3 {
 footer {
     display: flex;
     position: absolute;
-    top: 0px;
+    top: 8100px;
     left: 1700px;
 }
 
@@ -32,7 +32,7 @@ footer p:not(:last-child) {
         margin: 10px;
     }
     footer {
-        top: 7300px;
+        top: 7900px;
         left: 1210px;
     }
 }
