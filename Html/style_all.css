@@ -10,21 +10,6 @@ body {
     background: black;
 }
 
-/* Bar */
-body::-webkit-scrollbar {
-    width: 10px;
-}
-
-body::-webkit-scrollbar-track {
-    background-color: black;
-}
-
-body::-webkit-scrollbar-thumb {
-    background: linear-gradient(315deg,white,black);
-    border-radius: 15px;
-}
-/*Fin Bar*/
-
 .container {
     display: flex;
     flex-wrap: wrap;
@@ -96,6 +81,7 @@ h1 {
 }
 
 @media screen and (-webkit-min-device-pixel-ratio:0) {
+    /*Bar*/
     body::-webkit-scrollbar {
       width: 10px;
     }
@@ -108,5 +94,6 @@ h1 {
       background: linear-gradient(315deg, white, black);
       border-radius: 15px;
     }
+    /*Fin Bar*/
   }
   
