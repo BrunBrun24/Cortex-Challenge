@@ -86,8 +86,16 @@
     margin-bottom: 50px;
 }
 
-.container_explications_fonctions .box .content_explications_fonctions pre,
 .container_explications_fonctions .box .content_explications_fonctions p {
+    font-size: 1.1em;
+    color: white;
+    margin: 20px 20px;
+    margin-bottom: 10px;
+    line-height: 1.4em;
+    text-align: justify;
+}
+
+.container_explications_fonctions .box .content_explications_fonctions pre {
     font-size: 1.1em;
     color: white;
     margin-bottom: 10px;

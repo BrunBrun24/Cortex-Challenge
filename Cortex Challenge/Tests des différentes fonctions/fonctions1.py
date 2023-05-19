@@ -161,7 +161,6 @@ def manquant1(donnees):
     Fonction permettant de trouver le premier nombre manquant dans une liste de nombres.
     :return: int: Le premier nombre manquant dans la liste de nombres.
     """
-    couleur = None # Couleur disponible
     list_numbers_color1 = []
     list_numbers_color2 = []
     # Permet de récupérer une couleur disponible et de les mettre dans "list_color"

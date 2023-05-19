@@ -97,12 +97,16 @@
             <div class="content_explications_fonctions">
                 <h2>Explication de la fonction</h2>
                 <p>
-                    Cette fonction est intéressante d'un point de vue complexité car elle utilise une double boucle for pour comparer chaque couleur dans la liste
-                    avec les couleurs dans le dictionnaire de référence. La complexité de cette fonction est donc de O(n*m), où n est la longueur de la liste de
-                    couleurs dans donnee et m est la taille du dictionnaire de référence.
+                    La première fonction qu'on a créée utilise des listes pour stocker les couleurs en français et en anglais, ce qui permet d'accéder directement aux
+                    positions des éléments pour les comparaisons. Elle présente une complexité temporelle d'environ 1.83e-05 secondes.
                     <br><br>
-                    Cependant, la complexité réelle de la fonction dépendra de la taille du dictionnaire dict. Si la taille de ce dictionnaire est petite, la
-                    complexité de la fonction sera également petite. Si la taille du dictionnaire dict augmente, la complexité de la fonction augmentera également.
+                    En revanche, la deuxième fonction qu'on a créée utilise un dictionnaire inversé pour stocker les couleurs et présente une complexité temporelle
+                    d'environ 4.41e-05 secondes.
+                    <br><br>
+                    Nous avons constaté que les dictionnaires impliquent des recherches plus coûteuses pour trouver les correspondances entre les clés et les valeurs
+                    par rapport aux listes. Par conséquent, nous avons choisi de garder la première fonction en raison de sa complexité temporelle plus faible,
+                    ce qui permet une exécution plus rapide.
+
                 </p>
             </div>
         </div>
@@ -149,25 +153,19 @@ def couleur(donnees):
             <div class="content_explications_fonctions">
                 <h2>Explication de la fonction</h2>
                 <p>
-                    La fonction reflexion prend en entrée un dictionnaire donnee représentant une map de jeu et renvoie la valeur de la case atteinte par la lumière
-                    provenant de la lampe "L", en suivant les règles du jeu.
-                    La fonction commence par chercher la position de la lampe "L" dans la map en parcourant chaque ligne et colonne de la map jusqu'à trouver la lampe.
-                    Si la lampe est trouvée, la fonction appelle la fonction deplacement_lumiere en passant les coordonnées de la lampe et la direction dans laquelle elle pointe.
+                    La première fonction que l'on a créee utilise une approche récursive pour parcourir une carte en suivant un faisceau lumineux.
+                    Sa complexité temporelle dépend de la taille de la carte et du chemin parcouru.
+                    Dans le pire des cas, si le faisceau lumineux traverse toute la carte sans rencontrer d'arrêt,
+                    la complexité peut être linéaire par rapport à la taille de la carte.
                     <br><br>
-                    La fonction deplacement_lumiere utilise une boucle while pour déplacer la lumière dans la direction donnée, en vérifiant si la case actuelle est
-                    un entier. Si la case est un entier, la fonction renvoie la valeur de cette case. Sinon, la fonction appelle la fonction verifier_obstacle pour
-                    obtenir la direction à suivre en fonction de la direction actuelle et de l'obstacle présent dans la case. Ensuite, les coordonnées de la lumière
-                    sont mises à jour en fonction de la direction obtenue.
+                    La seconde fonction applique un raisonnement sur un dessin en utilisant différentes méthodes pour vérifier s'il y a une solution possible.
+                    Elle effectue des opérations de décalage, inversion et recherche d'égalité.
+                    La complexité de cette fonction dépend de la taille du dessin et du nombre de pièces à comparer.
+                    Dans le pire des cas, si toutes les opérations doivent être effectuées, la complexité peut être quadratique.
                     <br><br>
-                    La fonction verifier_obstacle prend en entrée la position actuelle de la lumière et sa direction, vérifie si la case contient un obstacle "/" ou
-                    "", et renvoie la nouvelle direction en fonction de l'obstacle. Elle utilise un dictionnaire de correspondance pour déterminer la nouvelle direction.
-                    <br><br>
-                    Du point de vue de la complexité, la fonction reflexion parcourt chaque ligne et colonne de la map, ce qui prend un temps proportionnel au nombre 
-                    total de cases dans la map. La fonction deplacement_lumiere déplace la lumière dans la direction donnée jusqu'à ce qu'elle atteigne une case entière,
-                    donc son temps d'exécution dépend du nombre de cases traversées par la lumière avant d'atteindre une case entière. Dans le pire des cas, si la lumière
-                    suit un chemin en boucle infinie, la fonction peut ne jamais terminer. La fonction verifier_obstacle utilise un dictionnaire de correspondance pour
-                    déterminer la nouvelle direction, ce qui a une complexité constante. Dans l'ensemble, la complexité de ces fonctions dépendent de la taille de la
-                    map et du chemin emprunté par la lumière, ce qui peut varier considérablement d'une instance du jeu à l'autre.
+                    Nous avons choisi la première fonction au lieu de la seconde car sa complexité est généralement plus basse,
+                    en particulier lorsque la carte est grande et que le parcours est court.
+                    La récursivité permet d'explorer rapidement le chemin du faisceau lumineux jusqu'à ce qu'une condition d'arrêt soit rencontrée.
                 </p>
             </div>
         </div>
@@ -177,8 +175,8 @@ def couleur(donnees):
             <div class="content_explications_fonctions">
                 <h2>Code PYTHON</h2>
                     <pre>
-def reflexion(defis):
-    return parcours_lampe_torche(defis, "haut", 5, 2)
+def reflexion(donnees):
+    return parcours_lampe_torche(donnees, "haut", 5, 2)
 
 
 def parcours_lampe_torche(donnees, direction, ligne, colonne):
@@ -247,21 +245,22 @@ def si_miroir(donnees, direction, ligne, colonne):
             <div class="content_explications_fonctions">
                 <h2>Explication de la fonction</h2>
                 <p>
-                    Cette fonction permet de trouver tous les ensembles de nombres dans la liste 'numbers' qui s'additionnent pour obtenir le résultat 'result'.
+                    La première fonction qu'on a créer utilise une approche récursive pour trouver toutes les combinaisons de nombres
+                    dans une liste qui s'additionnent pour obtenir un nombre cible. Elle convertit ensuite ces combinaisons en chaînes
+                    de caractères avec des "+" comme séparateurs. Elle présente une complexité temporelle d'environ 1.42e-05 secondes.
                     <br><br>
-                    Elle utilise une approche récursive avec retour en arrière pour parcourir toutes les combinaisons possibles de nombres. La liste de nombres
-                    est triée dans l'ordre croissant pour obtenir les combinaisons dans l'ordre croissant également. Les doublons sont ignorés pour éviter de
-                    répéter les nombres dans la combinaison. Les nombres qui sont déjà dans la combinaison sont également ignorés.
+                    La seconde fonction trie d'abord la liste de nombres dans l'ordre croissant, puis utilise une fonction auxiliaire
+                    récursive pour trouver les ensembles de nombres qui s'additionnent pour obtenir le résultat cible. Elle effectue
+                    également une conversion des ensembles de nombres en chaînes de caractères avec des "+" comme séparateurs.
+                    Elle présente une complexité temporelle d'environ 2.35e-05 secondes.
                     <br><br>
-                    La fonction auxiliaire 'trouver_combinaisons_recursif' est appelée initialement avec un total cible de 'result' et parcourt la liste de nombres
-                    à partir de l'indice 'start'. Si la somme cible est atteinte, la liste de nombres est ajoutée aux résultats. Si la somme cible est dépassée, la
-                    fonction retourne. Sinon, elle continue à parcourir la liste de nombres et à appeler récursivement la fonction avec le nouveau total cible.
+                    La première fonction a été choisie en raison de son approche plus directe et de sa clarté.
+                    Elle gère la conversion des combinaisons en chaînes de caractères directement dans la fonction principale, ce qui
+                    simplifie le code et évite des traitements supplémentaires. La seconde fonction nécessite un tri préalable des
+                    nombres et utilise une fonction auxiliaire, ce qui ajoute de la complexité et peut rendre le code moins intuitif.
                     <br><br>
-                    Le résultat est ensuite trié et formaté en chaînes de caractères contenant les nombres séparés par des signes plus (+).
-                    <br><br>
-                    Du point de vue de la complexité, cette fonction a une complexité exponentielle O(2^n) dans le pire des cas, car elle parcourt toutes les
-                    combinaisons possibles de nombres dans la liste. Cependant, elle utilise des techniques d'optimisation telles que le tri et l'ignorance des
-                    doublons pour améliorer les performances.
+                    En conclusion, la première fonction a été privilégiée en raison de sa simplicité et de sa clarté, offrant ainsi une
+                    solution plus directe au problème donné.
                 </p>
             </div>
         </div>
@@ -271,9 +270,9 @@ def si_miroir(donnees, direction, ligne, colonne):
             <div class="content_explications_fonctions">
                 <h2>Code PYTHON</h2>
                     <pre>
-def calcul(defis):
-    result = defis["result"]
-    numbers = defis["numbers"]
+def calcul(donnees):
+    result = donnees["result"]
+    numbers = donnees["numbers"]
     res = []
     numbers.sort()  # Trie les nombres pour obtenir les combinaisons dans l'ordre croissant
     trouver_combinaisons_recursif(0, result, [], numbers, res)  # Appel initial de la fonction auxiliaire avec un total cible de 'result'
@@ -317,21 +316,25 @@ def trouver_combinaisons_recursif(start, target, path, numbers, res):
             <div class="content_explications_fonctions">
                 <h2>Explication de la fonction</h2>
                 <p>
-                    La fonction "frequence" prend en entrée un dictionnaire "defis" contenant une liste de mots et retourne le mot le moins représenté dans cette liste.
+                    La 1ère fonction que l'on a créer utilise un dictionnaire pour stocker les occurrences de chaque mot.
+                    Elle itère sur chaque mot de la liste de mots et met à jour le dictionnaire des occurrences.
+                    Ensuite, elle recherche le mot ayant le nombre d'occurrences le plus faible en parcourant le dictionnaire.
                     <br><br>
-                    Elle initialise un dictionnaire vide appelé "word_count" pour stocker le nombre d'occurrences de chaque mot. Ensuite, elle parcourt chaque ligne dans
-                    la liste de mots du dictionnaire "defis" et pour chaque mot dans chaque ligne, elle met à jour le compte du mot dans le dictionnaire "word_count".
-                    Si le mot existe déjà dans le dictionnaire, son compteur est augmenté de 1. Sinon, le mot est ajouté au dictionnaire avec un compteur initialisé à 1.
+                    La seconde fonction utilise le module Counter pour compter les occurrences de chaque mot dans la liste de mots fournie.
+                    Elle retourne ensuite le mot le moins représenté en utilisant la fonction min avec la clé word_count.get.
                     <br><br>
-                    Enfin, la fonction utilise la méthode "min" avec la clé "word_count.get" pour trouver le mot ayant la valeur minimale dans le dictionnaire "word_count".
-                    Ce mot est renvoyé en tant que résultat.
+                    La seconde fonction a été choisie en raison de son utilisation du module Counter qui simplifie le comptage des occurrences des mots.
+                    Cela permet une implémentation plus concise et claire de la fonction.
+                    De plus, l'utilisation de la fonction min avec la clé word_count.get permet de trouver directement le mot le moins représenté.
                     <br><br>
-                    La complexité de cette fonction dépend du nombre total de mots dans la liste "defis['words']".
-                    Supposons que cette liste contienne "n" mots au total. Dans le pire des cas, chaque mot sera unique, ce qui signifie que le dictionnaire "word_count"
-                    aura "n" clés différentes. La mise à jour du dictionnaire nécessite une recherche de clé qui a une complexité moyenne de O(1) en utilisant une table
-                    de hachage. Par conséquent, la boucle principale de la fonction a une complexité de O(n). Ensuite, la recherche du mot ayant la valeur minimale dans le
-                    dictionnaire se fait en parcourant toutes les clés, ce qui a une complexité de O(n). En conclusion, la complexité totale de la fonction est de O(n), où
-                    "n" est le nombre total de mots dans la liste "defis['words']".
+                    En termes de performance, la seconde fonction a une complexité temporelle d'environ 1.01e-04 secondes,
+                    tandis que la 1ère fonction a une complexité temporelle d'environ 1.91e-04 secondes.
+                    La seconde fonction est légèrement plus efficace en raison de l'utilisation du module Counter,
+                    qui est optimisé pour le comptage des occurrences.
+                    <br><br>
+                    En conclusion, la seconde fonction a été choisie en raison de son implémentation plus concise, 
+                    claire et efficace grâce à l'utilisation du module Counter.
+                    Elle offre une solution directe et optimisée pour trouver le mot le moins représenté dans la liste de mots.
                 </p>
             </div>
         </div>
@@ -343,12 +346,12 @@ def trouver_combinaisons_recursif(start, target, path, numbers, res):
                     <pre>
 from collections import Counter
 
-def frequence(defis):
+def frequence(donnees):
     """
     :return: Le mot le moins représenté (str)
     """
     word_count = Counter()
-    for ligne in defis["words"]:
+    for ligne in donnees["words"]:
         word_count.update(ligne)
     
     return min(word_count, key=word_count.get)
@@ -365,14 +368,18 @@ def frequence(defis):
             <div class="content_explications_fonctions">
                 <h2>Explication de la fonction</h2>
                 <p>
-                    Cette fonction permet de trouver le premier nombre manquant dans une liste de nombres qui sont codés sous forme de chaînes de caractères.
+                    En comparant les deux fonctions, elles effectuent essentiellement les mêmes opérations pour trouver le premier nombre manquant dans une liste de nombres.
+                    La différence réside principalement dans les structures de données utilisées :
+                    la première fonction utilise des listes, tandis que la deuxième fonction utilise des ensembles (sets).
                     <br><br>
-                    Elle commence par séparer les nombres en fonction de leur couleur (identifiée par la dernière lettre de la chaîne), en les ajoutant à deux
-                    ensembles distincts. Ensuite, elle trie ces ensembles dans l'ordre croissant. Enfin, elle parcourt chaque ensemble pour trouver le premier
-                    nombre manquant, c'est-à-dire le premier nombre qui n'a pas un nombre suivant immédiat dans l'ensemble.
+                    La complexité temporelle des deux fonctions est similaire, car elles impliquent toutes deux le tri des ensembles ou des listes,
+                    suivi d'une recherche linéaire du premier nombre manquant. Dans le pire des cas, si tous les nombres de la liste sont présents et doivent être parcourus,
+                    la complexité est linéaire.
                     <br><br>
-                    La complexité de cette fonction est de l'ordre O(nlogn) pour trier les ensembles de nombres, plus deux boucles for qui parcourent les ensembles,
-                    chacune ayant une complexité de l'ordre de O(n). Par conséquent, la complexité totale de la fonction est de l'ordre de O(nlogn).
+                    En conclusion, la 2nde fonction a été choisie en raison de son utilisation d'ensembles (set),
+                    ce qui permet d'éliminer automatiquement les doublons dans la liste de nombres.
+                    Cela simplifie l'implémentation et améliore la lisibilité du code.
+                    Les performances des deux fonctions sont comparables, mais la 2nde fonction offre une solution légèrement plus efficace grâce à l'utilisation des ensembles.
                 </p>
             </div>
         </div>
@@ -383,7 +390,6 @@ def frequence(defis):
                 <h2>Code PYTHON</h2>
                     <pre>
 def manquant(donnees):
-    list_color = [] # List des couleurs disponible
     list_numbers_color1 = []
     list_numbers_color2 = []
     # Permet de récupérer les couleurs disponible et de les mettre dans "list_color"
@@ -426,26 +432,15 @@ def manquant(donnees):
             <div class="content_explications_fonctions">
                 <h2>Explication de la fonction</h2>
                 <p>
-                    La fonction labyrinthe permet de parcourir un labyrinthe à partir de la position de départ et de renvoyer le numéro de la case atteinte selon les
-                    règles spécifiées. Elle utilise une fonction auxiliaire appelée parcours_labyrinthe pour effectuer le parcours récursif du labyrinthe.
+                    La seconde fonction que l'on a créée utilise une file de priorité (heap) pour implémenter l'algorithme de recherche A* dans un labyrinthe.
+                    Sa complexité temporelle dépend de la taille du labyrinthe et du nombre de cases visitées. Dans le pire des cas,
+                    si toutes les cases du labyrinthe doivent être visitées, la complexité peut être exponentielle.
                     <br><br>
-                    La fonction labyrinthe recherche d'abord les coordonnées de la case de départ dans le labyrinthe. Ensuite, elle initialise une file d'attente avec
-                    une priorité basée sur la distance. Elle explore les cases adjacentes dans les directions haut, bas, gauche et droite, en évitant les cases marquées
-                    comme obstacles ou déjà visitées. L'algorithme utilise une heuristique pour estimer la distance entre la position actuelle et les cases d'arrivée
-                    possibles. Il continue d'explorer les cases jusqu'à ce qu'il atteigne l'une des cases d'arrivée, auquel cas il renvoie le numéro de cette case.
-                    Si aucun chemin jusqu'à la sortie n'est trouvé, une erreur est levée.
+                    La première fonction utilise également une file de priorité (heap) et implémente également l'algorithme A* pour la recherche dans un labyrinthe.
+                    Sa complexité temporelle est similaire à celle de la première fonction, dépendant de la taille du labyrinthe et du nombre de cases visitées.
                     <br><br>
-                    La fonction is_valid_position vérifie si une position donnée est valide dans le labyrinthe, en tenant compte des limites du labyrinthe et des cases
-                    marquées comme obstacles.
-                    <br><br>
-                    La fonction heuristic calcule une heuristique basée sur la distance de Manhattan entre une position donnée et les cases d'arrivée possibles.
-                    Elle renvoie la plus petite distance parmi toutes les cases d'arrivée.
-                    <br><br>
-                    En utilisant les données fournies, la fonction labyrinthe est appelée avec les informations du labyrinthe. Le numéro de la case atteinte est
-                    ensuite affiché.
-                    <br><br>
-                    La fonction utilise une approche récursive pour parcourir le labyrinthe, ce qui peut être efficace en termes de mémoire mais peut prendre du
-                    temps pour des labyrinthes très grands ou complexes.
+                    J'ai choisi la première seconde au lieu de la première car les deux fonctions ont une complexité temporelle similaire et réalisent la même tâche.
+                    Par conséquent, la différence de performance entre les deux fonctions n'est pas significative.
                 </p>
             </div>
         </div>
@@ -458,7 +453,7 @@ def manquant(donnees):
 import math
 import heapq
 
-def labyrinthe2(donnees):
+def labyrinthe(donnees):
     labyrinth = donnees["map"]
     directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]  # Haut, Bas, Gauche, Droite
     start_pos = None
@@ -525,21 +520,22 @@ def heuristic(position, goal_pos):
             <div class="content_explications_fonctions">
                 <h2>Explication de la fonction</h2>
                 <p>
-                    La fonction doublon prend en entrée un dictionnaire contenant une clé "words" qui est une liste de listes de mots et cherche un mot en double
-                    dans cette liste.
+                    La première fonction utilise plusieurs étapes, notamment la création de plusieurs listes pour stocker les mots,
+                    la suppression des répétitions, et l'utilisation d'un dictionnaire pour compter les occurrences de chaque mot.
+                    Elle vérifie également s'il existe un mot avec une valeur de compteur égale à 2 pour trouver un mot en double.
+                    De plus elle présente une complexité temporelle d'environ 1.96e-04 secondes.
                     <br><br>
-                    Pour ce faire, elle utilise un dictionnaire word_count qui va compter le nombre d'occurrences de chaque mot dans la liste words. Si un mot est
-                    déjà présent dans le dictionnaire, on incrémente son compteur, sinon on l'ajoute avec un compteur initialisé à 1.
+                    La seconde fonction utilise un dictionnaire pour compter le nombre d'occurrences de chaque mot dans la liste de mots fournie.
+                    Elle vérifie ensuite s'il existe un mot avec une valeur de compteur égale à 2, indiquant ainsi un mot en double.
+                    Elle présente une complexité temporelle d'environ 4.84e-04 secondes.
                     <br><br>
-                    Ensuite, la fonction parcourt le dictionnaire word_count et retourne le premier mot qui a été compté exactement deux fois, car cela signifie 
-                    qu'il est présent en double dans la liste words.
+                    La seconde fonction a été choisie en raison de son implémentation plus concise, claire et efficace. 
+                    Elle utilise simplement un dictionnaire pour effectuer le comptage des occurrences de chaque mot, évitant ainsi des
+                    itérations supplémentaires et des traitements inutiles. En revanche, la première fonction nécessite des étapes supplémentaires
+                    telles que la création de plusieurs listes et une itération supplémentaire pour obtenir le résultat souhaité.
                     <br><br>
-                    Si aucun mot n'a été trouvé en double, la fonction retourne un message indiquant qu'il n'y a pas de mot en double.
-                    <br><br>
-                    D'un point de vue de la complexité, cette fonction est intéressante car elle utilise un dictionnaire pour compter le nombre d'occurrences de
-                    chaque mot. La recherche et l'insertion dans un dictionnaire ont une complexité en moyenne O(1), ce qui signifie que la complexité totale de
-                    cette fonction est de O(n), où n est le nombre total de mots dans la liste words. Cette complexité est optimale pour cette tâche, car il est
-                    nécessaire de parcourir tous les mots au moins une fois pour déterminer s'il y en a un en double.
+                    En conclusion, la seconde fonction a été privilégiée en raison de sa simplicité, de sa clarté et de son efficacité,
+                    offrant ainsi une solution plus directe au problème donné.
                 </p>
             </div>
         </div>
@@ -549,9 +545,9 @@ def heuristic(position, goal_pos):
             <div class="content_explications_fonctions">
                 <h2>Code PYTHON</h2>
                     <pre>
-def doublon(defis):
+def doublon(donnees):
     word_count = {}
-    for ligne in defis["words"]:
+    for ligne in donnees["words"]:
         for word in ligne:
             if word in word_count:
                 word_count[word] += 1
@@ -577,24 +573,21 @@ def doublon(defis):
             <div class="content_explications_fonctions">
                 <h2>Explication de la fonction</h2>
                 <p>
-                    Cette fonction, nommée raisonnement, prend en entrée une donnée représentant un dessin avec des murs (X) et des espaces vides
-                    ("") ainsi qu'une liste de différentes pièces de puzzle. Elle applique un raisonnement sur le dessin en utilisant différentes
-                    méthodes pour vérifier s'il y a une solution possible en cherchant quelle pièce de puzzle correspond au dessin.
+                    Les deux fonctions que l'on a créer, effectuent essentiellement les mêmes opérations pour résoudre un problème de dessin.
+                    Cependant, nous avons opté pour la seconde en raison de sa complexité inférieure par rapport à la première.
                     <br><br>
-                    Pour ce faire, la fonction commence par chercher s'il y a possibilité d'enlever des colonnes à droite du dessin et en enlevant
-                    celles-ci si c'est le cas. Ensuite, elle cherche s'il y a possibilité d'enlever des colonnes à gauche du dessin en inversant
-                    chaque ligne du dessin, en cherchant à nouveau si des colonnes peuvent être enlevées, puis en retournant à nouveau chaque ligne
-                    pour revenir au dessin initial. Ensuite, elle inverse les cases vides ("") avec les cases pleines ("X") dans le dessin pour
-                    permettre une comparaison plus facile avec les différentes pièces de puzzle. Finalement, elle compare le dessin modifié avec
-                    chaque pièce de puzzle pour voir s'il y a une correspondance.
+                    La seconde utilise des listes en compréhension pour filtrer et décaler les lignes du dessin, ce qui permet d'éviter des boucles supplémentaires.
+                    De plus, elle utilise des indices inversés pour retourner horizontalement les lignes du dessin, ce qui réduit la complexité de cette opération.
                     <br><br>
-                    Cette fonction est intéressante d'un point de vue complexité car elle utilise des techniques efficaces pour réduire la taille
-                    du dessin initial en enlevant des colonnes vides et en le retournant horizontalement pour enlever des colonnes supplémentaires.
-                    Elle utilise également une technique d'inversion pour faciliter la comparaison entre le dessin modifié et les différentes pièces
-                    de puzzle. Ces techniques permettent de réduire la taille du dessin initial et donc de diminuer la complexité de la comparaison
-                    avec chaque pièce de puzzle, rendant l'algorithme plus efficace. Cependant, la complexité de cette fonction dépendra de la taille
-                    du dessin initial et du nombre de pièces de puzzle à comparer, ce qui peut rendre l'algorithme coûteux en temps et en espace pour
-                    de grands dessins ou un grand nombre de pièces.
+                    D'autre part, la première utilise des boucles for traditionnelles pour filtrer et décaler les lignes,
+                    ce qui entraîne une complexité légèrement supérieure.
+                    Elle utilise également des boucles for pour retourner horizontalement les lignes, ce qui est légèrement moins efficace que l'approche avec des indices inversés.
+                    <br><br>
+                    La première présente une complexité temporelle d'environ 2.19e-04 secondes.
+                    Tandis ce que la seconde présente une complexité temporelle d'environ 2.16e-04 secondes.
+                    <br><br>
+                    En résumé, nous avons choisi la seconde car elle présente une complexité inférieure et utilise des méthodes plus efficaces
+                    pour réaliser les mêmes opérations que la première.
                 </p>
             </div>
         </div>
@@ -604,9 +597,9 @@ def doublon(defis):
             <div class="content_explications_fonctions">
                 <h2>Code PYTHON</h2>
                 <pre>
-def raisonnement(defis):
-    drawing = defis["drawing"]
-    pieces = defis["pieces"]
+def raisonnement(donnees):
+    drawing = donnees["drawing"]
+    pieces = donnees["pieces"]
 
     # On regarde si il y a possibilité d'enlever des colonnes à droite du dessin
     decalage = decalage_raisonnement(drawing)

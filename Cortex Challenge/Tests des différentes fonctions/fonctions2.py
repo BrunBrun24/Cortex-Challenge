@@ -145,7 +145,6 @@ def manquant2(defis):
     Fonction permettant de trouver le premier nombre manquant dans une liste de nombres.
     :return: int: Le premier nombre manquant dans la liste de nombres.
     """
-    list_color = []  # Utilisation d'un ensemble pour stocker les couleurs disponibles
     list_numbers_color1 = []  # Utilisation d'un ensemble pour stocker les nombres de couleur 1
     list_numbers_color2 = []  # Utilisation d'un ensemble pour stocker les nombres de couleur 2
 
