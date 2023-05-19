@@ -290,7 +290,7 @@ def trouver_combinaisons_recursif(start, target, path, numbers, res):
     if target == 0:
         # Si la somme cible est atteinte, ajouter la liste de nombres dans les résultats
         res.append(path[:])
-    elif target < 0:
+    elif 0 > target:
         # Si la somme cible est dépassée, revenir en arrière
         return
     else:
@@ -498,7 +498,7 @@ def labyrinthe2(donnees):
 
 def is_valid_position(position, labyrinth):
     x, y = position
-    if 0 <= x < len(labyrinth) and 0 <= y < len(labyrinth[0]) and labyrinth[x][y] != "X":
+    if len(labyrinth) > x >= 0 and len(labyrinth[0]) > y >= 0 and labyrinth[x][y] != "X":
         return True
     return False
 

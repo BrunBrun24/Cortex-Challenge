@@ -5,13 +5,14 @@ h3 {
 }
 
 #margin {
+    margin-top: -200px;
     margin-bottom: 50px;
 }
 
 footer {
     display: flex;
     position: absolute;
-    top: 8100px;
+    top: 7800px;
     left: 1700px;
 }
 
@@ -32,7 +33,7 @@ footer p:not(:last-child) {
         margin: 10px;
     }
     footer {
-        top: 7900px;
+        top: 7400px;
         left: 1210px;
     }
 }
