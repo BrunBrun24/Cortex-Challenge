@@ -1,0 +1,12 @@
+{
+  "code": "DO-002",
+  "type": "doublon",
+  "words" : [
+    ["cow",  "dog", "dog", "cat", "chicken", "firefox", "cat", "cat", "dog"],
+    ["dog", "cow", "cat", "chicken", "cat", "cat", "cat", "cat", "dog"],
+    ["chicken", "torch", "rabbit", "chicken", "firefox", "chicken", "cat", "cat", "dog"],
+    ["cat", "cow", "dog", "cat", "dog", "cow", "cat", "cat", "dog"],
+    ["firefox", "cat", "dog", "cow", "torch", "chicken", "cat", "cat", "dog"],
+    ["cow", "cow", "dog", "rabbit", "cat", "dog", "cat", "rabbit", "dog"]
+  ]
+}

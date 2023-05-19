@@ -1,0 +1,11 @@
+{
+  "code" : "FR-002",
+  "type" : "fréquence",
+  "words" : [
+    ["cow",  "dog", "dog", "cat", "chicken", "firefox"],
+    ["dog", "cow", "cat", "chicken", "cat", "cat"],
+    ["chicken", "dog", "cat", "firefox", "firefox", "chicken"],
+    ["cat", "cow", "dog", "cat", "dog", "cow"],
+    ["firefox", "cat", "dog", "cow", "dog", "firefox"]
+  ]
+}

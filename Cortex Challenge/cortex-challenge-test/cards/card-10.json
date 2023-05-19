@@ -1,0 +1,17 @@
+{
+  "code" : "CO-002",
+  "type" : "couleur",
+  "colors" : {
+    "noir": "red",
+    "blue" : "pink",
+    "mauve": "black",
+    "vert" : "green",
+    "white" : "blue",
+    "pink" : "yellow",
+    "yellow" : "white",
+    "red" : "orange",
+    "black" : "orange",
+    "rose" : "yellow"
+  }
+}
+
