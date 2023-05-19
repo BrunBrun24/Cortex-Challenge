@@ -115,36 +115,35 @@
 
 
 
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-    /* Bar */
-    .container_explications_fonctions .box:nth-child(1) .content_explications_fonctions,
-    .container_explications_fonctions .box:nth-child(2) .content_explications_fonctions {
-        height: 100%; /* Utiliser toute la hauteur de la boîte pour le contenu */
-        overflow: auto;
-        max-height: 100%; /* Définir une hauteur maximale pour le contenu défilable */
 
-        /* Cacher la barre de défilement */
-        scrollbar-color: transparent; /* Couleur de la barre de défilement et de son fond */
-    }
+/* Bar */
+.container_explications_fonctions .box:nth-child(1) .content_explications_fonctions,
+.container_explications_fonctions .box:nth-child(2) .content_explications_fonctions {
+    height: 100%; /* Utiliser toute la hauteur de la boîte pour le contenu */
+    overflow: auto;
+    max-height: 100%; /* Définir une hauteur maximale pour le contenu défilable */
 
-    .container_explications_fonctions .box:nth-child(1) .content_explications_fonctions::-webkit-scrollbar,
-    .container_explications_fonctions .box:nth-child(2) .content_explications_fonctions::-webkit-scrollbar {
-        width: 10px; /* Largeur de la barre de défilement */
-        height: 10px; /* Hauteur de la barre de défilement */
-    }
-
-    .container_explications_fonctions .box:nth-child(1) .content_explications_fonctions::-webkit-scrollbar-thumb,
-    .container_explications_fonctions .box:nth-child(2) .content_explications_fonctions::-webkit-scrollbar-thumb {
-        background: linear-gradient(45deg,rgb(255, 0, 255),rgb(38, 0, 255)); /* Couleur de la barre de défilement */
-        border-radius: 15px;
-    }
-
-    .container_explications_fonctions .box:nth-child(1) .content_explications_fonctions::-webkit-scrollbar-track,
-    .container_explications_fonctions .box:nth-child(2) .content_explications_fonctions::-webkit-scrollbar-track {
-        background-color: transparent; /* Couleur de fond de la barre de défilement */
-    }
-    /*Fin Bar*/
+     /* Cacher la barre de défilement */
+     scrollbar-color: transparent; /* Couleur de la barre de défilement et de son fond */
 }
+
+.container_explications_fonctions .box:nth-child(1) .content_explications_fonctions::-webkit-scrollbar,
+.container_explications_fonctions .box:nth-child(2) .content_explications_fonctions::-webkit-scrollbar {
+    width: 10px; /* Largeur de la barre de défilement */
+    height: 10px; /* Hauteur de la barre de défilement */
+}
+
+.container_explications_fonctions .box:nth-child(1) .content_explications_fonctions::-webkit-scrollbar-thumb,
+.container_explications_fonctions .box:nth-child(2) .content_explications_fonctions::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg,rgb(255, 0, 255),rgb(38, 0, 255)); /* Couleur de la barre de défilement */
+    border-radius: 15px;
+}
+
+.container_explications_fonctions .box:nth-child(1) .content_explications_fonctions::-webkit-scrollbar-track,
+.container_explications_fonctions .box:nth-child(2) .content_explications_fonctions::-webkit-scrollbar-track {
+    background-color: transparent; /* Couleur de fond de la barre de défilement */
+}
+/*Fin Bar*/
 
 
 
