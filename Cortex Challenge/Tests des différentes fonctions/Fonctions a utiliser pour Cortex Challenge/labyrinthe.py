@@ -21,7 +21,7 @@ def labyrinthe(donnees):
 
         if current_pos in [pos for _, pos in goal_pos]:
             goal = [key for key, value in goal_pos if value == current_pos][0]
-            return goal
+            return int(goal)
 
         visited.add(current_pos)
 

@@ -1,56 +1,54 @@
-def calcul(donnees):
+from collections import Counter
+import math
+import heapq
+
+def calcul(defis):
     """
-    Fonction qui trouve toutes les combinaisons de nombres dans la liste qui, additionnées ensemble, donnent le nombre cible.
-
-    Args:
-        nombre_cible (int): Le nombre cible à atteindre.
-        nombres (list): Une liste de nombres.
-
+    Trouve les ensembles de nombres dans la liste 'numbers' qui s'additionnent pour obtenir le résultat 'result'.
     Returns:
-        list: Une liste de toutes les combinaisons trouvées. Si aucune combinaison n'est trouvée, retourne une liste vide.
+        list: Une liste de listes contenant les ensembles de nombres qui s'additionnent pour obtenir le résultat cible.
     """
-    nombre_cible = donnees["result"]
-    nombres = donnees["numbers"]
-    combinaisons = []
-    trouver_combinaisons_recursif(donnees, nombre_cible, nombres, 0, [], combinaisons)
+    result = defis["result"]
+    numbers = defis["numbers"]
+    res = []
+    numbers.sort()  # Trie les nombres pour obtenir les combinaisons dans l'ordre croissant
+    trouver_combinaisons_recursif(0, result, [], numbers, res)  # Appel initial de la fonction auxiliaire avec un total cible de 'result'
+    
+    output = []
+    for solution in res:
+        solution.sort()
+        output.append('+'.join([str(x) for x in solution]))
+    
+    return output[0]
 
-    # Convertir les listes de nombres en chaînes de caractères avec des "+" comme séparateurs
-    combinaisons = ['+'.join(map(str, combinaison)) for combinaison in combinaisons]
-
-    return combinaisons
-
-def trouver_combinaisons_recursif(donnees, nombre_cible, nombres, index, combinaison_actuelle, combinaisons):
+def trouver_combinaisons_recursif(start, target, path, numbers, res):
     """
-    Fonction récursive qui trouve toutes les combinaisons de nombres dans la liste qui, additionnés ensemble, donnent le nombre cible.
-
+    Fonction auxiliaire pour effectuer un parcours récursif avec retour en arrière.
+    
     Args:
-        nombre_cible (int): Le nombre cible à atteindre.
-        nombres (list): Une liste de nombres.
-        index (int): L'index actuel pour parcourir la liste de nombres.
-        combinaison_actuelle (list): La combinaison actuelle en cours de construction.
-        combinaisons (list): La liste de toutes les combinaisons trouvées jusqu'à présent.
-
-    Returns:
-        None
+        start (int): L'indice de départ pour le parcours.
+        target (int): La somme cible à atteindre.
+        path (list): La liste des nombres sélectionnés jusqu'à présent.
+        numbers (list): La liste de nombres.
+        res (list): La liste des résultats.
     """
-    # Cas de base : si le nombre cible est atteint, ajouter la combinaison actuelle à la liste de combinaisons
-    if nombre_cible == 0:
-        combinaisons.append(list(combinaison_actuelle))
+    if target == 0:
+        # Si la somme cible est atteinte, ajouter la liste de nombres dans les résultats
+        res.append(path[:])
+    elif target < 0:
+        # Si la somme cible est dépassée, revenir en arrière
         return
-    # Cas de base : si on a parcouru tous les nombres, retourner
-    elif index == len(nombres):
-        return
-
-    # Ne pas inclure le nombre actuel dans la combinaison
-    trouver_combinaisons_recursif(donnees, nombre_cible, nombres, index + 1, combinaison_actuelle, combinaisons)
-
-    # Inclure le nombre actuel dans la combinaison
-    if nombre_cible >= nombres[index]:
-        # Ajouter le nombre actuel à la combinaison
-        combinaison_actuelle.append(nombres[index])
-        trouver_combinaisons_recursif(donnees, nombre_cible - nombres[index], nombres, index + 1, combinaison_actuelle, combinaisons)
-        # Retirer le nombre actuel de la combinaison pour explorer d'autres possibilités
-        combinaison_actuelle.pop()
+    else:
+        for i in range(start, len(numbers)):
+            # Parcourir la liste de nombres à partir de l'indice 'start'
+            if i > start and numbers[i] == numbers[i-1]:
+                # Ignorer les doublons pour éviter de répéter les nombres dans la combinaison
+                continue
+            if numbers[i] not in path:
+                # Ignorer les nombres qui sont déjà dans la combinaison
+                path.append(numbers[i])
+                trouver_combinaisons_recursif(i + 1, target - numbers[i], path, numbers, res)  # Appel récursif avec le nouveau total cible
+                path.pop()  # Retour en arrière (trouver_combinaisons_recursif)
 
 def couleur(donnees):
     """
@@ -59,7 +57,7 @@ def couleur(donnees):
     """
     couleur_fr = ("argent", "beige", "blanc", "bleu", "corail", "indigo", "jaune", "lavande", "magenta", "marron", "mauve", "noir", "olive", "or", "orange", "orchidée", "rose", "rouge", "saumon", "vert")
     couleur_en = ("silver", "beige", "white", "blue", "coral", "indigo", "yellow", "lavender", "magenta", "brown", "mauve", "black", "olive", "gold", "orange", "orchid", "pink", "red", "salmon", "green")
-    
+
     # On parcourt la liste des couleurs
     for cle,valeur in donnees["colors"].items():
         if cle == valeur:
@@ -127,7 +125,7 @@ def labyrinthe(donnees):
 
         if current_pos in [pos for _, pos in goal_pos]:
             goal = [key for key, value in goal_pos if value == current_pos][0]
-            return goal
+            return int(goal)
 
         visited.add(current_pos)
 
@@ -165,7 +163,6 @@ def manquant(defis):
     Fonction permettant de trouver le premier nombre manquant dans une liste de nombres.
     :return: int: Le premier nombre manquant dans la liste de nombres.
     """
-    list_color = []  # Utilisation d'un ensemble pour stocker les couleurs disponibles
     list_numbers_color1 = []  # Utilisation d'un ensemble pour stocker les nombres de couleur 1
     list_numbers_color2 = []  # Utilisation d'un ensemble pour stocker les nombres de couleur 2
 

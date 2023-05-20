@@ -5,7 +5,7 @@ def couleur(donnees):
     """
     couleur_fr = ("argent", "beige", "blanc", "bleu", "corail", "indigo", "jaune", "lavande", "magenta", "marron", "mauve", "noir", "olive", "or", "orange", "orchidée", "rose", "rouge", "saumon", "vert")
     couleur_en = ("silver", "beige", "white", "blue", "coral", "indigo", "yellow", "lavender", "magenta", "brown", "mauve", "black", "olive", "gold", "orange", "orchid", "pink", "red", "salmon", "green")
-    
+
     # On parcourt la liste des couleurs
     for cle,valeur in donnees["colors"].items():
         if cle == valeur:

@@ -11,7 +11,8 @@ def parcours_lampe_torche(donnees, direction, ligne, colonne):
     :return: un entier (int)
     """
     if type(donnees["map"][ligne][colonne]) == int:
-        return donnees["map"][ligne][colonne]
+        result = [donnees["map"][ligne][colonne]]
+        return result
 
     direction = si_miroir(donnees, direction, ligne, colonne)
 
@@ -53,3 +54,19 @@ def si_miroir(donnees, direction, ligne, colonne):
             return "haut"
         
     return direction
+
+
+d = {
+  "code" : "RE-001",
+  "type" : "réflexion",
+  "map" : [
+    [" ",  1, 2, 3, 4, ""],
+    [15, "", "", "", "", 5],
+    [14, "", "/", "", "/", 6],
+    [13, "", "", "", "", 7],
+    [12, "", "", "", "", 8],
+    ["", 11, "L", 10, 9, ""]
+  ]
+}
+
+print(reflexion(d))
