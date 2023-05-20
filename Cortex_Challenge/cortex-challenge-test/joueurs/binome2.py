@@ -8,7 +8,7 @@ __date__ = "16/02/2023"
 __version__ = "0.0"
 
 from typing import Union
-from fonctions_all import *
+from fonctions_finish import *
 
 def jouer(card: dict) -> Union[None, str, int]:
     '''

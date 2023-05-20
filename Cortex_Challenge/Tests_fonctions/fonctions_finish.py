@@ -2,6 +2,91 @@ from collections import Counter
 import math
 import heapq
 
+
+
+def couleur(donnees):
+    """
+    Vérifie si les couleurs dans les défis sont valides en comparant avec des listes de couleurs en français et en anglais.
+    :return: la clef du dictionnaire colors correspondant à la même couleur que sa clef, sinon False
+    """
+    couleur_fr = ("argent", "beige", "blanc", "bleu", "corail", "indigo", "jaune", "lavande", "magenta", "marron", "mauve", "noir", "olive", "or", "orange", "orchidée", "rose", "rouge", "saumon", "vert")
+    couleur_en = ("silver", "beige", "white", "blue", "coral", "indigo", "yellow", "lavender", "magenta", "brown", "mauve", "black", "olive", "gold", "orange", "orchid", "pink", "red", "salmon", "green")
+    
+    # On parcourt la liste des couleurs
+    for cle,valeur in donnees["colors"].items():
+        if cle == valeur:
+            return cle
+        elif cle in couleur_fr:
+            # On sauvegarde la position de "cle" ce trouvant dans "couleur_fr"
+            position_couleur = couleur_fr.index(cle)
+            # On regarde si la valeur ce trouve à la même position que la "cle" dans "couleur_en"
+            if (valeur in couleur_en) and (valeur == couleur_en[position_couleur]):
+                return cle
+        else:
+            position_couleur = couleur_en.index(cle)
+            if (valeur in couleur_fr) and (valeur == couleur_fr[position_couleur]):
+                return cle
+    
+    return False
+
+
+def reflexion(defis):
+    return parcours_lampe_torche(defis, "haut", 5, 2)
+
+def parcours_lampe_torche(donnees, direction, ligne, colonne):
+    """
+    Parcours la map en suivant le faisceau lumineux
+    :param:
+        direction : "string"
+        ligne : "int"
+        colonne : "int"
+    :return: un entier (int)
+    """
+    if type(donnees["map"][ligne][colonne]) == int:
+        return donnees["map"][ligne][colonne]
+
+    direction = si_miroir(donnees, direction, ligne, colonne)
+
+    if direction == "bas":
+        return parcours_lampe_torche(donnees, direction, ligne+1, colonne)
+    elif direction == "haut":
+        return parcours_lampe_torche(donnees, direction, ligne-1, colonne)
+    elif direction == "droite":
+        return parcours_lampe_torche(donnees, direction, ligne, colonne+1)
+    else:
+        return parcours_lampe_torche(donnees, direction, ligne, colonne-1)
+
+def si_miroir(donnees, direction, ligne, colonne):
+    """
+    Indique si sur les coordonnées pris en paramètres, il y a un miroir
+    :param:
+        direction : "string"
+        ligne : "int"
+        colonne : "int"
+    :return: la direction (string)
+    """
+    if donnees["map"][ligne][colonne] == "/":
+        if direction == "haut":
+            return "droite"
+        elif direction == "bas":
+            return "gauche"
+        elif direction == "droite":
+            return "haut"
+        elif direction == "gauche":
+            return "bas"
+    elif donnees["map"][ligne][colonne] == "\\":
+        if direction == "haut":
+            return "gauche"
+        elif direction == "bas":
+            return "droite"
+        elif direction == "droite":
+            return "bas"
+        elif direction == "gauche":
+            return "haut"
+        
+    return direction
+
+
 def calcul(donnees):
     """
     Fonction qui trouve toutes les combinaisons de nombres dans la liste qui, additionnées ensemble, donnent le nombre cible.
@@ -25,79 +110,39 @@ def calcul(donnees):
     if len(combinaisons) > 0:
         return combinaisons[0]
 
-def trouver_combinaisons_recursif(start, target, path, numbers, res):
+def trouver_combinaisons_recursif(donnees, nombre_cible, nombres, index, combinaison_actuelle, combinaisons):
     """
-    Fonction auxiliaire pour effectuer un parcours récursif avec retour en arrière.
-    
+    Fonction récursive qui trouve toutes les combinaisons de nombres dans la liste qui, additionnés ensemble, donnent le nombre cible.
+
     Args:
-        start (int): L'indice de départ pour le parcours.
-        target (int): La somme cible à atteindre.
-        path (list): La liste des nombres sélectionnés jusqu'à présent.
-        numbers (list): La liste de nombres.
-        res (list): La liste des résultats.
+        nombre_cible (int): Le nombre cible à atteindre.
+        nombres (list): Une liste de nombres.
+        index (int): L'index actuel pour parcourir la liste de nombres.
+        combinaison_actuelle (list): La combinaison actuelle en cours de construction.
+        combinaisons (list): La liste de toutes les combinaisons trouvées jusqu'à présent.
+
+    Returns:
+        None
     """
-    if target == 0:
-        # Si la somme cible est atteinte, ajouter la liste de nombres dans les résultats
-        res.append(path[:])
-    elif target < 0:
-        # Si la somme cible est dépassée, revenir en arrière
+    # Cas de base : si le nombre cible est atteint, ajouter la combinaison actuelle à la liste de combinaisons
+    if nombre_cible == 0:
+        combinaisons.append(list(combinaison_actuelle))
         return
-    else:
-        for i in range(start, len(numbers)):
-            # Parcourir la liste de nombres à partir de l'indice 'start'
-            if i > start and numbers[i] == numbers[i-1]:
-                # Ignorer les doublons pour éviter de répéter les nombres dans la combinaison
-                continue
-            if numbers[i] not in path:
-                # Ignorer les nombres qui sont déjà dans la combinaison
-                path.append(numbers[i])
-                trouver_combinaisons_recursif(i + 1, target - numbers[i], path, numbers, res)  # Appel récursif avec le nouveau total cible
-                path.pop()  # Retour en arrière (trouver_combinaisons_recursif)
+    # Cas de base : si on a parcouru tous les nombres, retourner
+    elif index == len(nombres):
+        return
 
-def couleur(donnees):
-    """
-    Vérifie si les couleurs dans les défis sont valides en comparant avec des listes de couleurs en français et en anglais.
-    :return: la clef du dictionnaire colors correspondant à la même couleur que sa clef, sinon False
-    """
-    couleur_fr = ("argent", "beige", "blanc", "bleu", "corail", "indigo", "jaune", "lavande", "magenta", "marron", "mauve", "noir", "olive", "or", "orange", "orchidée", "rose", "rouge", "saumon", "vert")
-    couleur_en = ("silver", "beige", "white", "blue", "coral", "indigo", "yellow", "lavender", "magenta", "brown", "mauve", "black", "olive", "gold", "orange", "orchid", "pink", "red", "salmon", "green")
+    # Ne pas inclure le nombre actuel dans la combinaison
+    trouver_combinaisons_recursif(donnees, nombre_cible, nombres, index + 1, combinaison_actuelle, combinaisons)
 
-    # On parcourt la liste des couleurs
-    for cle,valeur in donnees["colors"].items():
-        if cle == valeur:
-            return cle
-        elif cle in couleur_fr:
-            # On sauvegarde la position de "cle" ce trouvant dans "couleur_fr"
-            position_couleur = couleur_fr.index(cle)
-            # On regarde si la valeur ce trouve à la même position que la "cle" dans "couleur_en"
-            if (valeur in couleur_en) and (valeur == couleur_en[position_couleur]):
-                return cle
-        else:
-            position_couleur = couleur_en.index(cle)
-            if (valeur in couleur_fr) and (valeur == couleur_fr[position_couleur]):
-                return cle
-    
-    return False
+    # Inclure le nombre actuel dans la combinaison
+    if nombre_cible >= nombres[index]:
+        # Ajouter le nombre actuel à la combinaison
+        combinaison_actuelle.append(nombres[index])
+        trouver_combinaisons_recursif(donnees, nombre_cible - nombres[index], nombres, index + 1, combinaison_actuelle, combinaisons)
+        # Retirer le nombre actuel de la combinaison pour explorer d'autres possibilités
+        combinaison_actuelle.pop()
 
-def doublon(defis):
-    """
-    Recherche un mot en double dans la liste de mots fournie.
-    :return: (str) Le mot en double s'il existe, sinon un message indiquant qu'il n'y a pas de mot en double.
-    """
-    word_count = {}
-    for ligne in defis["words"]:
-        for word in ligne:
-            if word in word_count:
-                word_count[word] += 1
-            else:
-                word_count[word] = 1
-
-    # Retourne le mot en double
-    for cle, valeur in word_count.items():
-        if valeur == 2:
-            return cle
-        
-    return "Il n'y a pas de mot en double"
 
 def frequence(defis):
     """
@@ -108,6 +153,41 @@ def frequence(defis):
         word_count.update(ligne)
     
     return min(word_count, key=word_count.get)
+
+
+def manquant(defis):
+    """
+    Fonction permettant de trouver le premier nombre manquant dans une liste de nombres.
+    :return: int: Le premier nombre manquant dans la liste de nombres.
+    """
+    list_numbers_color1 = []  # Utilisation d'un ensemble pour stocker les nombres de couleur 1
+    list_numbers_color2 = []  # Utilisation d'un ensemble pour stocker les nombres de couleur 2
+
+    # Permet de récupérer une couleur disponible et de les mettre dans "list_color"
+    couleur = defis["numbers"][0][-1]
+
+    # Permet de récupérer les nombres et de les mettre dans leur ensemble respectif
+    for color in defis["numbers"]:
+        if color[-1] == couleur:
+            list_numbers_color1.append(int(color[:-1]))
+        else:
+            list_numbers_color2.append(int(color[:-1]))
+
+    list_numbers_color1 = sorted(list_numbers_color1, key=int)
+    list_numbers_color2 = sorted(list_numbers_color2, key=int)
+
+    # Trouver le premier nombre manquant dans list_numbers_color1
+    for number in range(len(list_numbers_color1)-1):
+        if list_numbers_color1[number+1] != list_numbers_color1[number]+1:
+            return list_numbers_color1[number]+1
+
+    # Trouver le premier nombre manquant dans list_numbers_color2
+    for number in range(len(list_numbers_color2)-1):
+        if list_numbers_color2[number+1] != list_numbers_color2[number]+1:
+            return list_numbers_color2[number]+1
+
+    return False  # Retourner False si tous les nombres sont présents
+
 
 def labyrinthe(donnees):
     labyrinth = donnees["map"]
@@ -162,38 +242,27 @@ def heuristic(position, goal_pos):
 
     return min_distance
 
-def manquant(defis):
+
+def doublon(defis):
     """
-    Fonction permettant de trouver le premier nombre manquant dans une liste de nombres.
-    :return: int: Le premier nombre manquant dans la liste de nombres.
+    Recherche un mot en double dans la liste de mots fournie.
+    :return: (str) Le mot en double s'il existe, sinon un message indiquant qu'il n'y a pas de mot en double.
     """
-    list_numbers_color1 = []  # Utilisation d'un ensemble pour stocker les nombres de couleur 1
-    list_numbers_color2 = []  # Utilisation d'un ensemble pour stocker les nombres de couleur 2
+    word_count = {}
+    for ligne in defis["words"]:
+        for word in ligne:
+            if word in word_count:
+                word_count[word] += 1
+            else:
+                word_count[word] = 1
 
-    # Permet de récupérer une couleur disponible et de les mettre dans "list_color"
-    couleur = defis["numbers"][0][-1]
+    # Retourne le mot en double
+    for cle, valeur in word_count.items():
+        if valeur == 2:
+            return cle
+        
+    return "Il n'y a pas de mot en double"
 
-    # Permet de récupérer les nombres et de les mettre dans leur ensemble respectif
-    for color in defis["numbers"]:
-        if color[-1] == couleur:
-            list_numbers_color1.append(int(color[:-1]))
-        else:
-            list_numbers_color2.append(int(color[:-1]))
-
-    list_numbers_color1 = sorted(list_numbers_color1, key=int)
-    list_numbers_color2 = sorted(list_numbers_color2, key=int)
-
-    # Trouver le premier nombre manquant dans list_numbers_color1
-    for number in range(len(list_numbers_color1)-1):
-        if list_numbers_color1[number+1] != list_numbers_color1[number]+1:
-            return list_numbers_color1[number]+1
-
-    # Trouver le premier nombre manquant dans list_numbers_color2
-    for number in range(len(list_numbers_color2)-1):
-        if list_numbers_color2[number+1] != list_numbers_color2[number]+1:
-            return list_numbers_color2[number]+1
-
-    return False  # Retourner False si tous les nombres sont présents
 
 def raisonnement(defis):
     """
@@ -285,59 +354,3 @@ def inversion_raisonnement(drawing):
             else:
                 drawing[ligne][colonne] = ""
     return drawing
-
-def reflexion(defis):
-    return parcours_lampe_torche(defis, "haut", 5, 2)
-
-def parcours_lampe_torche(donnees, direction, ligne, colonne):
-    """
-    Parcours la map en suivant le faisceau lumineux
-    :param:
-        direction : "string"
-        ligne : "int"
-        colonne : "int"
-    :return: un entier (int)
-    """
-    if type(donnees["map"][ligne][colonne]) == int:
-        return donnees["map"][ligne][colonne]
-
-    direction = si_miroir(donnees, direction, ligne, colonne)
-
-    if direction == "bas":
-        return parcours_lampe_torche(donnees, direction, ligne+1, colonne)
-    elif direction == "haut":
-        return parcours_lampe_torche(donnees, direction, ligne-1, colonne)
-    elif direction == "droite":
-        return parcours_lampe_torche(donnees, direction, ligne, colonne+1)
-    else:
-        return parcours_lampe_torche(donnees, direction, ligne, colonne-1)
-
-def si_miroir(donnees, direction, ligne, colonne):
-    """
-    Indique si sur les coordonnées pris en paramètres, il y a un miroir
-    :param:
-        direction : "string"
-        ligne : "int"
-        colonne : "int"
-    :return: la direction (string)
-    """
-    if donnees["map"][ligne][colonne] == "/":
-        if direction == "haut":
-            return "droite"
-        elif direction == "bas":
-            return "gauche"
-        elif direction == "droite":
-            return "haut"
-        elif direction == "gauche":
-            return "bas"
-    elif donnees["map"][ligne][colonne] == "\\":
-        if direction == "haut":
-            return "gauche"
-        elif direction == "bas":
-            return "droite"
-        elif direction == "droite":
-            return "bas"
-        elif direction == "gauche":
-            return "haut"
-        
-    return direction

@@ -152,13 +152,13 @@ def str_victory(player: dict) -> str:
 
 if __name__ == '__main__':
     # Récupération et mélange des cartes
-    cartes = os.listdir("cards")
+    cartes = os.listdir("Cortex_Challenge/cortex-challenge-test/cards")
     random.shuffle(cartes)
-    results = json.load(open("results.json"))
+    results = json.load(open("Cortex_Challenge/cortex-challenge-test/results.json"))
     winner = dict()
     # Jeux
     for c in cartes:
-        carte = json.load(open("cards/" + c))
+        carte = json.load(open("Cortex_Challenge/cortex-challenge-test/cards/" + c, encoding='utf_8'))
         # Chaque joueur joue la carte son résultat et son temps d'execution sont sauvegardés
         for j in joueurs:
             if j["playing"]:

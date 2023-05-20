@@ -100,13 +100,13 @@ def mesure_temps_execution_fonction(fonction):
 if __name__ == "__main__":
     list_temps_executions = []
     list_temps_executions.append(mesure_temps_execution_fonction("couleur"))
+    list_temps_executions.append(mesure_temps_execution_fonction("reflexion"))
     list_temps_executions.append(mesure_temps_execution_fonction("calcul"))
-    list_temps_executions.append(mesure_temps_execution_fonction("doublon"))
     list_temps_executions.append(mesure_temps_execution_fonction("frequence"))
     list_temps_executions.append(mesure_temps_execution_fonction("manquant"))
+    list_temps_executions.append(mesure_temps_execution_fonction("labyrinthe")) 
+    list_temps_executions.append(mesure_temps_execution_fonction("doublon"))
     list_temps_executions.append(mesure_temps_execution_fonction("raisonnement"))
-    list_temps_executions.append(mesure_temps_execution_fonction("reflexion"))
-    list_temps_executions.append(mesure_temps_execution_fonction("labyrinthe"))
     print()
     for l in list_temps_executions:
         print(l)
@@ -116,11 +116,11 @@ if __name__ == "__main__":
 Temps moyen d'exécution pour la fonction couleur de fonction1 est de : 1.78e-05 secondes
 Temps moyen d'exécution pour la fonction couleur de fonction2 est de : 4.27e-05 secondes
 -----------------------------------------------------------------------------------------
+Temps moyen d'exécution pour la fonction reflexion de fonction1 est de : 3.00e-06 secondes
+Temps moyen d'exécution pour la fonction reflexion de fonction2 est de : 4.30e-06 secondes
+-----------------------------------------------------------------------------------------
 Temps moyen d'exécution pour la fonction calcul de fonction1 est de : 1.64e-05 secondes
 Temps moyen d'exécution pour la fonction calcul de fonction2 est de : 2.46e-05 secondes
------------------------------------------------------------------------------------------
-Temps moyen d'exécution pour la fonction doublon de fonction1 est de : 5.04e-04 secondes
-Temps moyen d'exécution pour la fonction doublon de fonction2 est de : 2.09e-04 secondes
 -----------------------------------------------------------------------------------------
 Temps moyen d'exécution pour la fonction frequence de fonction1 est de : 1.93e-04 secondes
 Temps moyen d'exécution pour la fonction frequence de fonction2 est de : 1.01e-04 secondes
@@ -128,22 +128,22 @@ Temps moyen d'exécution pour la fonction frequence de fonction2 est de : 1.01e-
 Temps moyen d'exécution pour la fonction manquant de fonction1 est de : 3.11e-03 secondes
 Temps moyen d'exécution pour la fonction manquant de fonction2 est de : 1.12e-04 secondes
 -----------------------------------------------------------------------------------------
-Temps moyen d'exécution pour la fonction raisonnement de fonction1 est de : 2.13e-04 secondes
-Temps moyen d'exécution pour la fonction raisonnement de fonction2 est de : 2.10e-04 secondes
------------------------------------------------------------------------------------------
-Temps moyen d'exécution pour la fonction reflexion de fonction1 est de : 3.00e-06 secondes
-Temps moyen d'exécution pour la fonction reflexion de fonction2 est de : 4.30e-06 secondes
------------------------------------------------------------------------------------------
 Temps moyen d'exécution pour la fonction labyrinthe de fonction1 est de : 4.52e-04 secondes
 Temps moyen d'exécution pour la fonction labyrinthe de fonction2 est de : 4.50e-04 secondes
 -----------------------------------------------------------------------------------------
+Temps moyen d'exécution pour la fonction doublon de fonction1 est de : 5.04e-04 secondes
+Temps moyen d'exécution pour la fonction doublon de fonction2 est de : 2.09e-04 secondes
+-----------------------------------------------------------------------------------------
+Temps moyen d'exécution pour la fonction raisonnement de fonction1 est de : 2.13e-04 secondes
+Temps moyen d'exécution pour la fonction raisonnement de fonction2 est de : 2.10e-04 secondes
+-----------------------------------------------------------------------------------------
 
 Donc pour la fonction couleur il faut utiliser : fonction1
+Donc pour la fonction reflexion il faut utiliser : fonction1
 Donc pour la fonction calcul il faut utiliser : fonction1
-Donc pour la fonction doublon il faut utiliser : fonction2
 Donc pour la fonction frequence il faut utiliser : fonction2
 Donc pour la fonction manquant il faut utiliser : fonction2
-Donc pour la fonction raisonnement il faut utiliser : fonction2
-Donc pour la fonction reflexion il faut utiliser : fonction1
 Donc pour la fonction labyrinthe il faut utiliser : fonction2
+Donc pour la fonction doublon il faut utiliser : fonction2
+Donc pour la fonction raisonnement il faut utiliser : fonction2
 """
