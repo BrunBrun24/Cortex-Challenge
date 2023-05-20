@@ -2,24 +2,28 @@ from collections import Counter
 import math
 import heapq
 
-def calcul(defis):
+def calcul(donnees):
     """
-    Trouve les ensembles de nombres dans la liste 'numbers' qui s'additionnent pour obtenir le résultat 'result'.
+    Fonction qui trouve toutes les combinaisons de nombres dans la liste qui, additionnées ensemble, donnent le nombre cible.
+
+    Args:
+        nombre_cible (int): Le nombre cible à atteindre.
+        nombres (list): Une liste de nombres.
+
     Returns:
-        list: Une liste de listes contenant les ensembles de nombres qui s'additionnent pour obtenir le résultat cible.
+        list: Une liste de toutes les combinaisons trouvées. Si aucune combinaison n'est trouvée, retourne une liste vide.
     """
-    result = defis["result"]
-    numbers = defis["numbers"]
-    res = []
-    numbers.sort()  # Trie les nombres pour obtenir les combinaisons dans l'ordre croissant
-    trouver_combinaisons_recursif(0, result, [], numbers, res)  # Appel initial de la fonction auxiliaire avec un total cible de 'result'
-    
-    output = []
-    for solution in res:
-        solution.sort()
-        output.append('+'.join([str(x) for x in solution]))
-    
-    return output[0]
+    nombre_cible = donnees["result"]
+    nombres = donnees["numbers"]
+    combinaisons = []
+    trouver_combinaisons_recursif(donnees, nombre_cible, nombres, 0, [], combinaisons)
+
+    # Convertir les listes de nombres en chaînes de caractères avec des "+" comme séparateurs
+    combinaisons = ['+'.join(map(str, combinaison)) for combinaison in combinaisons]
+    combinaisons = ['+'.join(sorted(expr.split('+'), key=int)) for expr in combinaisons]
+
+    if len(combinaisons) > 0:
+        return combinaisons[0]
 
 def trouver_combinaisons_recursif(start, target, path, numbers, res):
     """

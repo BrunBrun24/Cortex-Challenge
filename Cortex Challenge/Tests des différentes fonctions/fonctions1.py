@@ -100,8 +100,10 @@ def calcul1(donnees):
 
     # Convertir les listes de nombres en chaînes de caractères avec des "+" comme séparateurs
     combinaisons = ['+'.join(map(str, combinaison)) for combinaison in combinaisons]
+    combinaisons = ['+'.join(sorted(expr.split('+'), key=int)) for expr in combinaisons]
 
-    return combinaisons
+    if len(combinaisons) > 0:
+        return combinaisons[0]
 
 def trouver_combinaisons_recursif(donnees, nombre_cible, nombres, index, combinaison_actuelle, combinaisons):
     """
@@ -205,7 +207,7 @@ def labyrinthe1(donnees):
         _, current_pos, path = heapq.heappop(queue)
         if current_pos in [pos for _, pos in goal_pos]:
             goal = [key for key, value in goal_pos if value == current_pos][0]
-            return goal
+            return int(goal)
 
         visited.add(current_pos)
 

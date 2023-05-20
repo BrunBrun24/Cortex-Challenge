@@ -25,8 +25,6 @@ def generation_carte(fonction):
 
     return donnees
 
-
-
 def mesure_temps_execution_fonction(fonction):
     """
     Mesure le temps d'exécution d'une fonction avec des arguments donnés.
@@ -99,8 +97,6 @@ def mesure_temps_execution_fonction(fonction):
 
     return f"Donc pour la fonction {fonction} il faut utiliser : {utiliser}"
 
-
-
 if __name__ == "__main__":
     list_temps_executions = []
     list_temps_executions.append(mesure_temps_execution_fonction("couleur"))
@@ -117,29 +113,29 @@ if __name__ == "__main__":
 
 
 """
-Temps moyen d'exécution pour la fonction couleur de fonction1 est de : 1.83e-05 secondes
-Temps moyen d'exécution pour la fonction couleur de fonction2 est de : 4.41e-05 secondes
+Temps moyen d'exécution pour la fonction couleur de fonction1 est de : 1.78e-05 secondes
+Temps moyen d'exécution pour la fonction couleur de fonction2 est de : 4.27e-05 secondes
 -----------------------------------------------------------------------------------------
-Temps moyen d'exécution pour la fonction calcul de fonction1 est de : 1.42e-05 secondes
-Temps moyen d'exécution pour la fonction calcul de fonction2 est de : 2.35e-05 secondes
+Temps moyen d'exécution pour la fonction calcul de fonction1 est de : 1.64e-05 secondes
+Temps moyen d'exécution pour la fonction calcul de fonction2 est de : 2.46e-05 secondes
 -----------------------------------------------------------------------------------------
-Temps moyen d'exécution pour la fonction doublon de fonction1 est de : 4.84e-04 secondes
-Temps moyen d'exécution pour la fonction doublon de fonction2 est de : 1.96e-04 secondes
+Temps moyen d'exécution pour la fonction doublon de fonction1 est de : 5.04e-04 secondes
+Temps moyen d'exécution pour la fonction doublon de fonction2 est de : 2.09e-04 secondes
 -----------------------------------------------------------------------------------------
-Temps moyen d'exécution pour la fonction frequence de fonction1 est de : 1.91e-04 secondes
+Temps moyen d'exécution pour la fonction frequence de fonction1 est de : 1.93e-04 secondes
 Temps moyen d'exécution pour la fonction frequence de fonction2 est de : 1.01e-04 secondes
 -----------------------------------------------------------------------------------------
-Temps moyen d'exécution pour la fonction manquant de fonction1 est de : 1.27e-02 secondes
-Temps moyen d'exécution pour la fonction manquant de fonction2 est de : 2.40e-04 secondes
+Temps moyen d'exécution pour la fonction manquant de fonction1 est de : 3.11e-03 secondes
+Temps moyen d'exécution pour la fonction manquant de fonction2 est de : 1.12e-04 secondes
 -----------------------------------------------------------------------------------------
-Temps moyen d'exécution pour la fonction raisonnement de fonction1 est de : 2.19e-04 secondes
-Temps moyen d'exécution pour la fonction raisonnement de fonction2 est de : 2.16e-04 secondes
+Temps moyen d'exécution pour la fonction raisonnement de fonction1 est de : 2.13e-04 secondes
+Temps moyen d'exécution pour la fonction raisonnement de fonction2 est de : 2.10e-04 secondes
 -----------------------------------------------------------------------------------------
-Temps moyen d'exécution pour la fonction reflexion de fonction1 est de : 3.12e-06 secondes
-Temps moyen d'exécution pour la fonction reflexion de fonction2 est de : 4.65e-06 secondes
+Temps moyen d'exécution pour la fonction reflexion de fonction1 est de : 3.00e-06 secondes
+Temps moyen d'exécution pour la fonction reflexion de fonction2 est de : 4.30e-06 secondes
 -----------------------------------------------------------------------------------------
-Temps moyen d'exécution pour la fonction labyrinthe de fonction1 est de : 4.74e-04 secondes
-Temps moyen d'exécution pour la fonction labyrinthe de fonction2 est de : 4.59e-04 secondes
+Temps moyen d'exécution pour la fonction labyrinthe de fonction1 est de : 4.52e-04 secondes
+Temps moyen d'exécution pour la fonction labyrinthe de fonction2 est de : 4.50e-04 secondes
 -----------------------------------------------------------------------------------------
 
 Donc pour la fonction couleur il faut utiliser : fonction1

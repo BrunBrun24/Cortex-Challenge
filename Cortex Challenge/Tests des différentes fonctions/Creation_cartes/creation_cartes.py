@@ -155,7 +155,7 @@ def map_labyrinthe():
 # Créer une list de nombre avec pour chaque nombre une couleur soit B soit R
 def list_numbers_colors():
     dict = {}
-    taille = randint(6, 1000)
+    taille = randint(6, 500)
     couleurs = ['R', 'B']  # Rouge et Bleu
     liste = []
     nb_couleurs = 0

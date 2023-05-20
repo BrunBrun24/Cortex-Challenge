@@ -99,7 +99,8 @@ def calcul2(defis):
         solution.sort()
         output.append('+'.join([str(x) for x in solution]))
     
-    return output
+    if len(output) > 0:
+        return output[0]
 
 def trouver_combinaisons_recursif(start, target, path, numbers, res):
     """
@@ -193,7 +194,7 @@ def labyrinthe2(donnees):
 
         if current_pos in [pos for _, pos in goal_pos]:
             goal = [key for key, value in goal_pos if value == current_pos][0]
-            return goal
+            return int(goal)
 
         visited.add(current_pos)
 
