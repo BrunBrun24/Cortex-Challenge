@@ -1,13 +1,1 @@
-{
-  "code" : "FR-001",
-  "type" : "fréquence",
-  "words" : [
-    ["cow",  "dog", "dog", "cat", "chicken", "firefox"],
-    ["dog", "cow", "cat", "chicken", "cat", "cat"],
-    ["chicken", "dog", "cat", "chicken", "firefox", "chicken"],
-    ["cat", "cow", "dog", "cat", "dog", "cow"],
-    ["firefox", "cat", "dog", "cow", "dog", "chicken"],
-    ["cow", "cow", "dog", "chicken", "cat", "dog"]
-  ]
-}
-
+{"code": "RE-2", "type": "réflexion", "map": [["", 1, 2, 3, 4, ""], [15, "/", "", "", 5], [14, "\\", "\\", "", 6], [13, "", "", "", 7], [12, "", "", "/", 8], ["", 11, "L", 10, 9, ""]]}

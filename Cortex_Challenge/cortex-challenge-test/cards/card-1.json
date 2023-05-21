@@ -1,16 +1,1 @@
-{
-  "code" : "CO-001",
-  "type" : "couleur",
-  "colors" : {
-    "black": "red",
-    "blue" : "green",
-    "mauve": "black",
-    "green" : "purple",
-    "white" : "blue",
-    "orange" : "yellow",
-    "pink" : "pink",
-    "yellow" : "white",
-    "red" : "orange"
-  }
-}
-
+{"code": "CO-1", "type": "couleur", "colors": {"gold": "rose", "noir": "green", "beige": "beige", "green": "lavande", "olive": "beige", "orchid": "black", "rouge": "salmon", "silver": "indigo", "red": "black", "black": "jaune", "rose": "olive", "lavender": "blue", "blue": "argent", "indigo": "orange", "brown": "or", "lavande": "gold", "or": "mauve", "white": "argent", "argent": "mauve", "coral": "bleu", "pink": "or", "mauve": "mauve", "blanc": "beige", "yellow": "marron", "orange": "white", "bleu": "beige", "saumon": "orchidée", "salmon": "magenta", "magenta": "bleu", "vert": "white", "marron": "silver", "jaune": "lavande", "orchidée": "bleu", "corail": "corail"}}

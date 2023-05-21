@@ -1,4 +1,4 @@
-from Creation_cartes.creation_cartes import *
+from creation_cartes import *
 from fonctions1 import *
 from fonctions2 import *
 import timeit
@@ -86,8 +86,8 @@ def mesure_temps_execution_fonction(fonction):
     temps_moyen_f1 = temps_total / nb_repetition
     temps_moyen_f2 = temps_total_f2 / nb_repetition
 
-    print(f"Temps moyen d'exécution pour la fonction {fonction} de fonction1 est de : {temps_moyen_f1:.2e} secondes")
-    print(f"Temps moyen d'exécution pour la fonction {fonction} de fonction2 est de : {temps_moyen_f2:.2e} secondes")
+    print(f"Temps moyen d'exécution du fichier fonction1 pour la {fonction} est de : {temps_moyen_f1:.2e} secondes")
+    print(f"Temps moyen d'exécution du fichier fonction2 pour la {fonction}  est de : {temps_moyen_f2:.2e} secondes")
     print("-----------------------------------------------------------------------------------------")
 
     if temps_moyen_f1 < temps_moyen_f2:
@@ -110,37 +110,38 @@ if __name__ == "__main__":
     print()
     for l in list_temps_executions:
         print(l)
+    print()
 
 
 """
-Temps moyen d'exécution pour la fonction couleur de fonction1 est de : 1.78e-05 secondes
-Temps moyen d'exécution pour la fonction couleur de fonction2 est de : 4.27e-05 secondes
+Temps moyen d'exécution du fichier fonction1 pour la couleur est de : 1.78e-05 secondes
+Temps moyen d'exécution du fichier fonction1 pour la couleur est de : 4.27e-05 secondes
 -----------------------------------------------------------------------------------------
-Temps moyen d'exécution pour la fonction reflexion de fonction1 est de : 3.00e-06 secondes
-Temps moyen d'exécution pour la fonction reflexion de fonction2 est de : 4.30e-06 secondes
+Temps moyen d'exécution du fichier fonction1 pour la reflexion est de : 3.00e-06 secondes
+Temps moyen d'exécution du fichier fonction1 pour la reflexion est de : 4.30e-06 secondes
 -----------------------------------------------------------------------------------------
-Temps moyen d'exécution pour la fonction calcul de fonction1 est de : 1.64e-05 secondes
-Temps moyen d'exécution pour la fonction calcul de fonction2 est de : 2.46e-05 secondes
+Temps moyen d'exécution du fichier fonction1 pour la calcul est de : 1.10e-05 secondes
+Temps moyen d'exécution du fichier fonction1 pour la calcul est de : 3.89e-06 secondes
 -----------------------------------------------------------------------------------------
-Temps moyen d'exécution pour la fonction frequence de fonction1 est de : 1.93e-04 secondes
-Temps moyen d'exécution pour la fonction frequence de fonction2 est de : 1.01e-04 secondes
+Temps moyen d'exécution du fichier fonction1 pour la frequence est de : 1.93e-04 secondes
+Temps moyen d'exécution du fichier fonction1 pour la frequence est de : 1.01e-04 secondes
 -----------------------------------------------------------------------------------------
-Temps moyen d'exécution pour la fonction manquant de fonction1 est de : 3.11e-03 secondes
-Temps moyen d'exécution pour la fonction manquant de fonction2 est de : 1.12e-04 secondes
+Temps moyen d'exécution du fichier fonction1 pour la manquant est de : 3.11e-03 secondes
+Temps moyen d'exécution du fichier fonction1 pour la manquant est de : 1.12e-04 secondes
 -----------------------------------------------------------------------------------------
-Temps moyen d'exécution pour la fonction labyrinthe de fonction1 est de : 4.52e-04 secondes
-Temps moyen d'exécution pour la fonction labyrinthe de fonction2 est de : 4.50e-04 secondes
+Temps moyen d'exécution du fichier fonction1 pour la labyrinthe est de : 4.52e-04 secondes
+Temps moyen d'exécution du fichier fonction1 pour la labyrinthe est de : 4.50e-04 secondes
 -----------------------------------------------------------------------------------------
-Temps moyen d'exécution pour la fonction doublon de fonction1 est de : 5.04e-04 secondes
-Temps moyen d'exécution pour la fonction doublon de fonction2 est de : 2.09e-04 secondes
+Temps moyen d'exécution du fichier fonction1 pour la doublon est de : 5.04e-04 secondes
+Temps moyen d'exécution du fichier fonction1 pour la doublon est de : 2.09e-04 secondes
 -----------------------------------------------------------------------------------------
-Temps moyen d'exécution pour la fonction raisonnement de fonction1 est de : 2.13e-04 secondes
-Temps moyen d'exécution pour la fonction raisonnement de fonction2 est de : 2.10e-04 secondes
+Temps moyen d'exécution du fichier fonction1 pour la raisonnement est de : 2.13e-04 secondes
+Temps moyen d'exécution du fichier fonction1 pour la raisonnement est de : 2.10e-04 secondes
 -----------------------------------------------------------------------------------------
 
 Donc pour la fonction couleur il faut utiliser : fonction1
 Donc pour la fonction reflexion il faut utiliser : fonction1
-Donc pour la fonction calcul il faut utiliser : fonction1
+Donc pour la fonction calcul il faut utiliser : fonction2
 Donc pour la fonction frequence il faut utiliser : fonction2
 Donc pour la fonction manquant il faut utiliser : fonction2
 Donc pour la fonction labyrinthe il faut utiliser : fonction2

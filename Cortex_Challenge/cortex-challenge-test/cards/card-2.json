@@ -1,12 +1,1 @@
-{
-  "code" : "RE-001",
-  "type" : "réflexion",
-  "map" : [
-    [" ",  1, 2, 3, 4, ""],
-    [15, "", "", "", "", 5],
-    [14, "", "/", "", "/", 6],
-    [13, "", "", "", "", 7],
-    [12, "", "", "", "", 8],
-    ["", 11, "L", 10, 9, ""]
-  ]
-}
+{"code": "CO-2", "type": "couleur", "colors": {"noir": "coral", "bleu": "silver", "brown": "magenta", "orchid": "orchid", "white": "lavender", "jaune": "blanc", "silver": "salmon", "magenta": "orange", "salmon": "bleu", "orchidée": "beige", "lavender": "rouge", "beige": "beige", "vert": "rouge", "or": "orchidée", "mauve": "silver", "blanc": "mauve", "argent": "bleu", "corail": "bleu", "blue": "noir", "indigo": "argent", "marron": "mauve", "lavande": "indigo", "olive": "olive", "yellow": "saumon", "rose": "silver", "orange": "mauve", "gold": "silver", "red": "yellow", "pink": "jaune", "coral": "silver", "rouge": "rose", "black": "mauve", "saumon": "saumon", "green": "green"}}
