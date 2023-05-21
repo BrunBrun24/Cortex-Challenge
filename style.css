@@ -152,8 +152,7 @@ footer p:not(:last-child) {
     h1 {
         font-size: 2em;
     }
-    footer {
-        display: none;
+    a span {
+        font-size: 1em;
     }
-z
 }
