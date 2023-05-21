@@ -63,6 +63,7 @@ footer p:not(:last-child) {
     .print {
         display: inline;
     }
+    
     body {
         display: flex;
         justify-content: center;
@@ -72,6 +73,7 @@ footer p:not(:last-child) {
         gap: 50px;
         overflow: hidden; /* Ajoutez cette ligne pour empêcher le défilement vers le bas */
     }
+    
     a {
         position: relative;
         background: white;
@@ -83,28 +85,33 @@ footer p:not(:last-child) {
         padding: 10px 30px;
         transition: 0.5s;
     }
+    
     a:hover {
         background: var(--clr);
         color: var(--clr);
         letter-spacing: 0.25em;
         box-shadow: 0 0 35px var(--clr);
     }
+    
     a::before {
         content: '';
         position: absolute;
         inset: 2px;
         background: black;
     }
+    
     a span {
         font-size: 2em;
         position: relative;
         z-index: 1;
     }
+    
     a span i {
         position: absolute;
         inset: 0;
         display: block;
     }
+    
     a i::before {
         content: '';
         position: absolute;
@@ -116,10 +123,12 @@ footer p:not(:last-child) {
         transform: translateX(-50%) skewX(325deg);
         transition: 0.5s;
     }
+    
     a:hover i::before {
         width: 20px;
         left: 20%;
     }
+    
     a i::after {
         content: '';
         position: absolute;
@@ -131,6 +140,7 @@ footer p:not(:last-child) {
         transform: translateX(-50%) skewX(325deg);
         transition: 0.5s;
     }
+    
     a:hover i::after {
         width: 20px;
         left: 80%;
@@ -142,9 +152,8 @@ footer p:not(:last-child) {
     h1 {
         font-size: 2em;
     }
-    a span {
-        font-size: 1em;
-        position: relative;
-        z-index: 1;
+    footer {
+        display: none;
     }
+z
 }
