@@ -61,12 +61,12 @@ h3 {
 }
 
 footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     bottom: 0;
-    left: 0;
-    width: 100%;
+    right: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px;
 }
 footer p {
     margin: 10px;
@@ -74,6 +74,8 @@ footer p {
 footer p:not(:last-child) {
     margin-right: 10px;
 }
+
+
 
 
 
@@ -99,7 +101,19 @@ footer p:not(:last-child) {
     }
 }
 
-/*tablette 768px et Ordinateur portable - 1024px*/
+@media all and (min-width: 1025px)  and (max-width: 1349px) {
+    .text {
+        margin-top: 250px;
+    }
+}
+
+@media all and (width = 1024px) {
+    .text {
+        margin: 80px;
+        margin-top: -50px;
+    }
+}
+
 @media all and (max-width: 1023px) {
     h1 {
         font-size: 2em;

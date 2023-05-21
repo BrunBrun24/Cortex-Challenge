@@ -48,10 +48,6 @@ footer p:not(:last-child) {
         text-align: center;
         display: flex;
     }
-    footer {
-        top: 700px;
-        left: 1230px;
-    }
 }
 
 /* Ordinateur portable - 1024px*/

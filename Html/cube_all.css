@@ -263,13 +263,34 @@
 
 
 
-/* Ordinateur portable L - 1440px*/
-@media all and (max-width: 1440px) {
+
+
+
+@media all and (min-width: 1441px) and (max-width: 1919px) {
+    .cube1 {
+        top: -285px;
+        left: 270px;
+    }
+    .cube2 {
+        top: -390px;
+        left: 605px;
+    }
+    .cube3 {
+        top: -495px;
+        left: 940px;
+    }
+    .cube4 {
+        top: -600px;
+        left: 1275px;
+    }
+}
+
+@media all and (min-width: 1350px) and (max-width: 1440px) {
     .cube1 {
         width: 90px;
         height: 90px;
-        top: -285px;
-        left: 270px;
+        top: -330px;
+        left: 170px;
     }
     .cube1 div span {
         transform: rotateY(calc(90deg * var(--i))) translateZ(45px);
@@ -287,8 +308,8 @@
     .cube2 {
         width: 90px;
         height: 90px;
-        top: -375px;
-        left: 605px;
+        top: -420px;
+        left: 505px;
     }
     .cube2 div span {
         transform: rotateY(calc(90deg * var(--i))) translateZ(45px);
@@ -306,8 +327,8 @@
     .cube3 {
         width: 90px;
         height: 90px;
-        top: -465px;
-        left: 940px;
+        top: -510px;
+        left: 840px;
     }
     .cube3 div span {
         transform: rotateY(calc(90deg * var(--i))) translateZ(45px);
@@ -325,8 +346,8 @@
     .cube4 {
         width: 90px;
         height: 90px;
-        top: -555px;
-        left: 1275px;
+        top: -600px;
+        left: 1175px;
     }
     .cube4 div span {
         transform: rotateY(calc(90deg * var(--i))) translateZ(45px);
@@ -343,35 +364,7 @@
     }
 }
 
-
-@media all and (min-width: 1350px) and (max-width: 1439px) {
-    .cube1 {
-        width: 90px;
-        height: 90px;
-        top: -230px;
-        left: 170px;
-    }
-    .cube2 {
-        width: 90px;
-        height: 90px;
-        top: -320px;
-        left: 505px;
-    }
-    .cube3 {
-        width: 90px;
-        height: 90px;
-        top: -410px;
-        left: 840px;
-    }
-    .cube4 {
-        width: 90px;
-        height: 90px;
-        top: -500px;
-        left: 1175px;
-    }
-}
-
-@media all and (min-width: 1025px)  and (max-width: 1349px) {
+@media all and (min-width: 1025px) and (max-width: 1349px) {
     .cube1,
     .cube2,
     .cube3,
@@ -382,162 +375,22 @@
 
 /*Ordinateur portable - 1024px*/
 @media all and (width = 1024px) {
-    .cube1 {
-        width: 90px;
-        height: 90px;
-        top: -450px;
-        left: 50px;
-    }
-    .cube1 div span {
-        transform: rotateY(calc(90deg * var(--i))) translateZ(45px);
-    }
-    .top1 {
-        width: 126px;
-        height: 126px;
-        transform: rotateX(90deg) translateZ(45px);
-    }
-    .top1::before {
-        width: 90px;
-        height: 90px;
-        transform: translateZ(-120px);
-    }
-    .cube2 {
-        width: 90px;
-        height: 90px;
-        top: -550px;
-        left: 880px;
-    }
-    .cube2 div span {
-        transform: rotateY(calc(90deg * var(--i))) translateZ(45px);
-    }
-    .top2 {
-        width: 126px;
-        height: 126px;
-        transform: rotateX(90deg) translateZ(45px);
-    }
-    .top2::before {
-        width: 90px;
-        height: 90px;
-        transform: translateZ(-120px);
-    }
-    .cube3 {
-        width: 90px;
-        height: 90px;
-        top: -225px;
-        left: 50px;
-    }
-    .cube3 div span {
-        transform: rotateY(calc(90deg * var(--i))) translateZ(45px);
-    }
-    .top3 {
-        width: 126px;
-        height: 126px;
-        transform: rotateX(90deg) translateZ(45px);
-    }
-    .top3::before {
-        width: 90px;
-        height: 90px;
-        transform: translateZ(-120px);
-    }
-    .cube4 {
-        width: 90px;
-        height: 90px;
-        top: -325px;
-        left: 880px;
-    }
-    .cube4 div span {
-        transform: rotateY(calc(90deg * var(--i))) translateZ(45px);
-    }
-    .top4 {
-        width: 126px;
-        height: 126px;
-        transform: rotateX(90deg) translateZ(45px);
-    }
-    .top4::before {
-        width: 90px;
-        height: 90px;
-        transform: translateZ(-120px);
-    }
-}
-
-/*Ordinateur portable - 1024px*/
-@media all and (width = 1024px) {
     /*Taille de toutes les boxs*/
     .cube1 {
-        width: 90px;
-        height: 90px;
         top: -450px;
         left: 50px;
     }
-    .cube1 div span {
-        transform: rotateY(calc(90deg * var(--i))) translateZ(45px);
-    }
-    .top1 {
-        width: 126px;
-        height: 126px;
-        transform: rotateX(90deg) translateZ(45px);
-    }
-    .top1::before {
-        width: 90px;
-        height: 90px;
-        transform: translateZ(-120px);
-    }
     .cube2 {
-        width: 90px;
-        height: 90px;
         top: -550px;
         left: 880px;
     }
-    .cube2 div span {
-        transform: rotateY(calc(90deg * var(--i))) translateZ(45px);
-    }
-    .top2 {
-        width: 126px;
-        height: 126px;
-        transform: rotateX(90deg) translateZ(45px);
-    }
-    .top2::before {
-        width: 90px;
-        height: 90px;
-        transform: translateZ(-120px);
-    }
     .cube3 {
-        width: 90px;
-        height: 90px;
         top: -225px;
         left: 50px;
     }
-    .cube3 div span {
-        transform: rotateY(calc(90deg * var(--i))) translateZ(45px);
-    }
-    .top3 {
-        width: 126px;
-        height: 126px;
-        transform: rotateX(90deg) translateZ(45px);
-    }
-    .top3::before {
-        width: 90px;
-        height: 90px;
-        transform: translateZ(-120px);
-    }
     .cube4 {
-        width: 90px;
-        height: 90px;
         top: -325px;
         left: 880px;
-    }
-    .cube4 div span {
-        transform: rotateY(calc(90deg * var(--i))) translateZ(45px);
-    }
-    .top4 {
-        width: 126px;
-        height: 126px;
-        transform: rotateX(90deg) translateZ(45px);
-    }
-    .top4::before {
-        width: 90px;
-        height: 90px;
-        transform: translateZ(-120px);
     }
 }
 

@@ -138,6 +138,12 @@
 
 
 
+@media all and (min-width: 1441px)  and (max-width: 1919px) {
+    .container .box {
+        margin: 10px 18px;
+    }
+}
+
 /* Ordinateur portable L - 1440px*/
 @media all and (max-width: 1440px) {
     /*Taille de toutes les boxs*/
@@ -168,6 +174,13 @@
         padding: 5px;
         top: 125px;
         left: -50px;
+    }
+}
+
+@media all and (min-width: 1025px) and (max-width: 1349px) {
+    .container .box {
+        margin: 10px 86px;
+        top: 200px;
     }
 }
 
