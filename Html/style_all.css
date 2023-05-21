@@ -13,12 +13,11 @@ body {
 /* Bar */
 body::-webkit-scrollbar {
     width: 10px;
+    height: 10px;
 }
-
 body::-webkit-scrollbar-track {
     background-color: black;
 }
-
 body::-webkit-scrollbar-thumb {
     background: linear-gradient(315deg,white,black);
     border-radius: 15px;
@@ -36,18 +35,44 @@ body::-webkit-scrollbar-thumb {
 }
 
 h1 {
-    position: absolute; /* ou position: fixed; */
-    font-size: 3em; /* Ajustez la valeur en fonction de la taille souhaitée */
+    position: absolute;
+    font-size: 3em;
     text-transform: uppercase;
-    top: 100px; /* ajustez la valeur en fonction de votre besoin */
-    left: 50%; /* ajustez la valeur en fonction de votre besoin */
+    top: 100px;
+    left: 50%;
     transform: translateX(-50%); /* pour centrer horizontalement */
+}
+h3 {
+    font-size: 3em;
+    text-align: center;
+    margin: 50px;
+}
+
+#margin {
+    margin-top: -200px;
+    margin-bottom: 50px;
 }
 
 .text {
     margin: 250px;
     margin-top: -400px;
     margin-bottom: 200px;
+    text-align: justify;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+footer p {
+    margin: 10px;
+}
+footer p:not(:last-child) {
+    margin-right: 10px;
 }
 
 
@@ -58,39 +83,69 @@ h1 {
     h1 {
         font-size: 2.2em;
     }
+    h3 {
+        font-size: 2.2em;
+        margin: 10px;
+        margin-top: -500px;
+    }
     .text {
         margin: 150px;
         margin-top: -300px;
         font-size: 0.8em;
     }
+    #margin {
+        margin-top: 0px;
+        margin-bottom: 10px;
+    }
 }
 
 /*tablette 768px et Ordinateur portable - 1024px*/
-@media all and (max-width: 1024px) {
+@media all and (max-width: 1023px) {
     h1 {
-        font-size: 2em; /* Ajustez la valeur en fonction de la taille souhaitée */
+        font-size: 2em;
         text-align: center;
         display: flex;
         top: 70px;
     }
+    h3 {
+        font-size: 1.6em;
+    }
+    #margin {
+        margin-top: 300px;
+    }
     .text {
         margin: 80px;
-        margin-top: 200px;
-        font-size: 0.8em;
+        margin-top: 250px;
+    }
+    footer img {
+        width: 70%;
+    }
+    footer p:not(:last-child) {
+        margin-right: -20px;
+    }
+}
+
+/*tablette 768px*/
+@media all and (max-width: 768px) {
+    #margin {
+        margin-top: 300px;
     }
 }
 
 /* Styles pour les écrans de taille (smartphones Android)*/
 @media all and (max-width: 425px) {
     h1 {
-        font-size: 1.5em; /* Ajustez la valeur en fonction de la taille souhaitée */
-        text-align: center;
-        display: flex;
-        top: 70px;
+        font-size: 1.5em;
+    }
+    h3 {
+        font-size: 1.5em;
     }
     .text {
         margin: 60px;
         margin-top: 200px;
         font-size: 0.7em;
+    }
+    footer {
+        display: none;
     }
 }

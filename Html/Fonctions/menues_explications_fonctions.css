@@ -218,10 +218,12 @@
     }
     /*Changement des taille de la police*/
     .container_explications_fonctions .box .content_explications_fonctions h2 {
-        font-size: 1.3em;
+        font-size: 1em;
     }
     .container_explications_fonctions .box .content_explications_fonctions pre,
     .container_explications_fonctions .box .content_explications_fonctions p {
         font-size: 0.7em;
+        text-align: left;
+        margin: auto;
     }
 }

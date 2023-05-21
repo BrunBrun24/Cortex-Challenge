@@ -200,17 +200,13 @@
     /*Changement des taille de la police*/
     .container_explications_fonctions .box .content_explications_fonctions h2 {
         font-size: 1.3em;
+        text-align: left;
     }
     .container_explications_fonctions .box .content_explications_fonctions pre,
     .container_explications_fonctions .box .content_explications_fonctions p {
         font-size: 0.8em;
     }
 }
-
-
-
-
-
 
 /* Styles pour les écrans de taille (smartphones Android)*/
 @media all and (max-width: 425px) {
@@ -230,5 +226,7 @@
     .container_explications_fonctions .box .content_explications_fonctions pre,
     .container_explications_fonctions .box .content_explications_fonctions li {
         font-size: 0.7em;
+        text-align: left;
+        margin: auto;
     }
 }
