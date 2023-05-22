@@ -1,9 +1,9 @@
 .cube1 {
-    position: relative;
+    position: absolute;
     width: 105px;
     height: 105px;
-    top: -300px;
-    left: 450px;
+    top: calc(50% + 180px);
+    left: calc(50% - 500px);
     transform-style: preserve-3d;
     transform: rotateX(-30deg);
     animation: animate 10s linear infinite;
@@ -72,11 +72,11 @@
 /*--------------------------------------------------------------------------*/
 
 .cube2 {
-    position: relative;
+    position: absolute;
     width: 105px;
     height: 105px;
-    top: -400px;
-    left: 820px;
+    top: calc(50% + 180px);
+    left: calc(50% - 120px);
     transform-style: preserve-3d;
     transform: rotateX(-30deg);
     animation: animate 10s linear infinite;
@@ -136,11 +136,11 @@
 /*--------------------------------------------------------------------------*/
 
 .cube3 {
-    position: relative;
+    position: absolute;
     width: 105px;
     height: 105px;
-    top: -500px;
-    left: 1200px;
+    top: calc(50% + 180px);
+    left: calc(50% + 260px);
     transform-style: preserve-3d;
     transform: rotateX(-30deg);
     animation: animate 10s linear infinite;
@@ -200,11 +200,11 @@
 /*--------------------------------------------------------------------------*/
 
 .cube4 {
-    position: relative;
+    position: absolute;
     width: 105px;
     height: 105px;
-    top: -600px;
-    left: 1580px;
+    top: calc(50% + 180px);
+    left: calc(50% + 640px);
     transform-style: preserve-3d;
     transform: rotateX(-30deg);
     animation: animate 10s linear infinite;
@@ -268,20 +268,20 @@
 
 @media all and (min-width: 1441px) and (max-width: 1919px) {
     .cube1 {
-        top: -285px;
-        left: 270px;
+        top: calc(50% + 270px);
+        left: calc(50% - 488px);
     }
     .cube2 {
-        top: -390px;
-        left: 605px;
+        top: calc(50% + 270px);
+        left: calc(50% - 132px);
     }
     .cube3 {
-        top: -495px;
-        left: 940px;
+        top: calc(50% + 270px);
+        left: calc(50% + 224px);
     }
     .cube4 {
-        top: -600px;
-        left: 1275px;
+        top: calc(50% + 270px);
+        left: calc(50% + 580px);
     }
 }
 
@@ -289,8 +289,8 @@
     .cube1 {
         width: 90px;
         height: 90px;
-        top: -330px;
-        left: 170px;
+        top: calc(79%);
+        left: calc(50% - 464px);
     }
     .cube1 div span {
         transform: rotateY(calc(90deg * var(--i))) translateZ(45px);
@@ -308,8 +308,8 @@
     .cube2 {
         width: 90px;
         height: 90px;
-        top: -420px;
-        left: 505px;
+        top: calc(79%);
+        left: calc(50% - 129px);
     }
     .cube2 div span {
         transform: rotateY(calc(90deg * var(--i))) translateZ(45px);
@@ -327,8 +327,8 @@
     .cube3 {
         width: 90px;
         height: 90px;
-        top: -510px;
-        left: 840px;
+        top: calc(79%);
+        left: calc(50% + 206px);
     }
     .cube3 div span {
         transform: rotateY(calc(90deg * var(--i))) translateZ(45px);
@@ -346,8 +346,8 @@
     .cube4 {
         width: 90px;
         height: 90px;
-        top: -600px;
-        left: 1175px;
+        top: calc(79%);
+        left: calc(50% + 541px);
     }
     .cube4 div span {
         transform: rotateY(calc(90deg * var(--i))) translateZ(45px);
@@ -364,37 +364,25 @@
     }
 }
 
-@media all and (min-width: 1025px) and (max-width: 1349px) {
-    .cube1,
-    .cube2,
-    .cube3,
-    .cube4 {
-        display: none;
-    }
-}
-
-/*Ordinateur portable - 1024px*/
-@media all and (width = 1024px) {
-    /*Taille de toutes les boxs*/
+@media all and (min-width: 1024px) and (max-width: 1349px) {
     .cube1 {
-        top: -450px;
-        left: 50px;
+        top: calc(37%);
+        left: calc(50% - 50px);
     }
     .cube2 {
-        top: -550px;
-        left: 880px;
+        top: calc(60%);
+        left: calc(50% - 50px);
     }
     .cube3 {
-        top: -225px;
-        left: 50px;
+        top: calc(87%);
+        left: calc(50% - 50px);
     }
     .cube4 {
-        top: -325px;
-        left: 880px;
+        top: calc(111%);
+        left: calc(50% - 50px);
     }
 }
 
-/* smartphones Android, Tablette*/
 @media all and (max-width: 1023px) {
     .cube1,
     .cube2,
