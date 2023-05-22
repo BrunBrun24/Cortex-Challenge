@@ -163,7 +163,6 @@
     }
 }
 
-/* Ordinateur portable L - 1440px*/
 @media all and (max-width: 1349px) {
     /*Changement de la taille des boîtes*/
     .container_explications_fonctions .box:nth-child(1),
