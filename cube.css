@@ -1,9 +1,9 @@
 .cube1 {
-    position: relative;
+    position: absolute;
     width: 300px;
     height: 300px;
-    top: 350px; /* Modifier la valeur pour ajuster la position verticale */
-    left: 45%; /* Modifier la valeur pour ajuster la position horizontale */
+    top: calc(37%);
+    left: calc(45%);
     transform-style: preserve-3d;
     transform: rotateX(-30deg);
     animation: animate 10s linear infinite;
@@ -85,11 +85,11 @@
 /*------------------------------------------------------------------------*/
 
 .cube2 {
-    position: relative;
+    position: absolute;
     width: 150px;
     height: 150px;
-    top: 325px; /* Modifier la valeur pour ajuster la position verticale */
-    left: 10%; /* Modifier la valeur pour ajuster la position horizontale */
+    top: calc(65%);
+    left: calc(10%);
     transform-style: preserve-3d;
     transform: rotateX(-30deg);
     animation: animate 10s linear infinite;
@@ -127,7 +127,7 @@
 }
 
 .cube2 div span a:nth-child(1) {
-    transform: translateZ(0) translateY(20px);
+    transform: translateZ(0) translateY(10px);
     color: rgba(0,0,0,0.1);
     filter: blur(2px);
 }
@@ -162,11 +162,11 @@
 /*------------------------------------------------------------------------*/
 
 .cube3 {
-    position: relative;
+    position: absolute;
     width: 210px;
     height: 210px;
-    top: -250px; /* Modifier la valeur pour ajuster la position verticale */
-    left: 75%; /* Modifier la valeur pour ajuster la position horizontale */
+    top: calc(20%);
+    left: calc(75%);
     transform-style: preserve-3d;
     transform: rotateX(-30deg);
     animation: animate 10s linear infinite;
@@ -204,7 +204,7 @@
 }
 
 .cube3 div span a:nth-child(1) {
-    transform: translateZ(0) translateY(20px);
+    transform: translateZ(0) translateY(15px);
     color: rgba(0,0,0,0.1);
     filter: blur(2px);
 }
@@ -239,11 +239,11 @@
 /*------------------------------------------------------------------------*/
 
 .cube4 {
-    position: relative;
+    position: absolute;
     width: 105px;
     height: 105px;
-    top: -400px; /* Modifier la valeur pour ajuster la position verticale */
-    left: 22%; /* Modifier la valeur pour ajuster la position horizontale */
+    top: calc(28%);
+    left: calc(22%);
     transform-style: preserve-3d;
     transform: rotateX(-30deg);
     animation: animate 10s linear infinite;
@@ -281,7 +281,7 @@
 }
 
 .cube4 div span a:nth-child(1) {
-    transform: translateZ(0) translateY(20px);
+    transform: translateZ(0) translateY(5px);
     color: rgba(0,0,0,0.1);
     filter: blur(2px);
 }
@@ -316,18 +316,16 @@
 /*------------------------------------------------------------------------*/
 
 /* Ordinateur portable L - 1440px*/
-@media all and (max-width: 1440px) {
+@media all and (max-width: 1735px) {
     .cube1 {
         width: 200px;
         height: 200px;
-        top: 325px; /* Modifier la valeur pour ajuster la position verticale */
-        left: 45%; /* Modifier la valeur pour ajuster la position horizontale */
     }
     .cube1 div span {
         transform: rotateY(calc(90deg * var(--i))) translateZ(100px);
     }
     .cube1 div span a {
-        font-size: 3.4em; /* Taille du texte */
+        font-size: 3em; /* Taille du texte */
         transform: translateZ(20px); /* Pour que le texte soit de + en + éloigné du cube */
     }
     .top1 {
@@ -344,8 +342,6 @@
     .cube2 {
         width: 105px;
         height: 105px;
-        top: 250px; /* Modifier la valeur pour ajuster la position verticale */
-        left: 10%; /* Modifier la valeur pour ajuster la position horizontale */
     }
     .cube2 div {
         width: 100%;
@@ -377,8 +373,6 @@
     .cube3 {
         width: 140px;
         height: 140px;
-        top: -175px; /* Modifier la valeur pour ajuster la position verticale */
-        left: 75%; /* Modifier la valeur pour ajuster la position horizontale */
     }
     .cube3 div span {
         transform: rotateY(calc(90deg * var(--i))) translateZ(70px);
@@ -401,8 +395,6 @@
     .cube4 {
         width: 70px;
         height: 70px;
-        top: -250px; /* Modifier la valeur pour ajuster la position verticale */
-        left: 25%; /* Modifier la valeur pour ajuster la position horizontale */
     }
     .cube4 div span {
         transform: rotateY(calc(90deg * var(--i))) translateZ(35px);
