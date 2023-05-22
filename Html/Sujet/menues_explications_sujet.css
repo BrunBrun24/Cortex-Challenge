@@ -163,9 +163,23 @@
     }
 }
 
-
-
-
+/* Ordinateur portable L - 1440px*/
+@media all and (max-width: 1349px) {
+    /*Changement de la taille des boîtes*/
+    .container_explications_fonctions .box:nth-child(1),
+    .container_explications_fonctions .box:nth-child(2) {
+        width: 400px;
+        height: 500px;
+    }
+    /*Changement des taille de la police*/
+    .container_explications_fonctions .box .content_explications_fonctions h2 {
+        font-size: 1.7em;
+    }
+    .container_explications_fonctions .box .content_explications_fonctions pre,
+    .container_explications_fonctions .box .content_explications_fonctions p {
+        font-size: 0.96em;
+    }
+}
 
 /*Ordinateur portable - 1024px*/
 @media all and (max-width: 1024px) {
@@ -184,10 +198,6 @@
         font-size: 0.8em;
     }
 }
-
-
-
-
 
 /*tablette 768px*/
 @media all and (max-width: 768px) {

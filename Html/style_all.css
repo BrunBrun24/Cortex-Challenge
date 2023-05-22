@@ -82,11 +82,7 @@ footer p:not(:last-child) {
 /* Ordinateur portable L - 1440px*/
 @media all and (max-width: 1440px) {
     /*Taille de toutes les boxs*/
-    h1 {
-        font-size: 2.2em;
-    }
     h3 {
-        font-size: 2.2em;
         margin: 10px;
         margin-top: 0;
     }
@@ -102,6 +98,9 @@ footer p:not(:last-child) {
 }
 
 @media all and (min-width: 1025px)  and (max-width: 1349px) {
+    #margin {
+        margin-top: 350px;
+    }
     .text {
         margin-top: 250px;
     }
@@ -116,13 +115,9 @@ footer p:not(:last-child) {
 
 @media all and (max-width: 1023px) {
     h1 {
-        font-size: 2em;
         text-align: center;
         display: flex;
         top: 70px;
-    }
-    h3 {
-        font-size: 1.6em;
     }
     #margin {
         margin-top: 300px;
@@ -141,6 +136,12 @@ footer p:not(:last-child) {
 
 /*tablette 768px*/
 @media all and (max-width: 768px) {
+    h1 {
+        font-size: 2em;
+    }
+    h3 {
+        font-size: 1.6em;
+    }
     #margin {
         margin-top: 300px;
     }
