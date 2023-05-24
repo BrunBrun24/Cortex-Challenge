@@ -73,87 +73,89 @@ footer p:not(:last-child) {
 }
 
 
-
-@media all and (min-width: 1441px)  and (max-width: 1919px) {
-    .text {
-        margin: 150px;
-        margin-top: 0px;
-        font-size: 0.8em;
+/*
+Ordinateur de bureau standard :
+    Résolution typique : 1920x1080 pixels (Full HD)
+Ordinateur portable :
+    15 pouces : 1920x1080 pixels
+    17 pouces : 1920x1080 pixels
+iMac :
+    21,5 pouces : 1920x1080 pixels
+*/
+@media all and (max-width: 1920px) and (max-height: 1080px) {
+    @media all and (max-width: 1919px) {
+        .text {
+            margin: 150px;
+            margin-top: 0px;
+            font-size: 0.8em;
+        }
+    }
+    @media all and (max-width: 1440px) {
+        /*Taille de toutes les boxs*/
+        h3 {
+            margin: 10px;
+            margin-top: 0;
+        }
+        .text {
+            margin: 150px;
+            margin-top: -100px;
+            font-size: 0.8em;
+        }
+    }
+    @media all and (max-width: 1349px) {
+        #margin {
+            margin-top: 350px;
+        }
+        .text {
+            margin-top: 250px;
+        }
+    }
+    @media all and (max-width: 1024px) {
+        .text {
+            margin: 80px;
+            margin-top: 250px;
+        }
+    }
+    @media all and (max-width: 1023px) {
+        h1 {
+            top: 70px;
+        }
+        #margin {
+            margin-top: 300px;
+        }
+        footer img {
+            width: 70%;
+        }
+        footer p:not(:last-child) {
+            margin-right: -20px;
+        }
+    }
+    @media all and (max-width: 768px) {
+        h1 {
+            font-size: 2em;
+        }
+        h3 {
+            font-size: 1.6em;
+        }
+        #margin {
+            margin-top: 300px;
+        }
+    }
+    @media all and (max-width: 425px) {
+        h1 {
+            font-size: 1.5em;
+        }
+        h3 {
+            font-size: 1.5em;
+        }
+        .text {
+            margin: 60px;
+            margin-top: 200px;
+            font-size: 0.7em;
+        }
+        footer {
+            display: none;
+        }
     }
 }
 
-/* Ordinateur portable L - 1440px*/
-@media all and (max-width: 1440px) {
-    /*Taille de toutes les boxs*/
-    h3 {
-        margin: 10px;
-        margin-top: 0;
-    }
-    .text {
-        margin: 150px;
-        margin-top: -100px;
-        font-size: 0.8em;
-    }
-}
-
-@media all and (min-width: 1024px) and (max-width: 1349px) {
-    #margin {
-        margin-top: 350px;
-    }
-    .text {
-        margin-top: 250px;
-    }
-}
-
-@media all and (max-width: 1024px) {
-    .text {
-        margin: 80px;
-        margin-top: 250px;
-    }
-}
-
-@media all and (max-width: 1023px) {
-    h1 {
-        top: 70px;
-    }
-    #margin {
-        margin-top: 300px;
-    }
-    footer img {
-        width: 70%;
-    }
-    footer p:not(:last-child) {
-        margin-right: -20px;
-    }
-}
-
-/*tablette 768px*/
-@media all and (max-width: 768px) {
-    h1 {
-        font-size: 2em;
-    }
-    h3 {
-        font-size: 1.6em;
-    }
-    #margin {
-        margin-top: 300px;
-    }
-}
-
-/* Styles pour les écrans de taille (smartphones Android)*/
-@media all and (max-width: 425px) {
-    h1 {
-        font-size: 1.5em;
-    }
-    h3 {
-        font-size: 1.5em;
-    }
-    .text {
-        margin: 60px;
-        margin-top: 200px;
-        font-size: 0.7em;
-    }
-    footer {
-        display: none;
-    }
-}
