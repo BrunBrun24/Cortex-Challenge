@@ -53,7 +53,7 @@ footer p:not(:last-child) {
 /* Ordinateur portable - 1024px*/
 @media all and (max-width: 1024px) {
     h1 {
-        font-size: 5em;
+        font-size: 4em;
         top: 10px;
     }
     footer {
@@ -78,7 +78,7 @@ footer p:not(:last-child) {
         background: white;
         text-decoration: none;
         text-transform: uppercase;
-        font-size: 1.5em;
+        font-size: 0.8em;
         letter-spacing: 0.1em;
         font-weight: 400;
         padding: 10px 30px;
@@ -149,6 +149,7 @@ footer p:not(:last-child) {
 /* smartphones Android*/
 @media all and (max-width: 425px) {
     h1 {
+        margin-top: 20%;
         font-size: 2em;
     }
     a span {
