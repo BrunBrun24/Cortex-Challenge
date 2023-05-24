@@ -171,7 +171,7 @@ def labyrinthe(donnees: dict) -> int or None:
     """
     labyrinth = donnees["map"]
     directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]  # Haut, Bas, Gauche, Droite
-    start_pos:None = None
+    start_pos = None
     goal_pos = [("1", (0, 0)), ("2", (0, len(labyrinth[0])-1)), ("3", (len(labyrinth)-1, len(labyrinth[0])-1)), ("4", (len(labyrinth)-1, 0))]  # Positions des sorties
 
     for i in range(len(labyrinth)):
@@ -308,7 +308,7 @@ def decalage_raisonnement(drawing: list) -> int:
     :return: (int) Le décalage possible le plus à gauche du dessin.
     """
     possibilite_decalage = []
-    arrete_for:bool = False
+    arrete_for = False
     # On parcourt chaque ligne de "drawing"
     for ligne in drawing:
         decalage = 0
