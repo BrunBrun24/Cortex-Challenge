@@ -10,15 +10,6 @@
     z-index: 2;
 }
 
-@keyframes animate {
-    0% {
-        transform: rotateX(-30deg) rotateY(0deg);
-    }
-    100% {
-        transform: rotateX(-30deg) rotateY(360deg);
-    }
-}
-
 .cube1 div {
     position: fixed;
     top: 0;
@@ -261,133 +252,227 @@
     0 0 500px rgba(238, 255, 3,1);
 }
 
+@keyframes animate {
+    0% {
+        transform: rotateX(-30deg) rotateY(0deg);
+    }
+    100% {
+        transform: rotateX(-30deg) rotateY(360deg);
+    }
+}
 
 
+/*--------------------------------------------------------------------------*/
+/*
+Ordinateur de bureau standard :
+    Résolution typique : 1920x1080 pixels (Full HD)
+Ordinateur portable :
+    15 pouces : 1920x1080 pixels
+    17 pouces : 1920x1080 pixels
+iMac :
+    21,5 pouces : 1920x1080 pixels
+*/
+@media screen and (max-width: 1920px) and (max-height: 1080px) {
+    @media screen and (max-width: 1919px) {
+        .cube1 {
+            top: calc(50% + 180px);
+            left: calc(50% - 488px);
+        }
+        .cube2 {
+            top: calc(50% + 180px);
+            left: calc(50% - 132px);
+        }
+        .cube3 {
+            top: calc(50% + 180px);
+            left: calc(50% + 224px);
+        }
+        .cube4 {
+            top: calc(50% + 180px);
+            left: calc(50% + 580px);
+        }
 
+        /*Arrête les cubes au même niveau que les boxs*/
+        @media screen and (max-height: 930px) {
+            .cube1,
+            .cube2,
+            .cube3,
+            .cube4 {
+                top: 645px;
+            }
+        }
+    }
+    @media screen and (max-width: 1440px) {
+        .cube1 {
+            width: 90px;
+            height: 90px;
+            top: calc(64%);
+            left: calc(50% - 464px);
+        }
+        .cube1 div span {
+            transform: rotateY(calc(90deg * var(--i))) translateZ(45px);
+        }
+        .top1 {
+            width: 126px;
+            height: 126px;
+            transform: rotateX(90deg) translateZ(45px);
+        }
+        .top1::before {
+            width: 90px;
+            height: 90px;
+            transform: translateZ(-120px);
+        }
+        .cube2 {
+            width: 90px;
+            height: 90px;
+            top: calc(64%);
+            left: calc(50% - 129px);
+        }
+        .cube2 div span {
+            transform: rotateY(calc(90deg * var(--i))) translateZ(45px);
+        }
+        .top2 {
+            width: 126px;
+            height: 126px;
+            transform: rotateX(90deg) translateZ(45px);
+        }
+        .top2::before {
+            width: 90px;
+            height: 90px;
+            transform: translateZ(-120px);
+        }
+        .cube3 {
+            width: 90px;
+            height: 90px;
+            top: calc(64%);
+            left: calc(50% + 206px);
+        }
+        .cube3 div span {
+            transform: rotateY(calc(90deg * var(--i))) translateZ(45px);
+        }
+        .top3 {
+            width: 126px;
+            height: 126px;
+            transform: rotateX(90deg) translateZ(45px);
+        }
+        .top3::before {
+            width: 90px;
+            height: 90px;
+            transform: translateZ(-120px);
+        }
+        .cube4 {
+            width: 90px;
+            height: 90px;
+            top: calc(64%);
+            left: calc(50% + 541px);
+        }
+        .cube4 div span {
+            transform: rotateY(calc(90deg * var(--i))) translateZ(45px);
+        }
+        .top4 {
+            width: 126px;
+            height: 126px;
+            transform: rotateX(90deg) translateZ(45px);
+        }
+        .top4::before {
+            width: 90px;
+            height: 90px;
+            transform: translateZ(-120px);
+        }
 
+        /*Arrête les cubes au même niveau que les boxs*/
+        @media screen and (max-height: 870px) {
+            .cube1,
+            .cube2,
+            .cube3,
+            .cube4 {
+                top: 555px;
+            }
+        }
+    }
+    @media screen and (max-width: 1349px) {
+        .cube1 {
+            top: calc(32%);
+            left: calc(50% - 50px);
+        }
+        .cube2 {
+            top: calc(52%);
+            left: calc(50% - 50px);
+        }
+        .cube3 {
+            top: calc(75%);
+            left: calc(50% - 50px);
+        }
+        .cube4 {
+            top: calc(95%);
+            left: calc(50% - 50px);
+        }
 
-@media all and (min-width: 1441px) and (max-width: 1919px) {
+        /*Arrête les cubes au même niveau que les boxs*/
+        @media screen and (max-height: 805px) {
+            .cube1 {
+            top: 258px; 
+            }
+            .cube2 {
+                top: 419px; 
+            }
+            .cube3 {
+                top: 605px; 
+            }
+            .cube4 {
+                top: 766px; 
+            }
+        }
+    }
+    @media screen and (max-width: 1023px) {
+        .cube1,
+        .cube2,
+        .cube3,
+        .cube4 {
+            display: none;
+        }
+    }
+}
+
+/*--------------------------------------------------------------------------*/
+/*
+Ordinateur portable :
+    13 pouces : 1366x768 pixels
+*/
+@media screen and (max-width: 1366px) and (max-height: 768px) {
     .cube1 {
-        top: calc(50% + 270px);
-        left: calc(50% - 488px);
+        top: calc(50% + 150px);
+        left: calc(50% - 380px);
     }
     .cube2 {
-        top: calc(50% + 270px);
-        left: calc(50% - 132px);
+        top: calc(50% + 150px);
+        left: calc(50% - 120px);
     }
     .cube3 {
-        top: calc(50% + 270px);
-        left: calc(50% + 224px);
+        top: calc(50% + 150px);
+        left: calc(50% + 140px);
     }
     .cube4 {
-        top: calc(50% + 270px);
-        left: calc(50% + 580px);
+        top: calc(50% + 150px);
+        left: calc(50% + 400px);
+    }
+    @media screen and (max-width: 1200px) {
+        .cube1 {
+            top: calc(50% - 100px);
+            left: calc(50% - 45px);
+        }
+        .cube2 {
+            top: calc(50% + 60px);
+            left: calc(50% - 45px);
+        }
+        .cube3 {
+            top: calc(50% + 310px);
+            left: calc(50% - 45px);
+        }
+        .cube4 {
+            top: calc(50% + 470px);
+            left: calc(50% - 45px);
+        }
     }
 }
 
-@media all and (min-width: 1350px) and (max-width: 1440px) {
-    .cube1 {
-        width: 90px;
-        height: 90px;
-        top: calc(79%);
-        left: calc(50% - 464px);
-    }
-    .cube1 div span {
-        transform: rotateY(calc(90deg * var(--i))) translateZ(45px);
-    }
-    .top1 {
-        width: 126px;
-        height: 126px;
-        transform: rotateX(90deg) translateZ(45px);
-    }
-    .top1::before {
-        width: 90px;
-        height: 90px;
-        transform: translateZ(-120px);
-    }
-    .cube2 {
-        width: 90px;
-        height: 90px;
-        top: calc(79%);
-        left: calc(50% - 129px);
-    }
-    .cube2 div span {
-        transform: rotateY(calc(90deg * var(--i))) translateZ(45px);
-    }
-    .top2 {
-        width: 126px;
-        height: 126px;
-        transform: rotateX(90deg) translateZ(45px);
-    }
-    .top2::before {
-        width: 90px;
-        height: 90px;
-        transform: translateZ(-120px);
-    }
-    .cube3 {
-        width: 90px;
-        height: 90px;
-        top: calc(79%);
-        left: calc(50% + 206px);
-    }
-    .cube3 div span {
-        transform: rotateY(calc(90deg * var(--i))) translateZ(45px);
-    }
-    .top3 {
-        width: 126px;
-        height: 126px;
-        transform: rotateX(90deg) translateZ(45px);
-    }
-    .top3::before {
-        width: 90px;
-        height: 90px;
-        transform: translateZ(-120px);
-    }
-    .cube4 {
-        width: 90px;
-        height: 90px;
-        top: calc(79%);
-        left: calc(50% + 541px);
-    }
-    .cube4 div span {
-        transform: rotateY(calc(90deg * var(--i))) translateZ(45px);
-    }
-    .top4 {
-        width: 126px;
-        height: 126px;
-        transform: rotateX(90deg) translateZ(45px);
-    }
-    .top4::before {
-        width: 90px;
-        height: 90px;
-        transform: translateZ(-120px);
-    }
-}
-
-@media all and (min-width: 1024px) and (max-width: 1349px) {
-    .cube1 {
-        top: calc(37%);
-        left: calc(50% - 50px);
-    }
-    .cube2 {
-        top: calc(60%);
-        left: calc(50% - 50px);
-    }
-    .cube3 {
-        top: calc(87%);
-        left: calc(50% - 50px);
-    }
-    .cube4 {
-        top: calc(111%);
-        left: calc(50% - 50px);
-    }
-}
-
-@media all and (max-width: 1023px) {
-    .cube1,
-    .cube2,
-    .cube3,
-    .cube4 {
-        display: none;
-    }
-}
+/*--------------------------------------------------------------------------*/

@@ -16,7 +16,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 20px 30px;
+    margin: 225px 30px;
     transition: 0.5s;
 }
 
@@ -111,8 +111,6 @@
     font-weight: 700;
 }
 
-
-
 /*Pour la première box*/
 .container .box .content1 h2 {
     font-size: 2em;
@@ -122,7 +120,6 @@
     top: -130px;
     left: -85px;
 }
-
 .container .box .content1 a {
     display: inline-block;
     font-size: 1.1em;
@@ -137,126 +134,177 @@
 }
 
 
+/*--------------------------------------------------------------------------*/
 
-@media all and (min-width: 1441px)  and (max-width: 1919px) {
-    .container .box {
-        margin: 225px 18px;
+/*
+Ordinateur de bureau standard :
+    Résolution typique : 1920x1080 pixels (Full HD)
+Ordinateur portable :
+    15 pouces : 1920x1080 pixels
+    17 pouces : 1920x1080 pixels
+iMac :
+    21,5 pouces : 1920x1080 pixels
+*/
+@media screen and (max-width: 1920px) and (max-height: 1080px) {
+    @media screen and (max-width: 1919px) {
+        .container .box {
+            margin: 225px 18px;
+        }
+    }
+    @media screen and (max-width: 1440px) {
+        .container .box {
+            width: 275px;
+            height: 343px;
+            margin: 225px 30px;
+        }
+        .container .box .content h2 {
+            font-size: 1.7em;
+        }
+        .container .box .content p {
+            font-size: 0.96em;
+        }
+        .container .box .content a {
+            font-size: 0.9em;
+        }
+    
+        /*Pour la première box*/
+        .container .box .content1 h2 {
+            font-size: 1.7em;
+            top: -115px;
+            left: -60px;
+        }
+        .container .box .content1 a {
+            font-size: 0.9em;
+            top: 125px;
+            left: -50px;
+        }
+    }
+    @media screen and (max-width: 1349px) {
+        .container .box {
+            margin: 10px 86px;
+            top: 200px;
+        }
+    }
+    @media screen and (max-width: 1023px) {
+        /*Taille de toutes les boxs*/
+        .container .box {
+            margin: 20px 32px;
+            top: 200px;
+        }
+    }
+    @media screen and (max-width: 768px) {
+        /*Taille de toutes les boxs*/
+        .container .box {
+            width: 250px;
+            height: 300px;
+            margin: 20px 20px;
+            top: 150px;
+        }
+        .container .box .content h2 {
+            font-size: 1.6em;
+        }
+        .container .box .content p {
+            font-size: 0.8em;
+        }
+        .container .box .content a {
+            font-size: 0.8em;
+        }
+    
+        /*Pour la première box*/
+        .container .box .content1 h2 {
+            font-size: 1.6em;
+            top: -90px;
+            left: -50px;
+        }
+        .container .box .content1 a {
+            font-size: 0.8em;
+            top: 110px;
+            left: -45px;
+        }
+    }
+    @media screen and (max-width: 425px) {
+        /*Taille de toutes les boxs*/
+        .container .box {
+            width: 200px;
+            height: 275px;
+            margin: 20px;
+            top: 175px;
+        }
+        .container .box .content h2 {
+            font-size: 1.3em;
+        }
+        .container .box .content p {
+            font-size: 0.7em;
+        }
+        .container .box .content a {
+            font-size: 0.7em;
+        }
+    
+        /*Pour la première box*/
+        .container .box .content1 h2 {
+            font-size: 1.3em;
+            top: -80px;
+            left: -30px;
+        }
+        .container .box .content1 a {
+            font-size: 0.7em;
+            top: 110px;
+            left: -20px;
+        }
     }
 }
 
-/* Ordinateur portable L - 1440px*/
-@media all and (max-width: 1440px) {
-    /*Taille de toutes les boxs*/
+/*--------------------------------------------------------------------------*/
+/*
+Ordinateur portable :
+    13 pouces : 1366x768 pixels
+*/
+@media screen and (max-width: 1366px) and (max-height: 768px) {
     .container .box {
-        width: 275px;
-        height: 343px;
-        margin: 225px 30px;
+        width: 220px;
+        height: 325px;
+        margin: 20px;
     }
     .container .box .content h2 {
-        font-size: 1.7em;
+        font-size: 1.3em;
     }
     .container .box .content p {
-        font-size: 0.96em;
+        font-size: 0.8em;
     }
     .container .box .content a {
-        font-size: 0.9em;
+        font-size: 0.8em;
         padding: 5px;
     }
-
     /*Pour la première box*/
     .container .box .content1 h2 {
-        font-size: 1.7em;
-        top: -115px;
-        left: -60px;
+        font-size: 1.3em;
+        top: -110px;
+        left: -40px;
     }
     .container .box .content1 a {
-        font-size: 0.9em;
+        font-size: 0.8em;
         padding: 5px;
         top: 125px;
-        left: -50px;
-    }
-}
-
-@media all and (min-width: 1024px) and (max-width: 1349px) {
-    .container .box {
-        margin: 10px 86px;
-        top: 200px;
-    }
-}
-
-/*Ordinateur portable - 1024px*/
-@media all and (max-width: 1023px) {
-    /*Taille de toutes les boxs*/
-    .container .box {
-        margin: 20px 32px;
-        top: 200px;
-    }
-}
-
-/*tablette 768px*/
-@media all and (max-width: 768px) {
-    /*Taille de toutes les boxs*/
-    .container .box {
-        width: 250px;
-        height: 300px;
-        margin: 20px 20px;
-        top: 150px;
-    }
-    .container .box .content h2 {
-        font-size: 1.6em;
-    }
-    .container .box .content p {
-        font-size: 0.8em;
-    }
-    .container .box .content a {
-        font-size: 0.8em;
-        padding: 5px;
-    }
-
-    /*Pour la première box*/
-    .container .box .content1 h2 {
-        font-size: 1.6em;
-        top: -90px;
-        left: -50px;
-    }
-    .container .box .content1 a {
-        font-size: 0.8em;
-        padding: 5px;
-        top: 110px;
-        left: -45px;
-    }
-}
-
-/* Styles pour les écrans de taille (smartphones Android)*/
-@media all and (max-width: 425px) {
-    /*Taille de toutes les boxs*/
-    .container .box {
-        width: 200px;
-        height: 275px;
-        margin: 20px;
-        top: 175px;
-    }
-    .container .box .content h2 {
-        font-size: 1.3em;
-    }
-    .container .box .content p {
-        font-size: 0.7em;
-    }
-    .container .box .content a {
-        font-size: 0.7em;
-        padding: 5px;
-    }
-
-    /*Pour la première box*/
-    .container .box .content1 h2 {
-        font-size: 1.3em;
-        top: -80px;
         left: -30px;
     }
-    .container .box .content1 a {
-        font-size: 0.7em;
-        padding: 5px;
-        top: 110px;
-        left: -20px;
+    
+    @media screen and (max-width: 1349px) {
+        .container .box {
+            margin-top: -360px;
+        }
+    }
+    @media screen and (max-width: 1200px) {
+        .container .box {
+            margin: 89px;
+            margin-top: auto;
+        }
+    }
+    @media screen and (max-width: 830px) {
+        .container .box {
+            margin: 96px;
+            margin-top: auto;
+        }
     }
 }
+
+/*--------------------------------------------------------------------------*/
