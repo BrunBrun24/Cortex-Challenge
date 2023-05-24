@@ -391,19 +391,19 @@ iMac :
     }
     @media screen and (max-width: 1349px) {
         .cube1 {
-            top: calc(32%);
+            top: calc(32% + 40px);
             left: calc(50% - 50px);
         }
         .cube2 {
-            top: calc(52%);
+            top: calc(52% + 30px);
             left: calc(50% - 50px);
         }
         .cube3 {
-            top: calc(75%);
+            top: calc(75% + 50px);
             left: calc(50% - 50px);
         }
         .cube4 {
-            top: calc(95%);
+            top: calc(95% + 40px);
             left: calc(50% - 50px);
         }
 
