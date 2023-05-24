@@ -111,7 +111,7 @@
 /*Changement de la taille des boîtes*/
 .container_explications_fonctions .box:nth-child(1) {
     width: 500px;
-    height: 550px;
+    height: 600px;
 }
 .container_explications_fonctions .box:nth-child(2) {
     width: 410px;
@@ -154,28 +154,15 @@ Ordinateur portable :
 iMac :
     21,5 pouces : 1920x1080 pixels
 */
-@media all and (max-width: 1920px) and (max-height: 1080px) {
-    @media all and (max-width: 1440px) {
+@media screen and (max-width: 1920px) and (max-height: 1080px) {
+    @media screen and (max-width: 1440px) {
         /*Changement de la taille des boîtes*/
-        .container_explications_fonctions .box:nth-child(1),
-        .container_explications_fonctions .box:nth-child(2) {
+        .container_explications_fonctions .box:nth-child(1) {
             width: 500px;
             height: 600px;
         }
-        /*Changement des taille de la police*/
-        .container_explications_fonctions .box .content_explications_fonctions h2 {
-            font-size: 1.7em;
-        }
-        .container_explications_fonctions .box .content_explications_fonctions pre,
-        .container_explications_fonctions .box .content_explications_fonctions p {
-            font-size: 0.96em;
-        }
-    }
-    @media all and (max-width: 1349px) {
-        /*Changement de la taille des boîtes*/
-        .container_explications_fonctions .box:nth-child(1),
         .container_explications_fonctions .box:nth-child(2) {
-            width: 400px;
+            width: 410px;
             height: 500px;
         }
         /*Changement des taille de la police*/
@@ -183,11 +170,30 @@ iMac :
             font-size: 1.7em;
         }
         .container_explications_fonctions .box .content_explications_fonctions pre,
-        .container_explications_fonctions .box .content_explications_fonctions p {
+        .container_explications_fonctions .box .content_explications_fonctions li {
             font-size: 0.96em;
         }
     }
-    @media all and (max-width: 1024px) {
+    @media screen and (max-width: 1349px) {
+        /*Changement de la taille des boîtes*/
+        .container_explications_fonctions .box:nth-child(1) {
+            width: 400px;
+            height: 500px;
+        }
+        .container_explications_fonctions .box:nth-child(2) {
+            width: 310px;
+            height: 400px;
+        }
+        /*Changement des taille de la police*/
+        .container_explications_fonctions .box .content_explications_fonctions h2 {
+            font-size: 1.7em;
+        }
+        .container_explications_fonctions .box .content_explications_fonctions pre,
+        .container_explications_fonctions .box .content_explications_fonctions li {
+            font-size: 0.96em;
+        }
+    }
+    @media screen and (max-width: 1024px) {
         .container_explications_fonctions .box:nth-child(1),
         .container_explications_fonctions .box:nth-child(2) {
             width: 400px;
@@ -197,11 +203,11 @@ iMac :
             font-size: 1.6em;
         }
         .container_explications_fonctions .box .content_explications_fonctions pre,
-        .container_explications_fonctions .box .content_explications_fonctions p {
+        .container_explications_fonctions .box .content_explications_fonctions li {
             font-size: 0.8em;
         }
     }
-    @media all and (max-width: 768px) {
+    @media screen and (max-width: 768px) {
         .container_explications_fonctions .box:nth-child(1),
         .container_explications_fonctions .box:nth-child(2) {
             width: 300px;
@@ -212,11 +218,11 @@ iMac :
             text-align: left;
         }
         .container_explications_fonctions .box .content_explications_fonctions pre,
-        .container_explications_fonctions .box .content_explications_fonctions p {
+        .container_explications_fonctions .box .content_explications_fonctions li {
             font-size: 0.8em;
         }
     }
-    @media all and (max-width: 425px) {
+    @media screen and (max-width: 425px) {
         .container_explications_fonctions .box:nth-child(1),
         .container_explications_fonctions .box:nth-child(2) {
             width: 200px;
@@ -236,3 +242,40 @@ iMac :
         }
     }
 }
+
+/*--------------------------------------------------------------------------*/
+/*
+Ordinateur portable :
+    13 pouces : 1366x768 pixels
+*/
+@media screen and (max-width: 1366px) and (max-height: 768px) {
+    .container_explications_fonctions .box:nth-child(1) {
+        width: 400px;
+        height: 500px;
+    }
+    .container_explications_fonctions .box:nth-child(2) {
+        width: 310px;
+        height: 400px;
+    }
+    /*Changement des taille de la police*/
+    .container_explications_fonctions .box .content_explications_fonctions h2 {
+        font-size: 1.3em;
+    }
+    .container_explications_fonctions .box .content_explications_fonctions h4 {
+        font-size: 1em;
+    }
+    .container_explications_fonctions .box .content_explications_fonctions pre,
+    .container_explications_fonctions .box .content_explications_fonctions li {
+        font-size: 0.8em;
+    }
+
+    @media screen and (max-width: 850px) {
+        .container_explications_fonctions .box:nth-child(1),
+        .container_explications_fonctions .box:nth-child(2) {
+            width: 300px;
+            height: 400px;
+        }
+    }
+}
+
+/*--------------------------------------------------------------------------*/
