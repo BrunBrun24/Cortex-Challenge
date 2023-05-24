@@ -103,7 +103,7 @@
 /*Changement de la taille des boîtes*/
 .container_explications_fonctions .box:nth-child(1),
 .container_explications_fonctions .box:nth-child(2) {
-    width: 600px;
+    width: 550px;
     height: 600px;
 }
 
