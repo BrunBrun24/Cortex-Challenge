@@ -20,11 +20,6 @@
     transition: 0.5s;
 }
 
-
-.container_explications_fonctions .box:hover {
-    transform: translateY(-20px);
-}
-
 .container_explications_fonctions .box::before {
     content: '';
     position: absolute;

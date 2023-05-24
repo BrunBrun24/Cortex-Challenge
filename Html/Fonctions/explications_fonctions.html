@@ -44,7 +44,7 @@
             <span></span>
             <div class="content">
                 <h2>Fonctions</h2>
-                <p>"Cette fonction est intéressante d'un point de vue complexité car elle utilise une double boucle for pour comparer chaque couleur dans la liste avec les couleurs dans ..."</p>
+                <p>"En comparant les deux fonctions, elles effectuent essentiellement les mêmes opérations pour trouver le premier nombre manquant dans une liste de nombres. ..."</p>
                 <a href="../Fonctions/explications_fonctions.html">Read More</a>
             </div>
         </div>
@@ -108,14 +108,16 @@
             <div class="content_explications_fonctions">
                 <h2>Explication de la fonction</h2>
                 <p>
-                    La première fonction qu'on a créée utilise des listes pour stocker les couleurs en français et en anglais, ce qui permet d'accéder directement aux
-                    positions des éléments pour les comparaisons. Elle présente une complexité temporelle d'environ 1.83e-05 secondes.
+                    La première fonction que nous avons créée utilise des listes pour stocker les couleurs en français et en anglais,
+                    ce qui permet d'accéder directement aux positions des éléments pour les comparaisons.
+                    Elle présente une complexité temporelle d'environ 1.83e-5 secondes.
                     <br><br>
-                    En revanche, la deuxième fonction qu'on a créée utilise un dictionnaire inversé pour stocker les couleurs et présente une complexité temporelle
-                    d'environ 4.41e-05 secondes.
+                    En revanche, la deuxième fonction que nous avons créée utilise un dictionnaire inversé pour stocker les couleurs et
+                    présente une complexité temporelle d'environ 4.41e-5 secondes.
                     <br><br>
-                    Nous avons constaté que les dictionnaires impliquent des recherches plus coûteuses pour trouver les correspondances entre les clés et les valeurs
-                    par rapport aux listes. Par conséquent, nous avons choisi de garder la première fonction en raison de sa complexité temporelle plus faible,
+                    Nous avons constaté que les dictionnaires impliquent des recherches plus coûteuses pour trouver les correspondances entre
+                    les clés et les valeurs par rapport aux listes.
+                    Par conséquent, nous avons choisi de conserver la première fonction en raison de sa complexité temporelle plus faible,
                     ce qui permet une exécution plus rapide.
 
                 </p>
@@ -368,18 +370,26 @@ def frequence(donnees: dict) -> str:
             <div class="content_explications_fonctions">
                 <h2>Explication de la fonction</h2>
                 <p>
-                    En comparant les deux fonctions, elles effectuent essentiellement les mêmes opérations pour trouver le premier nombre manquant dans une liste de nombres.
-                    La différence réside principalement dans les structures de données utilisées :
-                    la première fonction utilise des listes, tandis que la deuxième fonction utilise des ensembles (sets).
+                    Les deux fonctions que l'on a créer cherchent toutes les deux le premier nombre manquant dans une liste de nombres.
+                    Elles utilisent une approche similaire en séparant les nombres en deux listes en fonction de leur couleur.
+                    Les deux fonctions trient ensuite les listes de nombres avant de chercher le premier nombre manquant.
                     <br><br>
-                    La complexité temporelle des deux fonctions est similaire, car elles impliquent toutes deux le tri des ensembles ou des listes,
-                    suivi d'une recherche linéaire du premier nombre manquant. Dans le pire des cas, si tous les nombres de la liste sont présents et doivent être parcourus,
-                    la complexité est linéaire.
+                    La différence entre les deux fonctions réside principalement dans la façon dont elles traitent les nombres.
                     <br><br>
-                    En conclusion, la 2nde fonction a été choisie en raison de son utilisation d'ensembles (set),
-                    ce qui permet d'éliminer automatiquement les doublons dans la liste de nombres.
-                    Cela simplifie l'implémentation et améliore la lisibilité du code.
-                    Les performances des deux fonctions sont comparables, mais la 2nde fonction offre une solution légèrement plus efficace grâce à l'utilisation des ensembles.
+                    La première stocke les nombres en tant que chaînes de caractères dans les listes list_numbers_color1 et list_numbers_color2.
+                    Elle effectue ensuite une conversion de ces chaînes de caractères en entiers à l'aide de la fonction
+                    map(int, list_numbers_color1) et map(int, list_numbers_color2) lors de la vérification du premier nombre manquant.
+                    Cela introduit une surcharge de conversion de types à chaque itération de la boucle.
+                    <br><br>
+                    En revanche, la deuxième stocke directement les nombres en tant qu'entiers dans les listes list_numbers_color1 et list_numbers_color2,
+                    évitant ainsi la conversion de types lors de la vérification du premier nombre manquant.
+                    <br><br>
+                    En termes de complexité, les deux fonctions effectuent des opérations similaires.
+                    La complexité principale réside dans le tri des listes de nombres, qui a une complexité de O(n log n),
+                    où n est la taille des listes. Ensuite, les boucles qui recherchent le premier nombre manquant ont une complexité linéaire O(n).
+                    <br><br>
+                    En raison de la différence de traitement des nombres et de la conversion de types évitée dans la seconde fonction,
+                    celle-ci est généralement plus efficace en termes de rapidité et de performances.
                 </p>
             </div>
         </div>
@@ -436,15 +446,19 @@ def manquant(donnees: dict) -> int or None:
             <div class="content_explications_fonctions">
                 <h2>Explication de la fonction</h2>
                 <p>
-                    La seconde fonction que l'on a créée utilise une file de priorité (heap) pour implémenter l'algorithme de recherche A* dans un labyrinthe.
+                    La première fonction que l'on a créée utilise une file de priorité (heap) pour implémenter l'algorithme de recherche A* dans un labyrinthe.
                     Sa complexité temporelle dépend de la taille du labyrinthe et du nombre de cases visitées. Dans le pire des cas,
                     si toutes les cases du labyrinthe doivent être visitées, la complexité peut être exponentielle.
                     <br><br>
-                    La première fonction utilise également une file de priorité (heap) et implémente également l'algorithme A* pour la recherche dans un labyrinthe.
+                    La seconde fonction utilise également une file de priorité (heap) et implémente également l'algorithme A* pour la recherche dans un labyrinthe.
                     Sa complexité temporelle est similaire à celle de la première fonction, dépendant de la taille du labyrinthe et du nombre de cases visitées.
                     <br><br>
-                    J'ai choisi la première seconde au lieu de la première car les deux fonctions ont une complexité temporelle similaire et réalisent la même tâche.
-                    Par conséquent, la différence de performance entre les deux fonctions n'est pas significative.
+                    La différence de performance entre les deux fonctions n'est pas significative car les deux fonctions ont une complexité
+                    temporelle similaire et réalisent la même tâche.
+                    Cependant, en mesurant la moyenne du temps d'exécution des deux fonctions sur différentes tailles de map,
+                    la première fonction a un temps d'exécution moyen de 4.52e-04 secondes, tandis que la seconde fonction a un temps d'exécution moyen de 4.50e-04 secondes.
+                    <br><br>
+                    Par conséquent, la seconde fonction a été choisie.
                 </p>
             </div>
         </div>
