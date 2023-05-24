@@ -102,14 +102,13 @@ def calcul(donnees: dict) -> str or None:
     Args:donnees (dict): Un dictionnaire contenant les clés 'result' et 'numbers'.
     Returns: str or None: Une chaîne de caractères représentant la combinaison trouvée, si une combinaison satisfaisant la condition est trouvée. Sinon, renvoie None.
     """
-    result:int = donnees["result"]
-    numbers:list = donnees["numbers"]
+    result = donnees["result"]
+    numbers = donnees["numbers"]
     for i in range(1, len(numbers) + 1):
         for combo in combinations(numbers, i):
             if sum(combo) == result:
-                combo_str = "+".join(str(num) for num in combo)
+                combo_str = "+".join(str(num) for num in sorted(combo))
                 return combo_str
-            
     return None 
 
 

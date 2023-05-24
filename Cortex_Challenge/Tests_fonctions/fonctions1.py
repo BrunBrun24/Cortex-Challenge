@@ -6,8 +6,8 @@ def couleur1(donnees: dict) -> str or None:
     Vérifie si les couleurs dans les défis sont valides en comparant avec des listes de couleurs en français et en anglais.
     :return: la clef du dictionnaire colors correspondant à la même couleur que sa clef, sinon None.
     """
-    couleur_fr:list = ("argent", "beige", "blanc", "bleu", "corail", "indigo", "jaune", "lavande", "magenta", "marron", "mauve", "noir", "olive", "or", "orange", "orchidée", "rose", "rouge", "saumon", "vert")
-    couleur_en:list = ("silver", "beige", "white", "blue", "coral", "indigo", "yellow", "lavender", "magenta", "brown", "mauve", "black", "olive", "gold", "orange", "orchid", "pink", "red", "salmon", "green")
+    couleur_fr = ("argent", "beige", "blanc", "bleu", "corail", "indigo", "jaune", "lavande", "magenta", "marron", "mauve", "noir", "olive", "or", "orange", "orchidée", "rose", "rouge", "saumon", "vert")
+    couleur_en = ("silver", "beige", "white", "blue", "coral", "indigo", "yellow", "lavender", "magenta", "brown", "mauve", "black", "olive", "gold", "orange", "orchid", "pink", "red", "salmon", "green")
     
     # On parcourt la liste des couleurs
     for cle,valeur in donnees["colors"].items():
@@ -15,12 +15,12 @@ def couleur1(donnees: dict) -> str or None:
             return cle
         elif cle in couleur_fr:
             # On sauvegarde la position de "cle" ce trouvant dans "couleur_fr"
-            position_couleur:int = couleur_fr.index(cle)
+            position_couleur = couleur_fr.index(cle)
             # On regarde si la valeur ce trouve à la même position que la "cle" dans "couleur_en"
             if (valeur in couleur_en) and (valeur == couleur_en[position_couleur]):
                 return cle
         else:
-            position_couleur:int = couleur_en.index(cle)
+            position_couleur = couleur_en.index(cle)
             if (valeur in couleur_fr) and (valeur == couleur_fr[position_couleur]):
                 return cle
     
@@ -42,7 +42,7 @@ def parcours_lampe_torche(donnees: dict, direction: str, ligne: str, colonne: st
     if type(donnees["map"][ligne][colonne]) == int:
         return int(donnees["map"][ligne][colonne])
 
-    direction:str = si_miroir(donnees, direction, ligne, colonne)
+    direction = si_miroir(donnees, direction, ligne, colonne)
 
     if direction == "bas":
         return parcours_lampe_torche(donnees, direction, ligne+1, colonne)
@@ -95,14 +95,14 @@ def calcul1(donnees: dict) -> str:
     Returns:
         list: Une liste d'une combinaison trouvée.
     """
-    nombre_cible:int = donnees["result"]
-    nombres:list = donnees["numbers"]
-    combinaisons:list = []
+    nombre_cible = donnees["result"]
+    nombres = donnees["numbers"]
+    combinaisons = []
     trouver_combinaisons_recursif(donnees, nombre_cible, nombres, 0, [], combinaisons)
 
     # Convertir les listes de nombres en chaînes de caractères avec des "+" comme séparateurs
-    combinaisons:list = ['+'.join(map(str, combinaison)) for combinaison in combinaisons]
-    combinaisons:list = ['+'.join(sorted(expr.split('+'), key=int)) for expr in combinaisons]
+    combinaisons = ['+'.join(map(str, combinaison)) for combinaison in combinaisons]
+    combinaisons = ['+'.join(sorted(expr.split('+'), key=int)) for expr in combinaisons]
 
     return combinaisons[0]
 
@@ -144,19 +144,19 @@ def frequence1(donnees: dict) -> str:
     """
     :return: Le mot le moins représenté (str)
     """
-    occurence_words:dict = {}  # Dictionnaire pour stocker les occurrences de chaque mot
+    occurence_words = {}  # Dictionnaire pour stocker les occurrences de chaque mot
     for ligne in donnees["words"]:
         for word in ligne:
             if word not in occurence_words:
-                occurence_words[word]:int = 0  # Initialiser l'occurrence du mot à 0 s'il n'est pas déjà présent
+                occurence_words[word] = 0  # Initialiser l'occurrence du mot à 0 s'il n'est pas déjà présent
             occurence_words[word] += 1  # Incrémenter l'occurrence du mot
 
-    word:None = None  # Variable pour stocker le mot le moins représenté
-    little_occurence:float = float('inf')  # Variable pour stocker le nombre d'occurrences du mot le moins représenté, initialisée à une valeur positive infinie
+    word = None  # Variable pour stocker le mot le moins représenté
+    little_occurence = float('inf')  # Variable pour stocker le nombre d'occurrences du mot le moins représenté, initialisée à une valeur positive infinie
     for cle, valeur in occurence_words.items():
         if valeur < little_occurence:  # Si le nombre d'occurrences du mot actuel est inférieur au nombre d'occurrences du mot le moins représenté actuel
-            word:str = cle  # Mettre à jour le mot le moins représenté
-            little_occurence:int = valeur  # Mettre à jour le nombre d'occurrences du mot le moins représenté
+            word = cle  # Mettre à jour le mot le moins représenté
+            little_occurence = valeur  # Mettre à jour le nombre d'occurrences du mot le moins représenté
 
     return word  # Retourner le mot le moins représenté
 
@@ -166,10 +166,10 @@ def manquant1(donnees: dict) -> int:
     Fonction permettant de trouver le premier nombre manquant dans une liste de nombres.
     :return: int: Le premier nombre manquant dans la liste de nombres.
     """
-    list_numbers_color1:list = []
-    list_numbers_color2:list = []
+    list_numbers_color1 = []
+    list_numbers_color2 = []
     # Permet de récupérer une couleur disponible et de les mettre dans "list_color"
-    couleur:str = donnees["numbers"][0][-1]
+    couleur = donnees["numbers"][0][-1]
     # Permet de récupérer les nombres et de les mettres dans leur list respective
     for color in donnees["numbers"]:
         if color[-1] == couleur:
@@ -178,16 +178,16 @@ def manquant1(donnees: dict) -> int:
             list_numbers_color2.append(color[:-1])
 
     # On trie les listes avec les nombres*
-    list_numbers_color1:list = sorted(list_numbers_color1, key=int)
-    list_numbers_color2:list = sorted(list_numbers_color2, key=int)
+    list_numbers_color1 = sorted(list_numbers_color1, key=int)
+    list_numbers_color2 = sorted(list_numbers_color2, key=int)
 
     for number in range(len(list_numbers_color1)-1):
-        n:list = list(map(int, list_numbers_color1))
+        n = list(map(int, list_numbers_color1))
         if n[number+1] != n[number]+1:
             return n[number]+1
 
     for number in range(len(list_numbers_color2)-1):
-        n:list = list(map(int, list_numbers_color2))
+        n = list(map(int, list_numbers_color2))
         if n[number+1] != n[number]+1:
             return n[number]+1
 
@@ -195,22 +195,22 @@ def manquant1(donnees: dict) -> int:
 
 
 def labyrinthe1(donnees: dict) -> int or None:
-    labyrinth:int = donnees["map"]
-    directions:list = [(0, 1), (0, -1), (1, 0), (-1, 0)]  # Haut, Bas, Gauche, Droite
-    start_pos:None = None
-    goal_pos:list = [("1", (0, 0)), ("2", (0, len(labyrinth[0])-1)), ("3", (len(labyrinth)-1, len(labyrinth[0])-1)), ("4", (len(labyrinth)-1, 0))]  # Positions des sorties
+    labyrinth = donnees["map"]
+    directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]  # Haut, Bas, Gauche, Droite
+    start_pos = None
+    goal_pos = [("1", (0, 0)), ("2", (0, len(labyrinth[0])-1)), ("3", (len(labyrinth)-1, len(labyrinth[0])-1)), ("4", (len(labyrinth)-1, 0))]  # Positions des sorties
     for i in range(len(labyrinth)):
         for j in range(len(labyrinth[i])):
             if labyrinth[i][j] == "D":
                 start_pos:tuple = (i, j)
 
-    queue:list = [(0, start_pos, [])]  # File d'attente avec la priorité basée sur la distance
-    visited:set = set()  # Positions déjà visitées
+    queue = [(0, start_pos, [])]  # File d'attente avec la priorité basée sur la distance
+    visited = set()  # Positions déjà visitées
 
     while queue:
         _, current_pos, path = heapq.heappop(queue)
         if current_pos in [pos for _, pos in goal_pos]:
-            goal:str = [key for key, value in goal_pos if value == current_pos][0]
+            goal = [key for key, value in goal_pos if value == current_pos][0]
             return int(goal)
 
         visited.add(current_pos)
@@ -218,10 +218,10 @@ def labyrinthe1(donnees: dict) -> int or None:
         for direction in directions:
             new_pos:tuple = (current_pos[0] + direction[0], current_pos[1] + direction[1])
             if is_valid_position(new_pos, labyrinth) and new_pos not in visited:
-                new_path:list = path + [current_pos]
-                g_score:int = len(new_path)
-                h_score:int = heuristic(new_pos, goal_pos)
-                f_score:int = g_score + h_score
+                new_path = path + [current_pos]
+                g_score = len(new_path)
+                h_score = heuristic(new_pos, goal_pos)
+                f_score = g_score + h_score
                 heapq.heappush(queue, (f_score, new_pos, new_path))
                 visited.add(new_pos)
 
@@ -238,8 +238,8 @@ def heuristic(position: tuple, goal_pos: list) -> int:
     min_distance = math.inf
 
     for _, (x2, y2) in goal_pos:
-        distance:int = abs(x1 - x2) + abs(y1 - y2)
-        min_distance:int = min(min_distance, distance)
+        distance = abs(x1 - x2) + abs(y1 - y2)
+        min_distance = min(min_distance, distance)
 
     return min_distance
 
@@ -249,9 +249,9 @@ def doublon1(donnees: dict) -> str or None:
     Recherche un mot en double dans la liste de mots fournie.
     :return: (str) Le mot en double s'il existe, sinon None.
     """
-    all_words:list = []
-    list_words:list = []
-    dict_words:list = {}
+    all_words = []
+    list_words = []
+    dict_words = {}
     # Met tous les mots dans une seul liste
     for ligne in donnees["words"]:
         for word in ligne:
@@ -280,31 +280,31 @@ def raisonnement1(donnees: dict) -> str or None:
     Applique un raisonnement sur le dessin en utilisant différentes méthodes pour vérifier s'il y a une solution possible.
     :return: Le nom de la solution trouvée, sinon (str) "Aucune de ces solutions n'est la bonne".
     """
-    drawing:list = donnees["drawing"]
+    drawing = donnees["drawing"]
     # On regarde si il y a possibilité d'enlever des colonnes à droite du dessin
-    decalage:int = decalage_raisonnement(drawing)
+    decalage = decalage_raisonnement(drawing)
 
     # On décale chaque ligne du dessin par "decalage"
-    new_drawing:list = []
+    new_drawing = []
     for ligne in drawing:
         if "" in ligne:
             new_drawing.append(ligne[decalage:])
 
     # On regarde si il y a possibilité d'enlever des colonnes à gauche du dessin mais pour cela on va inverser chaque ligne du dessin
-    new_drawing:list = retourne_raisonnement(new_drawing)
+    new_drawing = retourne_raisonnement(new_drawing)
     # On regarde si il y a possibilité d'enlever des colonnes à droite du dessin
-    decalage_new_drawing:int = decalage_raisonnement(new_drawing)
+    decalage_new_drawing = decalage_raisonnement(new_drawing)
 
     # On décale chaque ligne du dessin par "decalage_new_drawing"
-    finish_drawing:list = []
+    finish_drawing = []
     for ligne in new_drawing:
         if "" in ligne:
             finish_drawing.append(ligne[decalage_new_drawing:])
 
     # On remet le dessin à l'endroit
-    finish_drawing:list = retourne_raisonnement(finish_drawing)
+    finish_drawing = retourne_raisonnement(finish_drawing)
     # On inverse le vide ("") avec les murs ("X")
-    finish_drawing:list = inversion_raisonnement(finish_drawing)
+    finish_drawing = inversion_raisonnement(finish_drawing)
     # On regarde si une solution est possible
     for nom, map in donnees["pieces"].items():
         if finish_drawing == map:
@@ -318,17 +318,17 @@ def decalage_raisonnement(drawing: list) -> int:
     :param drawing: (list) Le dessin représenté sous forme de liste de listes.
     :return: (int) Le décalage possible le plus à gauche du dessin.
     """
-    possibilite_decalage:list = []
-    arrete_for:bool = False
+    possibilite_decalage = []
+    arrete_for = False
     # On parcourt chaque ligne de "drawing"
     for ligne in drawing:
-        decalage:int = 0
-        compteur:int = 0 # Pour savoir si on est au début de la ligne
+        decalage = 0
+        compteur = 0 # Pour savoir si on est au début de la ligne
         # On parcourt chaque symbole surla ligne
         for symbole in ligne:
             # Si le symbole est un trou et qu'il se trouve au début de la ligne
             if (symbole == "") and (compteur == 0):
-                decalage:int = 0
+                decalage = 0
                 return decalage
             elif symbole == "X":
                 decalage += 1
@@ -350,7 +350,7 @@ def retourne_raisonnement(drawing: list) -> list:
     :param drawing: (list) Le dessin représenté sous forme de liste de listes.
     :return: (list) Le dessin modifié avec chaque ligne retournée horizontalement.
     """
-    new_drawing:list = []
+    new_drawing = []
     for ligne in drawing:
         new_drawing.append(ligne[::-1])
 
