@@ -308,15 +308,24 @@ iMac :
             top: calc(64%);
             left: calc(50% - 464px);
         }
-        .cube1 div span {
+        .cube1 div span,
+        .cube2 div span,
+        .cube3 div span,
+        .cube4 div span {
             transform: rotateY(calc(90deg * var(--i))) translateZ(45px);
         }
-        .top1 {
+        .top1,
+        .top2,
+        .top3,
+        .top4 {
             width: 126px;
             height: 126px;
             transform: rotateX(90deg) translateZ(45px);
         }
-        .top1::before {
+        .top1::before,
+        .top2::before,
+        .top3::before,
+        .top4::before {
             width: 90px;
             height: 90px;
             transform: translateZ(-120px);
@@ -327,56 +336,17 @@ iMac :
             top: calc(64%);
             left: calc(50% - 129px);
         }
-        .cube2 div span {
-            transform: rotateY(calc(90deg * var(--i))) translateZ(45px);
-        }
-        .top2 {
-            width: 126px;
-            height: 126px;
-            transform: rotateX(90deg) translateZ(45px);
-        }
-        .top2::before {
-            width: 90px;
-            height: 90px;
-            transform: translateZ(-120px);
-        }
         .cube3 {
             width: 90px;
             height: 90px;
             top: calc(64%);
             left: calc(50% + 206px);
         }
-        .cube3 div span {
-            transform: rotateY(calc(90deg * var(--i))) translateZ(45px);
-        }
-        .top3 {
-            width: 126px;
-            height: 126px;
-            transform: rotateX(90deg) translateZ(45px);
-        }
-        .top3::before {
-            width: 90px;
-            height: 90px;
-            transform: translateZ(-120px);
-        }
         .cube4 {
             width: 90px;
             height: 90px;
             top: calc(64%);
             left: calc(50% + 541px);
-        }
-        .cube4 div span {
-            transform: rotateY(calc(90deg * var(--i))) translateZ(45px);
-        }
-        .top4 {
-            width: 126px;
-            height: 126px;
-            transform: rotateX(90deg) translateZ(45px);
-        }
-        .top4::before {
-            width: 90px;
-            height: 90px;
-            transform: translateZ(-120px);
         }
 
         /*Arrête les cubes au même niveau que les boxs*/
@@ -410,16 +380,16 @@ iMac :
         /*Arrête les cubes au même niveau que les boxs*/
         @media screen and (max-height: 805px) {
             .cube1 {
-            top: 258px; 
+            top: 300px; 
             }
             .cube2 {
-                top: 419px; 
+                top: 461px; 
             }
             .cube3 {
-                top: 605px; 
+                top: 650px; 
             }
             .cube4 {
-                top: 766px; 
+                top: 808px; 
             }
         }
     }
@@ -455,6 +425,7 @@ Ordinateur portable :
         top: calc(50% + 150px);
         left: calc(50% + 400px);
     }
+
     @media screen and (max-width: 1200px) {
         .cube1 {
             top: calc(50% - 100px);
@@ -471,6 +442,21 @@ Ordinateur portable :
         .cube4 {
             top: calc(50% + 470px);
             left: calc(50% - 45px);
+        }
+        /*Arrête les cubes au même niveau que les boxs*/
+        @media screen and (max-height: 768px) {
+            .cube1 {
+            top: 280px; 
+            }
+            .cube2 {
+                top: 441px; 
+            }
+            .cube3 {
+                top: 690px; 
+            }
+            .cube4 {
+                top: 850px; 
+            }
         }
     }
 }
