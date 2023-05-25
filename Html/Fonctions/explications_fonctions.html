@@ -269,7 +269,8 @@ def si_miroir(donnees: dict, direction: str, ligne: str, colonne: str):
                     dans une liste qui s'additionnent pour obtenir un nombre cible. Elle convertit ensuite ces combinaisons en chaînes
                     de caractères avec des "+" comme séparateurs. Elle présente une complexité temporelle d'environ 1.10e-05 secondes.
                     <br><br>
-                    La seconde fonction utilise une boucle pour générer toutes les combinaisons possibles à l'aide de la fonction combinations du module itertools.
+                    La seconde fonction utilise une boucle pour générer toutes les combinaisons possibles à l'aide de la fonction combinations du
+                    <a href="https://docs.python.org/fr/3/library/itertools.html">module itertools</a>.
                     Elle vérifie ensuite si la somme de chaque combinaison est égale au nombre cible.
                     Si une combinaison satisfait cette condition, elle est convertie en une chaîne de caractères avec des "+" comme séparateurs.
                     La complexité temporelle moyenne de cette fonction est d'environ 3.89e-06 secondes.
@@ -319,7 +320,7 @@ def calcul(donnees: dict) -> str or None:
                     Elle itère sur chaque mot de la liste de mots et met à jour le dictionnaire des occurrences.
                     Ensuite, elle recherche le mot ayant le nombre d'occurrences le plus faible en parcourant le dictionnaire.
                     <br><br>
-                    La seconde fonction utilise le module Counter pour compter les occurrences de chaque mot dans la liste de mots fournie.
+                    La seconde fonction utilise le <a href="https://docs.python.org/fr/3/library/collections.html">module Counter</a> pour compter les occurrences de chaque mot dans la liste de mots fournie.
                     Elle retourne ensuite le mot le moins représenté en utilisant la fonction min avec la clé word_count.get.
                     <br><br>
                     La seconde fonction a été choisie en raison de son utilisation du module Counter qui simplifie le comptage des occurrences des mots.
@@ -332,7 +333,7 @@ def calcul(donnees: dict) -> str or None:
                     qui est optimisé pour le comptage des occurrences.
                     <br><br>
                     En conclusion, la seconde fonction a été choisie en raison de son implémentation plus concise, 
-                    claire et efficace grâce à l'utilisation du module Counter.
+                    claire et efficace grâce à l'utilisation du <a href="https://docs.python.org/fr/3/library/collections.html">module Counter</a>.
                     Elle offre une solution directe et optimisée pour trouver le mot le moins représenté dans la liste de mots.
                 </p>
             </div>
@@ -376,8 +377,7 @@ def frequence(donnees: dict) -> str:
                     La différence entre les deux fonctions réside principalement dans la façon dont elles traitent les nombres.
                     <br><br>
                     La première stocke les nombres en tant que chaînes de caractères dans les listes list_numbers_color1 et list_numbers_color2.
-                    Elle effectue ensuite une conversion de ces chaînes de caractères en entiers à l'aide de la fonction
-                    map(int, list_numbers_color1) et map(int, list_numbers_color2) lors de la vérification du premier nombre manquant.
+                    Elle effectue ensuite une conversion de ces chaînes de caractères en entiers lors de la vérification du premier nombre manquant.
                     Cela introduit une surcharge de conversion de types à chaque itération de la boucle.
                     <br><br>
                     En revanche, la deuxième stocke directement les nombres en tant qu'entiers dans les listes list_numbers_color1 et list_numbers_color2,
@@ -445,11 +445,13 @@ def manquant(donnees: dict) -> int or None:
             <div class="content_explications_fonctions">
                 <h2>Explication de la fonction</h2>
                 <p>
-                    La première fonction que l'on a créée utilise une file de priorité (heap) pour implémenter l'algorithme de recherche A* dans un labyrinthe.
-                    Sa complexité temporelle dépend de la taille du labyrinthe et du nombre de cases visitées. Dans le pire des cas,
-                    si toutes les cases du labyrinthe doivent être visitées, la complexité peut être exponentielle.
+                    La première fonction que l'on a créée utilise une file de priorité <a href="https://docs.python.org/fr/3/library/heapq.html?highlight=file%20priorit%C3%A9">(heap)</a> pour implémenter l'algorithme de recherche
+                    <a href="https://fr.wikipedia.org/wiki/Algorithme_A*">A*</a> dans un labyrinthe.
+                    Sa complexité temporelle dépend de la taille du labyrinthe et du nombre de cases visitées.
+                    Dans le pire des cas, si toutes les cases du labyrinthe doivent être visitées, la complexité peut être exponentielle.
                     <br><br>
-                    La seconde fonction utilise également une file de priorité (heap) et implémente également l'algorithme A* pour la recherche dans un labyrinthe.
+                    La seconde fonction utilise également une file de priorité <a href="https://docs.python.org/fr/3/library/heapq.html?highlight=file%20priorit%C3%A9">(heap)</a> et implémente également l'algorithme
+                    <a href="https://upload.wikimedia.org/wikipedia/commons/5/5d/Astar_progress_animation.gif">A*</a> pour la recherche dans un labyrinthe.
                     Sa complexité temporelle est similaire à celle de la première fonction, dépendant de la taille du labyrinthe et du nombre de cases visitées.
                     <br><br>
                     La différence de performance entre les deux fonctions n'est pas significative car les deux fonctions ont une complexité
@@ -567,11 +569,11 @@ def heuristic(position, goal_pos) -> int:
                     La première fonction utilise plusieurs étapes, notamment la création de plusieurs listes pour stocker les mots,
                     la suppression des répétitions, et l'utilisation d'un dictionnaire pour compter les occurrences de chaque mot.
                     Elle vérifie également s'il existe un mot avec une valeur de compteur égale à 2 pour trouver un mot en double.
-                    De plus elle présente une complexité temporelle d'environ 1.96e-04 secondes.
+                    De plus elle présente une complexité temporelle d'environ 5.04e-04 secondes.
                     <br><br>
                     La seconde fonction utilise un dictionnaire pour compter le nombre d'occurrences de chaque mot dans la liste de mots fournie.
                     Elle vérifie ensuite s'il existe un mot avec une valeur de compteur égale à 2, indiquant ainsi un mot en double.
-                    Elle présente une complexité temporelle d'environ 4.84e-04 secondes.
+                    Elle présente une complexité temporelle d'environ 2.09e-04 secondes.
                     <br><br>
                     La seconde fonction a été choisie en raison de son implémentation plus concise, claire et efficace. 
                     Elle utilise simplement un dictionnaire pour effectuer le comptage des occurrences de chaque mot, évitant ainsi des
@@ -624,7 +626,6 @@ def doublon(donnees: dict) -> str or None:
                 <h2>Explication de la fonction</h2>
                 <p>
                     Les deux fonctions que l'on a créer, effectuent essentiellement les mêmes opérations pour résoudre un problème de dessin.
-                    Cependant, nous avons opté pour la seconde en raison de sa complexité inférieure par rapport à la première.
                     <br><br>
                     La seconde utilise des listes en compréhension pour filtrer et décaler les lignes du dessin, ce qui permet d'éviter des boucles supplémentaires.
                     De plus, elle utilise des indices inversés pour retourner horizontalement les lignes du dessin, ce qui réduit la complexité de cette opération.
